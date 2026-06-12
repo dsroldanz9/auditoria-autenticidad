@@ -1,0 +1,20 @@
+# R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Secretos y credenciales (NUNCA subir)
+.env
+.Renviron
+*_token*
+*secret*
+
+# Datos reales recolectados por el usuario (solo se versiona el ejemplo sintético)
+data/*.csv
+!data/ejemplo_*.csv
+
+# Salidas
+rsconnect/
+*.log
