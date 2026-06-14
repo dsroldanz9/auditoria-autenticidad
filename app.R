@@ -178,12 +178,20 @@ server <- function(input, output, session) {
       chip("Sigue ÷ seguidores", det$ff_ratio[1]),
       chip("% retweets", rt))
     senales_html <- if (length(r$senales) > 0)
-      paste0("<ul style='margin:6px 0 0;padding-left:18px;color:#EEF0FA'>",
+      paste0("<ul style='margin:6px 0 0;padding-left:18px;color:#EEF0FA;columns:2'>",
              paste0("<li>", r$senales, "</li>", collapse=""), "</ul>")
     else "<p style='color:#BFE8CF;margin:6px 0 0'>Sin señales de riesgo detectadas.</p>"
 
+    top_html <- if (!is.null(r$top) && nrow(r$top) > 0)
+      paste0(vapply(seq_len(nrow(r$top)), function(i) sprintf(
+        "<div style='display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #FFFFFF14'>
+           <span style='font-size:13px;color:#EEF0FA'>%d. %s</span>
+           <span style='font-family:Archivo Black;font-size:13px;color:%s'>%d</span></div>",
+        i, r$top$cuenta[i], ORO, r$top$n[i]), character(1)), collapse = "")
+    else "<div style='font-size:12px;color:#AEB6E8'>Sin interacciones visibles.<br>(Aparece con tweets reales vía token.)</div>"
+
     HTML(sprintf("
-    <div id='card_share_inner' style='max-width:600px;background:%s;border-radius:18px;
+    <div id='card_share_inner' style='max-width:860px;background:%s;border-radius:18px;
          padding:22px 24px;color:#fff;font-family:Inter,Segoe UI,sans-serif'>
       <div style='display:flex;align-items:center;gap:10px;margin-bottom:12px'>
         <img src='logo.png' height='36' style='border-radius:50%%'/>
@@ -192,22 +200,27 @@ server <- function(input, output, session) {
       </div>
       <div style='font-family:Archivo Black;font-size:30px;line-height:1'>@%s</div>
       <div style='font-size:13px;color:#D7DBF5;margin-bottom:14px'>Detector de autenticidad · X</div>
-      <div style='display:flex;gap:16px;align-items:center'>
-        <div>%s</div>
+      <div style='display:flex;gap:18px;align-items:flex-start'>
+        <div style='flex-shrink:0'>%s</div>
         <div style='flex:1'>
           <span style='display:inline-block;background:%s;color:#1B1F3B;font-family:Archivo Black;
                 font-size:13px;padding:6px 12px;border-radius:9px'>%s</span>
           <div style='display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px'>%s</div>
         </div>
+        <div style='width:240px;flex-shrink:0;background:#FFFFFF12;border-radius:12px;padding:12px 14px'>
+          <div style='font-family:Archivo Black;font-size:12px;color:%s;margin-bottom:6px'>TOP CUENTAS QUE AMPLIFICA</div>
+          %s
+        </div>
       </div>
       <div style='margin-top:14px'><b style='color:%s'>Señales detectadas (%d):</b>%s</div>
       <div style='margin-top:14px;font-size:11px;color:#C7CCEF'>
-        Esto mide <b style='color:#fff'>automatización</b> (perfil individual). La <b style='color:#fff'>coordinación / bodega</b> se mide sobre un grupo, en el modo \"Auditar lista\".
+        Mide <b style='color:#fff'>automatización</b> (perfil individual). La <b style='color:#fff'>coordinación / bodega</b> se mide sobre un grupo, en \"Auditar lista\".
       </div>
       <div style='margin-top:10px;border-top:1px solid #FFFFFF22;padding-top:10px;font-size:11px;color:#AEB6E8'>
         Estimación con criterios transparentes y abiertos — no es un veredicto de \"bot\".<br>%s
       </div>
-    </div>", AZ, ORO, r$handle, donut_svg(r$pct, col), col, verd, chips, ORO, r$n_flags, senales_html, URL_APP))
+    </div>",
+    AZ, ORO, r$handle, donut_svg(r$pct, col), col, verd, chips, ORO, top_html, ORO, r$n_flags, senales_html, URL_APP))
   })
 
   output$registro_tabla <- renderDT({

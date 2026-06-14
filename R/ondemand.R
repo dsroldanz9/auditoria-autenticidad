@@ -9,6 +9,17 @@
 #   - "mock"           : datos simulados, para probar el flujo SIN gastar ni conectar nada
 
 suppressPackageStartupMessages({ library(httr2); library(jsonlite); library(dplyr) })
+`%||%` <- function(a, b) if (is.null(a) || length(a) == 0) b else a
+
+#' Top de cuentas con las que un perfil interactúa (RT, citas, menciones, respuestas).
+#' Se extrae del texto de sus tweets. @return data.frame: cuenta, n (desc), ordenado.
+top_interacciones <- function(tweets, n = 5) {
+  if (is.null(tweets) || nrow(tweets) == 0) return(data.frame())
+  ms <- tolower(unlist(regmatches(tweets$text, gregexpr("@\\w{2,}", tweets$text))))
+  if (length(ms) == 0) return(data.frame())
+  tb <- sort(table(ms), decreasing = TRUE)
+  utils::head(data.frame(cuenta = names(tb), n = as.integer(tb), stringsAsFactors = FALSE), n)
+}
 
 # --- recupera tweets recientes de un user_id por la X API v2 --------------------
 x_fetch_tweets <- function(user_id, bearer = Sys.getenv("X_BEARER_TOKEN"), max_n = 100) {
@@ -37,7 +48,16 @@ fetch_twitterapi_io <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY")) {
     verified = isTRUE(u$isBlueVerified),
     default_avatar = grepl("default_profile", ifelse(is.null(u$profilePicture),"",u$profilePicture)),
     stringsAsFactors = FALSE)
-  list(cuenta = cuenta, tweets = NULL)  # los tweets se piden con otro endpoint si se desea
+  # tweets recientes (otro endpoint; ~+créditos). Best-effort: si el esquema difiere, no rompe.
+  tweets <- tryCatch({
+    r2 <- request("https://api.twitterapi.io/twitter/user/last_tweets") |>
+      req_url_query(userName = handle) |> req_headers(`X-API-Key` = key) |> req_perform()
+    d <- resp_body_json(r2); arr <- d$data$tweets %||% d$tweets %||% d$data
+    if (is.null(arr)) NULL else do.call(rbind, lapply(arr, function(t) data.frame(
+      handle = handle, created_at = t$createdAt %||% t$created_at %||% NA,
+      text = t$text %||% "", stringsAsFactors = FALSE)))
+  }, error = function(e) NULL)
+  list(cuenta = cuenta, tweets = tweets)
 }
 
 # --- conector MOCK: datos deterministas a partir del handle (para probar) -------
@@ -51,9 +71,11 @@ fetch_mock <- function(handle) {
       followers=round(runif(1,0,40)), following=round(runif(1,300,900)),
       n_tweets=round(runif(1,5000,20000)), bio="", verified=FALSE,
       default_avatar=TRUE, default_profile=TRUE, stringsAsFactors=FALSE)
+    objetivos <- c("@CandidatoOficial","@VoceroDeCampana","@PrensaAfin")
     tw <- data.frame(handle=h,
       created_at=format(Sys.time()-runif(20,0,2)*86400,"%Y-%m-%dT%H:%M:%SZ"),
-      text=rep("El cambio es imparable, todos unidos vamos!",20), stringsAsFactors=FALSE)
+      text=paste0("RT ", sample(objetivos, 20, replace=TRUE, prob=c(.55,.30,.15)),
+                  ": El cambio es imparable, todos unidos vamos!"), stringsAsFactors=FALSE)
   } else {
     cuenta <- data.frame(handle=h, display_name=h,
       created_at=format(Sys.time()-runif(1,500,3500)*86400,"%Y-%m-%dT%H:%M:%SZ"),
@@ -62,8 +84,9 @@ fetch_mock <- function(handle) {
       verified=FALSE, default_avatar=FALSE, default_profile=FALSE, stringsAsFactors=FALSE)
     tw <- data.frame(handle=h,
       created_at=format(Sys.time()-runif(8,0,40)*86400,"%Y-%m-%dT%H:%M:%SZ"),
-      text=sample(c("Qué día","Vamos Colombia","Buen partido","Café y a trabajar",
-                    "Feliz finde","El agua es vida","Hoy llueve en Bogotá"),8,TRUE),
+      text=sample(c("Qué día tan bonito en la ciudad","Vamos Colombia @SeleccionCol",
+                    "Buen partido anoche","Café y a trabajar","Feliz finde a la familia",
+                    "El agua es vida, cuidémosla","Hoy llueve en Bogotá @ElTiempo"),8,TRUE),
       stringsAsFactors=FALSE)
   }
   list(cuenta = cuenta, tweets = tw)
@@ -126,6 +149,7 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
     n_flags = scored$n_flags[1],
     senales = senales,
     fuente  = fuente,
+    top     = top_interacciones(p$tweets),   # top de cuentas que amplifica
     detalle = scored)
 
   # guardar en la "base de datos"
