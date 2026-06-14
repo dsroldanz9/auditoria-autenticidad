@@ -103,7 +103,8 @@ fetch_twitterapi_io <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY")) {
 
 # Trae tweets de una cuenta con el endpoint de búsqueda (incluye respuestas) y pagina.
 # Prueba "Latest"; si sale vacío (cuentas que solo responden), cae a "Top".
-ta_io_buscar_tweets <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY"), max_pages = 5) {
+ta_io_buscar_tweets <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY"),
+    max_pages = { mp <- suppressWarnings(as.integer(Sys.getenv("MAX_PAGES"))); if (is.na(mp)) 5 else mp }) {
   h <- gsub("^@", "", handle)
   un_tipo <- function(qt) {
     acc <- list(); cursor <- ""
