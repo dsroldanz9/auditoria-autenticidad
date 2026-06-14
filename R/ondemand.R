@@ -178,6 +178,7 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
   top <- top_interacciones(p$tweets)                       # top de cuentas que amplifica/ataca
   if (nrow(top) > 0) top <- cbind(top, caracterizar(top$cuenta))
   res$top <- top
+  res$narrativa <- if (exists("extraer_narrativa")) extraer_narrativa(p$tweets) else NULL
 
   # guardar en la "base de datos"
   fila <- data.frame(fecha=as.character(Sys.time()), handle=res$handle, pct=res$pct,

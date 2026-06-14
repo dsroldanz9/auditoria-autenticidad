@@ -2,9 +2,9 @@
 # UI bslib + tarjeta de resultado descargable (html2canvas) para compartir en X.
 
 suppressPackageStartupMessages({
-  library(shiny); library(bslib); library(DT); library(ggplot2); library(dplyr)
+  library(shiny); library(bslib); library(DT); library(ggplot2); library(dplyr); library(plotly)
 })
-for (f in c("features.R","score.R","coordination.R","connectors.R","llm.R","ondemand.R","pipeline.R"))
+for (f in c("features.R","score.R","coordination.R","connectors.R","llm.R","ondemand.R","colectivo.R","pipeline.R"))
   source(file.path("R", f))
 # Carga tokens (TWITTERAPI_IO_KEY, etc.) en shinyapps.io. secret.R NO se sube a GitHub (gitignored).
 if (file.exists("secret.R")) try(source("secret.R"), silent = TRUE)
@@ -50,6 +50,43 @@ tema <- bs_theme(
     .btn-tw{background:#F7A40D;border:none;color:#1B1F3B;font-weight:800}
     .btn-tw:hover{background:#e2950a;color:#1B1F3B}
   ")
+
+# ---------- pestaña 0: panorama colectivo ----------
+tab_panorama <- nav_panel(
+  title = tagList(tags$span("\U0001F6A8"), " Panorama"),
+  div(class = "p-2",
+    h4(class = "hero", style = paste0("color:", AZ), "PANORAMA DE DESINFORMACIÓN"),
+    p(class = "nota", "Resultado colectivo de todas las búsquedas de esta sesión: a quién amplifican, qué narrativa repiten y qué cuentas quedan marcadas. La comunidad también puede denunciar cuentas (sin gastar créditos)."),
+    layout_columns(
+      col_widths = c(3, 3, 3, 3),
+      value_box("Cuentas investigadas", textOutput("p_n"), theme = "primary"),
+      value_box("Marcadas (alta señal)", textOutput("p_alta"), theme = "danger"),
+      value_box("Cuentas en la red", textOutput("p_red"), theme = "secondary"),
+      value_box("Denuncias ciudadanas", textOutput("p_den"), theme = "warning")
+    ),
+    layout_columns(
+      col_widths = c(7, 5),
+      card(card_header("Red de desinformación — quién amplifica/ataca a quién"),
+        plotlyOutput("red_plot", height = "440px"),
+        div(class = "nota", "🔵 analizada · 🟠 derecha · 🟢 Pacto · ⚪ sin clasificar. Tamaño = cuántas veces aparece.")),
+      card(card_header("Top cuentas más amplificadas / atacadas"), DTOutput("tabla_amplif"))
+    ),
+    layout_columns(
+      col_widths = c(6, 6),
+      card(card_header("Narrativa — palabras más repetidas"), plotOutput("plot_palabras", height = "300px")),
+      card(card_header("Hashtags de la campaña"), plotOutput("plot_hashtags", height = "300px"))
+    ),
+    card(card_header("Cuentas marcadas en esta investigación"), DTOutput("tabla_marcadas")),
+    card(card_header("Denunciar una cuenta (colectivo · no gasta créditos)"),
+      layout_columns(
+        col_widths = c(5, 5, 2),
+        textInput("den_handle", NULL, placeholder = "@cuenta_sospechosa"),
+        selectInput("den_motivo", NULL, c("Difunde desinformación", "Cuenta falsa / bot",
+          "Ataque coordinado", "Suplantación", "Otro")),
+        actionButton("den_go", "Denunciar", class = "btn-warning w-100")),
+      DTOutput("tabla_denuncias"))
+  )
+)
 
 # ---------- pestaña 1: buscar un perfil ----------
 tab_buscar <- nav_panel(
@@ -144,13 +181,74 @@ ui <- tagList(
                style = "border-radius:50%;margin-right:8px;vertical-align:middle"),
       tags$b("DETECTOR DE AUTENTICIDAD")),
     theme = tema, fillable = FALSE,
-    tab_buscar, tab_lista, tab_metodo,
+    tab_panorama, tab_buscar, tab_lista, tab_metodo,
     nav_spacer(),
     nav_item(tags$a("Código", href = REPO, target = "_blank", class = "nav-link"))
   )
 )
 
 server <- function(input, output, session) {
+
+  # ===== acumulación colectiva (en sesión) =====
+  investigaciones <- reactiveVal(list())
+  denuncias <- reactiveVal(data.frame(fecha=character(), handle=character(), motivo=character(), stringsAsFactors=FALSE))
+
+  observeEvent(perfil(), {
+    r <- perfil()
+    if (is.null(r) || !is.null(r$error)) return()
+    cur <- investigaciones(); cur[[r$handle]] <- r; investigaciones(cur)  # dedupe por handle
+  })
+  observeEvent(input$den_go, {
+    req(nchar(trimws(input$den_handle)) > 0)
+    h <- paste0("@", gsub("^@", "", trimws(input$den_handle)))
+    d <- denuncias()
+    denuncias(rbind(d, data.frame(fecha = format(Sys.time(), "%Y-%m-%d %H:%M"),
+      handle = h, motivo = input$den_motivo, stringsAsFactors = FALSE)))
+    updateTextInput(session, "den_handle", value = "")
+  })
+
+  invs_l <- reactive(investigaciones())
+  output$p_n    <- renderText(length(invs_l()))
+  output$p_alta <- renderText(sum(vapply(invs_l(), function(x) isTRUE(grepl("Alta", x$banda)), logical(1))))
+  output$p_red  <- renderText({ red <- construir_red(invs_l()); if (nrow(red$nodes)==0) 0 else nrow(red$nodes) })
+  output$p_den  <- renderText(nrow(denuncias()))
+
+  output$red_plot <- renderPlotly({
+    red <- construir_red(invs_l()); p <- plot_red(red)
+    if (is.null(p)) plot_ly() |> layout(annotations = list(text = "Aún no hay búsquedas. Analiza cuentas en 'Buscar perfil'.",
+      showarrow = FALSE, font = list(color = "#6B6F7A")), xaxis = list(visible=FALSE), yaxis = list(visible=FALSE)) |>
+      config(displayModeBar = FALSE) else p
+  })
+  output$tabla_amplif <- renderDT({
+    a <- consolidar_amplificadores(invs_l())
+    if (nrow(a) == 0) return(datatable(data.frame(Info = "Sin datos aún"), rownames = FALSE, options = list(dom = "t")))
+    a %>% transmute(Cuenta = cuenta, Quién = ifelse(is.na(nombre), "—", nombre),
+                    Bando = ifelse(is.na(bando), "—", bando), Interacciones = n_total, `En N cuentas` = veces) %>%
+      datatable(rownames = FALSE, options = list(pageLength = 8, dom = "tp")) %>%
+      formatStyle("Bando", target = "row", backgroundColor = styleEqual("derecha", "#FFEDE6"))
+  })
+  barra_narr <- function(d, fill) {
+    if (is.null(d) || nrow(d) == 0)
+      return(ggplot() + annotate("text", 1, 1, label = "Sin datos (requiere tweets reales)", color = "#6B6F7A") + theme_void())
+    ggplot(d, aes(x = reorder(termino, n), y = n)) + geom_col(fill = fill) + coord_flip() +
+      labs(x = NULL, y = NULL) + theme_minimal(base_size = 12) + theme(panel.grid.minor = element_blank())
+  }
+  output$plot_palabras <- renderPlot(barra_narr(consolidar_narrativa(invs_l())$palabras, AZ))
+  output$plot_hashtags <- renderPlot(barra_narr(consolidar_narrativa(invs_l())$hashtags, ORO))
+  output$tabla_marcadas <- renderDT({
+    if (length(invs_l()) == 0) return(datatable(data.frame(Info = "Sin investigaciones aún"), rownames = FALSE, options = list(dom = "t")))
+    df <- do.call(rbind, lapply(invs_l(), function(x) data.frame(
+      Cuenta = paste0("@", x$handle), `%` = x$pct, Clasificación = x$banda,
+      Señales = x$n_flags, Fuente = x$fuente, check.names = FALSE, stringsAsFactors = FALSE)))
+    datatable(df[order(-df$`%`), ], rownames = FALSE, options = list(pageLength = 8, dom = "tp")) %>%
+      formatStyle("Clasificación", target = "row",
+        backgroundColor = styleEqual("Alta señal de automatización", "#FFEDE6"))
+  })
+  output$tabla_denuncias <- renderDT({
+    d <- denuncias()
+    if (nrow(d) == 0) return(datatable(data.frame(Info = "Sin denuncias aún"), rownames = FALSE, options = list(dom = "t")))
+    datatable(d[rev(seq_len(nrow(d))), ], rownames = FALSE, options = list(pageLength = 5, dom = "tp"))
+  })
 
   # ===== modo a demanda =====
   perfil <- eventReactive(input$h_go, {
