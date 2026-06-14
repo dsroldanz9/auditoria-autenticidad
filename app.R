@@ -67,6 +67,10 @@ tab_buscar <- nav_panel(
       div(class = "pt-1", checkboxInput("h_llm", "Señal LLM", FALSE)),
       actionButton("h_go", "Analizar", class = "btn-primary w-100")
     ),
+    conditionalPanel("input.h_fuente != 'mock'",
+      div(style = "max-width:380px;margin-bottom:6px",
+        passwordInput("h_pass", "Clave de acceso (las consultas reales gastan créditos)", width = "100%"),
+        div(class = "nota", "El modo Demo es libre. Las fuentes reales requieren la clave."))),
     br(),
     uiOutput("card_share"),
     div(class = "mt-2",
@@ -151,8 +155,15 @@ server <- function(input, output, session) {
   # ===== modo a demanda =====
   perfil <- eventReactive(input$h_go, {
     req(nchar(trimws(input$h_handle)) > 0)
+    fuente <- input$h_fuente
+    # candado: las fuentes reales (que gastan créditos) exigen la clave correcta
+    if (fuente != "mock") {
+      clave <- Sys.getenv("APP_PASSWORD")
+      if (!nzchar(clave) || !identical(input$h_pass, clave))
+        return(list(error = "Clave incorrecta o no configurada. Las consultas reales requieren la clave de acceso (protege tus créditos). El modo Demo es libre."))
+    }
     withProgress(message = "Consultando y puntuando...", {
-      tryCatch(auditar_handle(input$h_handle, fuente = input$h_fuente, usar_llm = input$h_llm),
+      tryCatch(auditar_handle(input$h_handle, fuente = fuente, usar_llm = input$h_llm),
                error = function(e) list(error = conditionMessage(e)))
     })
   })
