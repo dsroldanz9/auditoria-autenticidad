@@ -96,21 +96,40 @@ fetch_twitterapi_io <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY")) {
     verified = isTRUE(u$isBlueVerified),
     default_avatar = grepl("default_profile", ifelse(is.null(u$profilePicture),"",u$profilePicture)),
     stringsAsFactors = FALSE)
-  # tweets recientes (otro endpoint; ~+créditos). Best-effort: si el esquema difiere, no rompe.
-  tweets <- tryCatch({
-    r2 <- request("https://api.twitterapi.io/twitter/user/last_tweets") |>
-      req_url_query(userName = handle) |> req_headers(`X-API-Key` = key) |> req_perform()
-    d <- resp_body_json(r2); arr <- d$data$tweets %||% d$tweets %||% d$data
-    if (is.null(arr)) NULL else do.call(rbind, lapply(arr, function(t) data.frame(
-      handle = handle, created_at = t$createdAt %||% t$created_at %||% NA,
-      text = t$text %||% "",
-      es_respuesta = isTRUE(t$isReply),
-      reply_to = tolower(paste0("@", gsub("^@", "", t$inReplyToUsername %||% ""))),
-      media = tryCatch(t$extendedEntities$media[[1]]$media_url_https %||% (t$entities$media[[1]]$media_url_https %||% NA_character_),
-                       error = function(e) NA_character_),
-      stringsAsFactors = FALSE)))
-  }, error = function(e) NULL)
+  # tweets vía BÚSQUEDA from:cuenta (sí incluye RESPUESTAS, a diferencia de last_tweets).
+  tweets <- tryCatch(ta_io_buscar_tweets(handle, key), error = function(e) NULL)
   list(cuenta = cuenta, tweets = tweets)
+}
+
+# Trae tweets de una cuenta con el endpoint de búsqueda (incluye respuestas) y pagina.
+# Prueba "Latest"; si sale vacío (cuentas que solo responden), cae a "Top".
+ta_io_buscar_tweets <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY"), max_pages = 5) {
+  h <- gsub("^@", "", handle)
+  un_tipo <- function(qt) {
+    acc <- list(); cursor <- ""
+    for (pg in seq_len(max_pages)) {
+      r <- request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
+        req_url_query(query = paste0("from:", h), queryType = qt, cursor = cursor) |>
+        req_headers(`X-API-Key` = key) |> req_perform()
+      d <- resp_body_json(r); arr <- d$tweets %||% list()
+      if (length(arr) == 0) break
+      acc <- c(acc, arr)
+      if (!isTRUE(d$has_next_page) || is.null(d$next_cursor) || identical(d$next_cursor, "")) break
+      cursor <- d$next_cursor
+    }
+    acc
+  }
+  arr <- un_tipo("Latest"); if (length(arr) == 0) arr <- un_tipo("Top")
+  if (length(arr) == 0) return(NULL)
+  do.call(rbind, lapply(arr, function(t) data.frame(
+    handle = h, created_at = t$createdAt %||% t$created_at %||% NA,
+    text = t$text %||% "",
+    es_respuesta = isTRUE(t$isReply),
+    reply_to = tolower(paste0("@", gsub("^@", "", t$inReplyToUsername %||% ""))),
+    media = tryCatch(t$extendedEntities$media[[1]]$media_url_https %||%
+                     (t$entities$media[[1]]$media_url_https %||% NA_character_),
+                     error = function(e) NA_character_),
+    stringsAsFactors = FALSE)))
 }
 
 # --- conector MOCK: datos deterministas a partir del handle (para probar) -------
@@ -194,7 +213,8 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
   scored <- calcular_score(feats)
 
   # nombres legibles de las señales activas
-  etiquetas <- c(flag_cuenta_muy_nueva="cuenta muy nueva", flag_hiperactividad="hiperactividad",
+  etiquetas <- c(flag_cuenta_muy_nueva="cuenta muy nueva", flag_cuenta_recien_creada="cuenta recién creada (<30 días)",
+    flag_casi_solo_respuestas="casi solo responde/comenta (torpedo)", flag_hiperactividad="hiperactividad",
     flag_actividad_extrema="actividad extrema", flag_ff_desbalanceado="sigue a muchos / pocos seguidores",
     flag_handle_aleatorio="handle aleatorio", flag_sin_bio="sin biografía",
     flag_avatar_default="avatar por defecto", flag_perfil_default="perfil sin personalizar",
