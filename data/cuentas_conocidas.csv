@@ -1,16 +1,12 @@
 handle,nombre,bando
 ivancepedacast,Iván Cepeda — Pacto Histórico,pacto
 petrogustavo,Gustavo Petro — Pacto Histórico,pacto
+mafecarrascal,María Fernanda Carrascal — Pacto,pacto
+gustavobolivar,Gustavo Bolívar — Pacto,pacto
+susanamuhamad,Susana Muhamad — Pacto,pacto
 abelardodelaesp,Abelardo de la Espriella — campaña,derecha
 alvarouribevel,Álvaro Uribe — Centro Democrático,derecha
-CandidatoDerecha,Candidato de la derecha (demo),derecha
-VoceroCampana,Vocero de campaña (demo),derecha
-PrensaAfin,Medio afín (demo),derecha
+VoceroDerecha,Vocero de derecha (demo),derecha
+CampanaDerecha,Cuenta de campaña derecha (demo),derecha
+MedioAfin,Medio afín (demo),derecha
 InfluencerDer,Influencer de derecha (demo),derecha
-AbogadoVocero,Abogado vocero (demo),derecha
-LiderPacto,Líder del Pacto (demo · víctima),pacto
-SenadoraPacto,Senadora del Pacto (demo · víctima),pacto
-PeriodistaCritico,Periodista crítico (demo · víctima),pacto
-ActivistaDDHH,Activista DDHH (demo · víctima),pacto
-AlcaldeProgre,Alcalde progresista (demo · víctima),pacto
-CongresistaVerde,Congresista verde (demo · víctima),pacto

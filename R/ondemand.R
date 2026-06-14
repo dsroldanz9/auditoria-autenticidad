@@ -143,8 +143,8 @@ fetch_mock <- function(handle) {
       followers=round(runif(1,0,40)), following=round(runif(1,300,900)),
       n_tweets=round(runif(1,5000,20000)), bio="", verified=FALSE,
       default_avatar=TRUE, default_profile=TRUE, stringsAsFactors=FALSE)
-    amplifica <- c("@CandidatoDerecha","@VoceroCampana","@PrensaAfin","@InfluencerDer","@AbogadoVocero")
-    ataca     <- c("@LiderPacto","@SenadoraPacto","@PeriodistaCritico","@ActivistaDDHH","@AlcaldeProgre","@CongresistaVerde")
+    amplifica <- c("@VoceroDerecha","@CampanaDerecha","@MedioAfin","@InfluencerDer")
+    ataca     <- c("@ivancepedacast","@mafecarrascal","@petrogustavo","@gustavobolivar","@susanamuhamad")
     mensajes  <- c("puro show, este señor no representa a nadie","otro corrupto del régimen, despierten Colombia",
                    "este personaje es un peligro para el país","no se dejen engañar por este farsante",
                    "vendepatria, eso es lo que son")

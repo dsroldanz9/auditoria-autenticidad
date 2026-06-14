@@ -37,9 +37,9 @@ atacantes_de <- function(target, max_pages = 5) {
 # ---- arma la lista de cuentas a investigar ----
 lineas <- if (file.exists("data/objetivos.txt")) trimws(readLines("data/objetivos.txt", warn = FALSE)) else character(0)
 lineas <- lineas[nchar(lineas) > 0]
-if (length(lineas) == 0) {                                  # demo grande: ~110 granja + 15 humanas
-  lineas <- c(sprintf("@fanpatriota%04d", 1:70), sprintf("@vozreal%04d", 1:40),
-              sprintf("@ciudadano_real_%d", 1:15))
+if (length(lineas) == 0) {                                  # demo MASIVO: ~1500 granja + 120 humanas
+  lineas <- c(sprintf("@fanpatriota%04d", 1:850), sprintf("@vozreal%04d", 1:450),
+              sprintf("@patriota_col%04d", 1:200), sprintf("@ciudadano_real_%d", 1:120))
 }
 objetivos <- character(0)
 for (l in lineas) {
@@ -77,6 +77,12 @@ conclusiones <- list(
 )
 
 narr <- consolidar_narrativa(res); red <- construir_red(res)
+# el mapa solo muestra los nodos más conectados (rendimiento): hubs + muestra de atacantes
+if (nrow(red$nodes) > 160) {
+  keep <- head(red$nodes$id[order(-red$nodes$grado)], 160)
+  red$edges <- red$edges[red$edges$from %in% keep & red$edges$to %in% keep, ]
+  red$nodes <- red$nodes[red$nodes$id %in% keep, ]
+}
 out <- list(generado = as.character(Sys.time()), fuente = fuente, conclusiones = conclusiones,
   perfiles = unname(perfiles),
   narrativa = list(palabras = df2list(narr$palabras), hashtags = df2list(narr$hashtags)),
