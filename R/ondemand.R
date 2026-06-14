@@ -132,8 +132,11 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
   fila <- data.frame(fecha=as.character(Sys.time()), handle=res$handle, pct=res$pct,
     banda=res$banda, n_flags=res$n_flags, fuente=fuente,
     senales=paste(senales, collapse="; "), stringsAsFactors=FALSE)
-  dir.create(dirname(registro), showWarnings=FALSE, recursive=TRUE)
-  write.table(fila, registro, sep=",", row.names=FALSE,
-    col.names=!file.exists(registro), append=file.exists(registro), qmethod="double")
+  tryCatch({
+    dir.create(dirname(registro), showWarnings=FALSE, recursive=TRUE)
+    write.table(fila, registro, sep=",", row.names=FALSE,
+      col.names=!file.exists(registro), append=file.exists(registro), qmethod="double")
+  }, error=function(e) NULL)   # en servidores de solo-lectura no debe romper
+  res$fila <- fila
   res
 }
