@@ -248,6 +248,7 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
   res$repetidos  <- mensajes_repetidos(p$tweets)           # mensajes que repite (copia-pega)
   res$imagenes   <- imagenes_repetidas(p$tweets)           # imágenes que repite
   res$narrativa  <- if (exists("extraer_narrativa")) extraer_narrativa(p$tweets) else NULL
+  res$textos     <- if (!is.null(p$tweets) && nrow(p$tweets) > 0) utils::head(p$tweets$text, 30) else character(0)
 
   # guardar en la "base de datos"
   fila <- data.frame(fecha=as.character(Sys.time()), handle=res$handle, pct=res$pct,

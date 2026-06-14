@@ -51,6 +51,24 @@ amplificadores_de <- function(target, max_pages = 5) {
   unique(paste0("@", acc[!is.na(acc) & nzchar(acc)]))
 }
 
+# trae a quienes responden a una cuenta CON CONTENIDO HOSTIL (atacantes reales, no seguidores)
+HOSTIL <- '(castrochavismo OR comunista OR "fuera petro" OR dictador OR narcopresidente OR vendepatria OR "petro corrupto" OR castrochavista OR "petro ladron" OR regimen OR mermelada)'
+atacantes_hostiles <- function(target, max_pages = 6) {
+  t <- gsub("^[!@]+", "", target); acc <- character(0); cursor <- ""
+  for (pg in seq_len(max_pages)) {
+    r <- tryCatch(request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
+      req_url_query(query = paste0("to:", t, " ", HOSTIL), queryType = "Latest", cursor = cursor) |>
+      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_perform(), error = function(e) NULL)
+    if (is.null(r)) break
+    d <- resp_body_json(r); arr <- d$tweets %||% list()
+    if (length(arr) == 0) break
+    acc <- c(acc, vapply(arr, function(x) x$author$userName %||% NA_character_, character(1)))
+    if (!isTRUE(d$has_next_page) || identical(d$next_cursor, "")) break
+    cursor <- d$next_cursor
+  }
+  unique(paste0("@", acc[!is.na(acc) & nzchar(acc)]))
+}
+
 # ---- arma la lista de cuentas a investigar ----
 lineas <- if (file.exists("data/objetivos.txt")) trimws(readLines("data/objetivos.txt", warn = FALSE)) else character(0)
 lineas <- lineas[nchar(lineas) > 0]
@@ -60,7 +78,8 @@ if (length(lineas) == 0) {                                  # demo MASIVO: ~1500
 }
 objetivos <- character(0)
 for (l in lineas) {
-  if (startsWith(l, ">")) { if (REAL) { cat("Atacantes de", l, "...\n"); objetivos <- c(objetivos, atacantes_de(l)) } }
+  if (startsWith(l, "!")) { if (REAL) { cat("Atacantes HOSTILES de", l, "...\n"); objetivos <- c(objetivos, atacantes_hostiles(l)) } }
+  else if (startsWith(l, ">")) { if (REAL) { cat("Responden a", l, "(todos)...\n"); objetivos <- c(objetivos, atacantes_de(l)) } }
   else if (startsWith(l, "+")) { if (REAL) { cat("Amplificadores de", l, "...\n"); objetivos <- c(objetivos, amplificadores_de(l)) } }
   else objetivos <- c(objetivos, l)
 }
@@ -76,9 +95,27 @@ res <- lapply(objetivos, function(h) tryCatch(auditar_handle(h, fuente = fuente)
 res <- res[!vapply(res, is.null, logical(1))]
 names(res) <- vapply(res, function(x) x$handle, character(1))
 
+# ---- reclasificación: separar AUTOMATIZACIÓN de POSTURA + exención por reputación ----
+HARD <- c("cuenta muy nueva","cuenta recién creada (<30 días)","sigue a muchos / pocos seguidores",
+  "avatar por defecto","perfil sin personalizar")
+USAR_IA <- Sys.getenv("OPENAI_API_KEY") != ""
+cat("Postura con IA:", USAR_IA, "\n")
+res <- lapply(res, function(r) {
+  fol <- r$detalle$followers[1] %||% 0; ed <- r$detalle$edad_dias[1] %||% 0
+  reput <- fol >= 3000 || (fol >= 1000 && ed >= 730)
+  nhard <- sum(r$senales %in% HARD); nflags <- r$n_flags
+  if (reput) { r$banda <- "Cuenta real (muy activa)"; r$pct <- min(r$pct, 18) }
+  else if (nhard >= 2 || nflags >= 4) r$banda <- "Alta señal de automatización"
+  else if (nflags >= 2) r$banda <- "Sospechosa"
+  else r$banda <- "Probablemente humana"
+  r$stance <- if (USAR_IA) tryCatch(clasificar_postura_llm(r$textos), error=function(e) NA) else NA
+  if (is.na(r$stance %||% NA)) r$stance <- "indeterminado"
+  r
+})
+
 df2list <- function(d) if (is.null(d) || nrow(d) == 0) list() else lapply(seq_len(nrow(d)), function(i) as.list(d[i, , drop = FALSE]))
 perfiles <- lapply(res, function(r) list(
-  handle = r$handle, pct = r$pct, banda = r$banda, n_flags = r$n_flags,
+  handle = r$handle, pct = r$pct, banda = r$banda, stance = r$stance, n_flags = r$n_flags,
   edad_dias = round(r$detalle$edad_dias[1]), tweets_dia = r$detalle$tweets_por_dia[1],
   reply_share = if ("reply_share" %in% names(r$detalle)) r$detalle$reply_share[1] else NA,
   followers = r$detalle$followers[1], senales = as.list(r$senales),
@@ -99,9 +136,14 @@ puente <- vapply(res, function(r) {
   amp <- tolower(if (nrow(r$top)) r$top$cuenta else character(0))
   any(atk %in% pac) && any(amp %in% der)
 }, logical(1))
+# blanco real = ATACA al Pacto (postura) Y muestra alta automatización
+n_ataca <- sum(vapply(res, function(r) identical(r$stance, "ataca_pacto"), logical(1)))
+n_obj   <- sum(vapply(res, function(r) identical(r$stance, "ataca_pacto") && grepl("Alta", r$banda), logical(1)))
 conclusiones <- list(
   n_total = length(res), n_alta = length(alta),
   pct_alta = if (length(res)) round(100*length(alta)/length(res)) else 0,
+  n_ataca = n_ataca, n_objetivo = n_obj,
+  pct_objetivo = if (length(res)) round(100*n_obj/length(res)) else 0,
   top_victimas = df2list(head(victimas, 6)),
   top_amplificados = df2list(head(amplif, 6)),
   mensaje_top = msg_top,

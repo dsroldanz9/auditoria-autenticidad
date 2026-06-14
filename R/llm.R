@@ -6,6 +6,27 @@
 
 suppressPackageStartupMessages({ library(httr2); library(jsonlite) })
 
+#' Clasifica la POSTURA política de una cuenta a partir de sus tweets (no trae datos; solo juzga texto).
+#' Atacar a la derecha (Abelardo/Uribe/Fico) = APOYAR al Pacto. @return "ataca_pacto"|"apoya_pacto"|"neutral"|NA
+clasificar_postura_llm <- function(textos, api_key = Sys.getenv("OPENAI_API_KEY"), modelo = "gpt-4o-mini") {
+  if (api_key == "" || length(textos) == 0) return(NA_character_)
+  muestra <- paste0("- ", utils::head(textos, 25), collapse = "\n")
+  sis <- paste("Eres analista político de Colombia (elecciones 2026). Te doy tweets de UNA cuenta.",
+    "Clasifica su postura: ¿ATACA al Pacto Histórico / la izquierda (Gustavo Petro, Iván Cepeda, Mafe Carrascal)",
+    "o los APOYA? OJO: atacar a la derecha (Abelardo de la Espriella, Álvaro Uribe, Fico) = APOYAR al Pacto;",
+    "defender a Petro/Cepeda = APOYAR al Pacto. Si no hay señal clara, neutral.",
+    "Responde SOLO JSON: {\"postura\":\"ataca_pacto\"|\"apoya_pacto\"|\"neutral\"}.")
+  cuerpo <- list(model = modelo, temperature = 0, response_format = list(type = "json_object"),
+    messages = list(list(role = "system", content = sis),
+                    list(role = "user", content = paste0("Tweets:\n", muestra))))
+  resp <- tryCatch(request("https://api.openai.com/v1/chat/completions") |>
+    req_auth_bearer_token(api_key) |> req_body_json(cuerpo) |> req_perform(), error = function(e) NULL)
+  if (is.null(resp)) return(NA_character_)
+  txt <- resp_body_json(resp)$choices[[1]]$message$content
+  val <- tryCatch(jsonlite::fromJSON(txt)$postura, error = function(e) NA_character_)
+  as.character(val)
+}
+
 #' @param textos vector de tweets (texto).
 #' @param api_key OPENAI_API_KEY del entorno.
 #' @param modelo modelo de chat (barato por defecto).
