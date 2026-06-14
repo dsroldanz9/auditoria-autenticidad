@@ -37,8 +37,9 @@ atacantes_de <- function(target, max_pages = 5) {
 # ---- arma la lista de cuentas a investigar ----
 lineas <- if (file.exists("data/objetivos.txt")) trimws(readLines("data/objetivos.txt", warn = FALSE)) else character(0)
 lineas <- lineas[nchar(lineas) > 0]
-if (length(lineas) == 0) {                                  # demo: 45 cuentas-granja + 5 humanas
-  lineas <- c(sprintf("@fanpatriota%04d", 1:45), sprintf("@maria_real%d", 1:5))
+if (length(lineas) == 0) {                                  # demo grande: ~110 granja + 15 humanas
+  lineas <- c(sprintf("@fanpatriota%04d", 1:70), sprintf("@vozreal%04d", 1:40),
+              sprintf("@ciudadano_real_%d", 1:15))
 }
 objetivos <- character(0)
 for (l in lineas) {

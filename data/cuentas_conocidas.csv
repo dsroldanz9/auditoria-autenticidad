@@ -3,9 +3,14 @@ ivancepedacast,Iván Cepeda — Pacto Histórico,pacto
 petrogustavo,Gustavo Petro — Pacto Histórico,pacto
 abelardodelaesp,Abelardo de la Espriella — campaña,derecha
 alvarouribevel,Álvaro Uribe — Centro Democrático,derecha
-CandidatoOficial,Candidato (demo),derecha
-VoceroDeCampana,Vocero de campaña (demo),derecha
+CandidatoDerecha,Candidato de la derecha (demo),derecha
+VoceroCampana,Vocero de campaña (demo),derecha
 PrensaAfin,Medio afín (demo),derecha
-LiderOposicion,Líder de oposición (demo · objetivo),pacto
-SenadorOpositor,Senador opositor (demo · objetivo),pacto
-PeriodistaCritico,Periodista crítico (demo · objetivo),pacto
+InfluencerDer,Influencer de derecha (demo),derecha
+AbogadoVocero,Abogado vocero (demo),derecha
+LiderPacto,Líder del Pacto (demo · víctima),pacto
+SenadoraPacto,Senadora del Pacto (demo · víctima),pacto
+PeriodistaCritico,Periodista crítico (demo · víctima),pacto
+ActivistaDDHH,Activista DDHH (demo · víctima),pacto
+AlcaldeProgre,Alcalde progresista (demo · víctima),pacto
+CongresistaVerde,Congresista verde (demo · víctima),pacto

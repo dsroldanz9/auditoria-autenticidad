@@ -143,18 +143,25 @@ fetch_mock <- function(handle) {
       followers=round(runif(1,0,40)), following=round(runif(1,300,900)),
       n_tweets=round(runif(1,5000,20000)), bio="", verified=FALSE,
       default_avatar=TRUE, default_profile=TRUE, stringsAsFactors=FALSE)
-    amplifica <- c("@CandidatoOficial","@VoceroDeCampana","@PrensaAfin")
-    ataca     <- c("@LiderOposicion","@SenadorOpositor","@PeriodistaCritico")
-    tipo <- sample(c("rt","reply"), 20, replace=TRUE, prob=c(.4,.6))     # torpedo: más respuestas
-    drt  <- sample(amplifica, 20, replace=TRUE); drep <- sample(ataca, 20, replace=TRUE)
+    amplifica <- c("@CandidatoDerecha","@VoceroCampana","@PrensaAfin","@InfluencerDer","@AbogadoVocero")
+    ataca     <- c("@LiderPacto","@SenadoraPacto","@PeriodistaCritico","@ActivistaDDHH","@AlcaldeProgre","@CongresistaVerde")
+    mensajes  <- c("puro show, este señor no representa a nadie","otro corrupto del régimen, despierten Colombia",
+                   "este personaje es un peligro para el país","no se dejen engañar por este farsante",
+                   "vendepatria, eso es lo que son")
+    mi_msg <- sample(mensajes, 1)                                    # cada cuenta repite SU mensaje
+    mis_obj <- sample(ataca, sample(2:3, 1))                         # se enfoca en 2-3 víctimas
+    mi_amp <- sample(amplifica, sample(1:2, 1))
+    tipo <- sample(c("rt","reply"), 20, replace=TRUE, prob=c(.35,.65))
+    drep <- sample(mis_obj, 20, replace=TRUE); drt <- sample(mi_amp, 20, replace=TRUE)
     tw <- data.frame(handle=h,
-      created_at=format(Sys.time()-runif(20,0,2)*86400,"%Y-%m-%dT%H:%M:%SZ"),
+      created_at=format(Sys.time()-runif(20,0,3)*86400,"%Y-%m-%dT%H:%M:%SZ"),
       text=ifelse(tipo=="rt",
-        paste0("RT ", drt, ": El cambio es imparable, todos unidos vamos!"),
-        paste0(drep, " puro show, este señor no representa a nadie")),
+        paste0("RT ", drt, ": el cambio es imparable, todos unidos vamos!"),
+        paste0(drep, " ", mi_msg)),
       es_respuesta = tipo=="reply",
       reply_to = ifelse(tipo=="reply", tolower(drep), NA_character_),
-      media = ifelse(tipo=="reply", "https://pbs.twimg.com/media/MEME_ATAQUE.jpg", NA_character_),  # imagen repetida (demo)
+      media = ifelse(tipo=="reply" & runif(20) < .5, sample(c("https://pbs.twimg.com/media/MEME_A.jpg",
+              "https://pbs.twimg.com/media/MEME_B.jpg"), 20, TRUE), NA_character_),
       stringsAsFactors=FALSE)
   } else {
     cuenta <- data.frame(handle=h, display_name=h,
