@@ -65,6 +65,10 @@ for (l in lineas) {
   else objetivos <- c(objetivos, l)
 }
 objetivos <- unique(objetivos)
+if (length(objetivos) == 0) {                               # fallback (p.ej. mock con solo semillas >/+)
+  objetivos <- c(sprintf("@fanpatriota%04d", 1:850), sprintf("@vozreal%04d", 1:450),
+                 sprintf("@patriota_col%04d", 1:200), sprintf("@ciudadano_real_%d", 1:120))
+}
 if (length(objetivos) > MAX) { cat("Limitando a", MAX, "cuentas (de", length(objetivos), ")\n"); objetivos <- objetivos[1:MAX] }
 cat("Investigando", length(objetivos), "cuentas | fuente:", fuente, "\n")
 
