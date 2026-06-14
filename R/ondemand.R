@@ -26,6 +26,39 @@ top_interacciones <- function(tweets, n = 6) {
   utils::head(data.frame(cuenta = names(tb), n = as.integer(tb), stringsAsFactors = FALSE), n)
 }
 
+#' A quién le RESPONDE/ATACA el perfil (solo respuestas), constante y repetitivo.
+#' @return data.frame: cuenta, n (nº de respuestas dirigidas), ordenado desc.
+top_respuestas <- function(tweets, n = 6) {
+  if (is.null(tweets) || nrow(tweets) == 0 || !"reply_to" %in% names(tweets)) return(data.frame())
+  rt <- tolower(tweets$reply_to[!is.na(tweets$reply_to) & nzchar(tweets$reply_to) & tweets$reply_to != "@"])
+  if (length(rt) == 0) return(data.frame())
+  tb <- sort(table(rt), decreasing = TRUE)
+  utils::head(data.frame(cuenta = names(tb), n = as.integer(tb), stringsAsFactors = FALSE), n)
+}
+
+#' Mensajes que el perfil REPITE (mismo texto, copia-pega). Señal de comentario automatizado.
+#' @return data.frame: texto, veces (>=2), ordenado desc.
+mensajes_repetidos <- function(tweets, n = 5) {
+  if (is.null(tweets) || nrow(tweets) == 0) return(data.frame())
+  norm <- tolower(trimws(gsub("\\s+", " ", gsub("https?://\\S+", "", tweets$text))))
+  norm <- norm[nchar(norm) >= 12]
+  if (length(norm) == 0) return(data.frame())
+  tb <- sort(table(norm), decreasing = TRUE); tb <- tb[tb >= 2]
+  if (length(tb) == 0) return(data.frame())
+  utils::head(data.frame(texto = names(tb), veces = as.integer(tb), stringsAsFactors = FALSE), n)
+}
+
+#' Imágenes que el perfil REPITE (misma URL de imagen muchas veces).
+#' @return data.frame: imagen (url), veces (>=2), ordenado desc.
+imagenes_repetidas <- function(tweets, n = 5) {
+  if (is.null(tweets) || nrow(tweets) == 0 || !"media" %in% names(tweets)) return(data.frame())
+  m <- tweets$media[!is.na(tweets$media) & nzchar(tweets$media)]
+  if (length(m) == 0) return(data.frame())
+  tb <- sort(table(m), decreasing = TRUE); tb <- tb[tb >= 2]
+  if (length(tb) == 0) return(data.frame())
+  utils::head(data.frame(imagen = names(tb), veces = as.integer(tb), stringsAsFactors = FALSE), n)
+}
+
 #' Caracteriza un vector de @cuentas con la lista curada (data/cuentas_conocidas.csv).
 #' @return data.frame con columnas nombre y bando (NA si desconocida).
 caracterizar <- function(cuentas, ruta = "data/cuentas_conocidas.csv") {
@@ -73,6 +106,8 @@ fetch_twitterapi_io <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY")) {
       text = t$text %||% "",
       es_respuesta = isTRUE(t$isReply),
       reply_to = tolower(paste0("@", gsub("^@", "", t$inReplyToUsername %||% ""))),
+      media = tryCatch(t$extendedEntities$media[[1]]$media_url_https %||% (t$entities$media[[1]]$media_url_https %||% NA_character_),
+                       error = function(e) NA_character_),
       stringsAsFactors = FALSE)))
   }, error = function(e) NULL)
   list(cuenta = cuenta, tweets = tweets)
@@ -100,6 +135,7 @@ fetch_mock <- function(handle) {
         paste0(drep, " puro show, este señor no representa a nadie")),
       es_respuesta = tipo=="reply",
       reply_to = ifelse(tipo=="reply", tolower(drep), NA_character_),
+      media = ifelse(tipo=="reply", "https://pbs.twimg.com/media/MEME_ATAQUE.jpg", NA_character_),  # imagen repetida (demo)
       stringsAsFactors=FALSE)
   } else {
     cuenta <- data.frame(handle=h, display_name=h,
@@ -178,7 +214,12 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
   top <- top_interacciones(p$tweets)                       # top de cuentas que amplifica/ataca
   if (nrow(top) > 0) top <- cbind(top, caracterizar(top$cuenta))
   res$top <- top
-  res$narrativa <- if (exists("extraer_narrativa")) extraer_narrativa(p$tweets) else NULL
+  resp <- top_respuestas(p$tweets)                         # a quién le responde/ataca
+  if (nrow(resp) > 0) resp <- cbind(resp, caracterizar(resp$cuenta))
+  res$respuestas <- resp
+  res$repetidos  <- mensajes_repetidos(p$tweets)           # mensajes que repite (copia-pega)
+  res$imagenes   <- imagenes_repetidas(p$tweets)           # imágenes que repite
+  res$narrativa  <- if (exists("extraer_narrativa")) extraer_narrativa(p$tweets) else NULL
 
   # guardar en la "base de datos"
   fila <- data.frame(fecha=as.character(Sys.time()), handle=res$handle, pct=res$pct,

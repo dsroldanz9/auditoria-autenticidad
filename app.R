@@ -114,6 +114,14 @@ tab_buscar <- nav_panel(
       tags$button(tagList(icon("download"), " Descargar imagen para Twitter"),
                   onclick = "descargarCard()", class = "btn btn-tw")),
     br(), br(),
+    h5(class = "hero", style = paste0("color:", AZ), "DETALLE DE LA INVESTIGACIÓN"),
+    layout_columns(
+      col_widths = c(4, 4, 4),
+      card(card_header("🎯 A quién le responde / ataca"), DTOutput("det_respuestas")),
+      card(card_header("🔁 Mensajes que repite (copia-pega)"), DTOutput("det_repetidos")),
+      card(card_header("🖼️ Imágenes que repite"), DTOutput("det_imagenes"))
+    ),
+    br(),
     card(card_header("Historial de consultas (base de datos)"), DTOutput("registro_tabla"))
   )
 )
@@ -181,7 +189,7 @@ ui <- tagList(
                style = "border-radius:50%;margin-right:8px;vertical-align:middle"),
       tags$b("DETECTOR DE AUTENTICIDAD")),
     theme = tema, fillable = FALSE,
-    tab_panorama, tab_buscar, tab_lista, tab_metodo,
+    tab_buscar, tab_panorama, tab_lista, tab_metodo,
     nav_spacer(),
     nav_item(tags$a("Código", href = REPO, target = "_blank", class = "nav-link"))
   )
@@ -345,6 +353,31 @@ server <- function(input, output, session) {
       </div>
     </div>",
     AZ, ORO, r$handle, donut_svg(r$pct, col), col, verd, chips, ORO, top_html, ORO, r$n_flags, senales_html, URL_APP))
+  })
+
+  vacio_dt <- function(msg) datatable(data.frame(Info = msg), rownames = FALSE, options = list(dom = "t"))
+  output$det_respuestas <- renderDT({
+    r <- perfil()
+    if (is.null(r) || !is.null(r$error) || is.null(r$respuestas) || nrow(r$respuestas) == 0)
+      return(vacio_dt("Sin respuestas dirigidas (o cuenta sin tweets reales)"))
+    r$respuestas %>% transmute(Cuenta = cuenta, `Quién es` = ifelse(is.na(nombre), "—", nombre),
+        Bando = ifelse(is.na(bando), "—", bando), Respuestas = n) %>%
+      datatable(rownames = FALSE, options = list(dom = "t")) %>%
+      formatStyle("Bando", target = "row", backgroundColor = styleEqual("pacto", "#E8F5EE"))
+  })
+  output$det_repetidos <- renderDT({
+    r <- perfil()
+    if (is.null(r) || !is.null(r$error) || is.null(r$repetidos) || nrow(r$repetidos) == 0)
+      return(vacio_dt("No repite mensajes (bueno: no es copia-pega)"))
+    r$repetidos %>% transmute(`Mensaje repetido` = texto, Veces = veces) %>%
+      datatable(rownames = FALSE, options = list(dom = "t"))
+  })
+  output$det_imagenes <- renderDT({
+    r <- perfil()
+    if (is.null(r) || !is.null(r$error) || is.null(r$imagenes) || nrow(r$imagenes) == 0)
+      return(vacio_dt("Sin imágenes repetidas (o la API no las devolvió)"))
+    r$imagenes %>% transmute(Imagen = imagen, Veces = veces) %>%
+      datatable(rownames = FALSE, escape = FALSE, options = list(dom = "t"))
   })
 
   output$registro_tabla <- renderDT({
