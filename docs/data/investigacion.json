@@ -1,18 +1,89 @@
 {
-  "generado": "2026-06-14 09:06:23.416099",
+  "generado": "2026-06-14 09:14:05.042477",
   "fuente": "mock",
-  "n_perfiles": 5,
+  "conclusiones": {
+    "n_total": 50,
+    "n_alta": 45,
+    "pct_alta": 90,
+    "top_victimas": [
+      {
+        "cuenta": "@lideroposicion",
+        "n_total": 252,
+        "veces": 45,
+        "bando": "pacto",
+        "nombre": "Líder de oposición (demo · objetivo)"
+      },
+      {
+        "cuenta": "@senadoropositor",
+        "n_total": 175,
+        "veces": 45,
+        "bando": "pacto",
+        "nombre": "Senador opositor (demo · objetivo)"
+      },
+      {
+        "cuenta": "@periodistacritico",
+        "n_total": 123,
+        "veces": 45,
+        "bando": "pacto",
+        "nombre": "Periodista crítico (demo · objetivo)"
+      }
+    ],
+    "top_amplificados": [
+      {
+        "cuenta": "@lideroposicion",
+        "n_total": 504,
+        "veces": 45,
+        "bando": "pacto",
+        "nombre": "Líder de oposición (demo · objetivo)"
+      },
+      {
+        "cuenta": "@senadoropositor",
+        "n_total": 350,
+        "veces": 45,
+        "bando": "pacto",
+        "nombre": "Senador opositor (demo · objetivo)"
+      },
+      {
+        "cuenta": "@periodistacritico",
+        "n_total": 246,
+        "veces": 45,
+        "bando": "pacto",
+        "nombre": "Periodista crítico (demo · objetivo)"
+      },
+      {
+        "cuenta": "@candidatooficial",
+        "n_total": 151,
+        "veces": 43,
+        "bando": "derecha",
+        "nombre": "Candidato (demo)"
+      },
+      {
+        "cuenta": "@vocerodecampana",
+        "n_total": 120,
+        "veces": 45,
+        "bando": "derecha",
+        "nombre": "Vocero de campaña (demo)"
+      },
+      {
+        "cuenta": "@prensaafin",
+        "n_total": 79,
+        "veces": 37,
+        "bando": "derecha",
+        "nombre": "Medio afín (demo)"
+      }
+    ],
+    "mensaje_top": "@lideroposicion puro show, este señor no representa a nadie"
+  },
   "perfiles": [
     {
-      "handle": "vozpatriota7777",
+      "handle": "fanpatriota0001",
       "pct": 100,
       "banda": "Alta señal de automatización",
       "n_flags": 8,
-      "edad_dias": 80,
-      "tweets_dia": 160.6,
+      "edad_dias": 38,
+      "tweets_dia": 430.4,
       "reply_share": 0.55,
-      "followers": 7,
-      "fuente": "mock",
+      "followers": 8,
       "senales": [
         "cuenta muy nueva",
         "hiperactividad",
@@ -25,15 +96,15 @@
       ],
       "ataca": [
         {
-          "cuenta": "@periodistacritico",
-          "n": 5,
-          "nombre": "Periodista crítico (demo · objetivo)",
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
           "bando": "pacto"
         },
         {
-          "cuenta": "@lideroposicion",
-          "n": 3,
-          "nombre": "Líder de oposición (demo · objetivo)",
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
           "bando": "pacto"
         },
         {
@@ -45,15 +116,15 @@
       ],
       "amplifica": [
         {
-          "cuenta": "@periodistacritico",
-          "n": 10,
-          "nombre": "Periodista crítico (demo · objetivo)",
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
           "bando": "pacto"
         },
         {
-          "cuenta": "@lideroposicion",
-          "n": 6,
-          "nombre": "Líder de oposición (demo · objetivo)",
+          "cuenta": "@periodistacritico",
+          "n": 8,
+          "nombre": "Periodista crítico (demo · objetivo)",
           "bando": "pacto"
         },
         {
@@ -69,8 +140,209 @@
           "bando": "derecha"
         },
         {
+          "cuenta": "@vocerodecampana",
+          "n": 3,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
           "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0002",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 30,
+      "tweets_dia": 553.59,
+      "reply_share": 0.75,
+      "followers": 10,
+      "senales": [
+        "cuenta muy nueva",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 7,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 14,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 7
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0003",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 40,
+      "tweets_dia": 236.41,
+      "reply_share": 0.6,
+      "followers": 31,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
           "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 3,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 6,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
           "nombre": "Medio afín (demo)",
           "bando": "derecha"
         },
@@ -83,7 +355,597 @@
       ],
       "repetidos": [
         {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
           "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0004",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 46,
+      "tweets_dia": 401.84,
+      "reply_share": 0.5,
+      "followers": 1,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 2,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 6,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0005",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 12,
+      "tweets_dia": 985.7,
+      "reply_share": 0.75,
+      "followers": 28,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 11,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 22,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 11
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0006",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 12,
+      "tweets_dia": 971.79,
+      "reply_share": 0.65,
+      "followers": 21,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 16,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 8
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0007",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 53,
+      "tweets_dia": 199.87,
+      "reply_share": 0.5,
+      "followers": 25,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 2,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 8,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 7,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 3,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 7
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0008",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 26,
+      "tweets_dia": 220.19,
+      "reply_share": 0.5,
+      "followers": 16,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 3,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 12,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 6,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 2,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0009",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 41,
+      "tweets_dia": 424.73,
+      "reply_share": 0.65,
+      "followers": 3,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 5,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 10,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
           "veces": 5
         },
         {
@@ -91,29 +953,326 @@
           "veces": 4
         },
         {
-          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0010",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 38,
+      "tweets_dia": 430.4,
+      "reply_share": 0.55,
+      "followers": 8,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 8,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 3,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
           "veces": 4
         },
         {
-          "texto": "@lideroposicion puro show, este señor no representa a nadie",
-          "veces": 3
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
         },
         {
           "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
           "veces": 3
         }
       ]
     },
     {
-      "handle": "user88231",
+      "handle": "fanpatriota0011",
       "pct": 100,
       "banda": "Alta señal de automatización",
       "n_flags": 9,
-      "edad_dias": 54,
-      "tweets_dia": 226.54,
-      "reply_share": 0.55,
-      "followers": 25,
-      "fuente": "mock",
+      "edad_dias": 30,
+      "tweets_dia": 553.59,
+      "reply_share": 0.75,
+      "followers": 10,
+      "senales": [
+        "cuenta muy nueva",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 7,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 14,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 7
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0012",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 40,
+      "tweets_dia": 236.41,
+      "reply_share": 0.6,
+      "followers": 31,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 3,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 6,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0013",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 46,
+      "tweets_dia": 401.84,
+      "reply_share": 0.5,
+      "followers": 1,
       "senales": [
         "cuenta muy nueva",
         "hiperactividad",
@@ -133,8 +1292,111 @@
           "bando": "pacto"
         },
         {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 2,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 6,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
           "cuenta": "@senadoropositor",
           "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0014",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 11,
+      "edad_dias": 12,
+      "tweets_dia": 985.7,
+      "reply_share": 0.75,
+      "followers": 28,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 11,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
           "nombre": "Senador opositor (demo · objetivo)",
           "bando": "pacto"
         },
@@ -148,21 +1410,15 @@
       "amplifica": [
         {
           "cuenta": "@lideroposicion",
-          "n": 12,
+          "n": 22,
           "nombre": "Líder de oposición (demo · objetivo)",
           "bando": "pacto"
         },
         {
           "cuenta": "@senadoropositor",
-          "n": 8,
+          "n": 6,
           "nombre": "Senador opositor (demo · objetivo)",
           "bando": "pacto"
-        },
-        {
-          "cuenta": "@vocerodecampana",
-          "n": 4,
-          "nombre": "Vocero de campaña (demo)",
-          "bando": "derecha"
         },
         {
           "cuenta": "@prensaafin",
@@ -171,89 +1427,48 @@
           "bando": "derecha"
         },
         {
-          "cuenta": "@candidatooficial",
-          "n": 2,
-          "nombre": "Candidato (demo)",
-          "bando": "derecha"
-        },
-        {
           "cuenta": "@periodistacritico",
           "n": 2,
           "nombre": "Periodista crítico (demo · objetivo)",
           "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
         }
       ],
       "repetidos": [
         {
           "texto": "@lideroposicion puro show, este señor no representa a nadie",
-          "veces": 6
+          "veces": 11
         },
         {
           "texto": "@senadoropositor puro show, este señor no representa a nadie",
-          "veces": 4
-        },
-        {
-          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
-          "veces": 4
+          "veces": 3
         },
         {
           "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
           "veces": 3
-        },
-        {
-          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
-          "veces": 2
         }
       ]
     },
     {
-      "handle": "maria_lopez",
-      "pct": 40,
-      "banda": "Sospechosa",
-      "n_flags": 2,
-      "edad_dias": 3384,
-      "tweets_dia": 0.58,
-      "reply_share": 0,
-      "followers": 59,
-      "fuente": "mock",
-      "senales": [
-        "sigue a muchos / pocos seguidores",
-        "contenido repetido"
-      ],
-      "ataca": [],
-      "amplifica": [
-        {
-          "cuenta": "@eltiempo",
-          "n": 2,
-          "nombre": null,
-          "bando": null
-        }
-      ],
-      "repetidos": [
-        {
-          "texto": "buen partido anoche",
-          "veces": 3
-        },
-        {
-          "texto": "feliz finde a la familia",
-          "veces": 3
-        },
-        {
-          "texto": "hoy llueve en bogotá @eltiempo",
-          "veces": 2
-        }
-      ]
-    },
-    {
-      "handle": "fanderecha9012",
+      "handle": "fanpatriota0015",
       "pct": 100,
       "banda": "Alta señal de automatización",
       "n_flags": 10,
-      "edad_dias": 16,
-      "tweets_dia": 649.38,
-      "reply_share": 0.4,
-      "followers": 15,
-      "fuente": "mock",
+      "edad_dias": 12,
+      "tweets_dia": 971.79,
+      "reply_share": 0.65,
+      "followers": 21,
       "senales": [
         "cuenta muy nueva",
         "cuenta recién creada (<30 días)",
@@ -268,6 +1483,103 @@
       ],
       "ataca": [
         {
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 16,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 8
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0016",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 53,
+      "tweets_dia": 199.87,
+      "reply_share": 0.5,
+      "followers": 25,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
           "cuenta": "@periodistacritico",
           "n": 4,
           "nombre": "Periodista crítico (demo · objetivo)",
@@ -275,13 +1587,13 @@
         },
         {
           "cuenta": "@senadoropositor",
-          "n": 3,
+          "n": 4,
           "nombre": "Senador opositor (demo · objetivo)",
           "bando": "pacto"
         },
         {
           "cuenta": "@lideroposicion",
-          "n": 1,
+          "n": 2,
           "nombre": "Líder de oposición (demo · objetivo)",
           "bando": "pacto"
         }
@@ -295,7 +1607,204 @@
         },
         {
           "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 7,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 3,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 7
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0017",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 26,
+      "tweets_dia": 220.19,
+      "reply_share": 0.5,
+      "followers": 16,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@senadoropositor",
           "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 3,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 12,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 6,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 2,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0018",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 41,
+      "tweets_dia": 424.73,
+      "reply_share": 0.65,
+      "followers": 3,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 5,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 10,
           "nombre": "Senador opositor (demo · objetivo)",
           "bando": "pacto"
         },
@@ -306,10 +1815,106 @@
           "bando": "derecha"
         },
         {
-          "cuenta": "@prensaafin",
+          "cuenta": "@periodistacritico",
           "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
           "nombre": "Medio afín (demo)",
           "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0019",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 41,
+      "tweets_dia": 261.11,
+      "reply_share": 0.75,
+      "followers": 1,
+      "senales": [
+        "cuenta muy nueva",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 6,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 12,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
         },
         {
           "cuenta": "@vocerodecampana",
@@ -318,15 +1923,217 @@
           "bando": "derecha"
         },
         {
-          "cuenta": "@lideroposicion",
-          "n": 2,
-          "nombre": "Líder de oposición (demo · objetivo)",
-          "bando": "pacto"
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
         }
       ],
       "repetidos": [
         {
           "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0020",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 30,
+      "tweets_dia": 553.59,
+      "reply_share": 0.75,
+      "followers": 10,
+      "senales": [
+        "cuenta muy nueva",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 7,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 14,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 7
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0021",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 40,
+      "tweets_dia": 236.41,
+      "reply_share": 0.6,
+      "followers": 31,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 3,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 6,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
           "veces": 4
         },
         {
@@ -334,7 +2141,781 @@
           "veces": 4
         },
         {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
           "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0022",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 46,
+      "tweets_dia": 401.84,
+      "reply_share": 0.5,
+      "followers": 1,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 2,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 6,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0023",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 11,
+      "edad_dias": 12,
+      "tweets_dia": 985.7,
+      "reply_share": 0.75,
+      "followers": 28,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 11,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 22,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 11
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0024",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 12,
+      "tweets_dia": 971.79,
+      "reply_share": 0.65,
+      "followers": 21,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 16,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 8
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0025",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 53,
+      "tweets_dia": 199.87,
+      "reply_share": 0.5,
+      "followers": 25,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 2,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 8,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 7,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 3,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 7
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0026",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 26,
+      "tweets_dia": 220.19,
+      "reply_share": 0.5,
+      "followers": 16,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 3,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 12,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 6,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 2,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0027",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 41,
+      "tweets_dia": 424.73,
+      "reply_share": 0.65,
+      "followers": 3,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 5,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 10,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0028",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 41,
+      "tweets_dia": 261.11,
+      "reply_share": 0.75,
+      "followers": 1,
+      "senales": [
+        "cuenta muy nueva",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 6,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 12,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 4,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0029",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 58,
+      "tweets_dia": 210.71,
+      "reply_share": 0.55,
+      "followers": 18,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 5,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 4,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
           "veces": 4
         },
         {
@@ -342,32 +2923,1594 @@
           "veces": 4
         },
         {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0030",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 40,
+      "tweets_dia": 236.41,
+      "reply_share": 0.6,
+      "followers": 31,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 3,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 6,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
           "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
           "veces": 3
         }
       ]
     },
     {
-      "handle": "cuentareal_juan",
+      "handle": "fanpatriota0031",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 46,
+      "tweets_dia": 401.84,
+      "reply_share": 0.5,
+      "followers": 1,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 2,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 6,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0032",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 11,
+      "edad_dias": 12,
+      "tweets_dia": 985.7,
+      "reply_share": 0.75,
+      "followers": 28,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 11,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 22,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 11
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0033",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 12,
+      "tweets_dia": 971.79,
+      "reply_share": 0.65,
+      "followers": 21,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 16,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 8
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0034",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 53,
+      "tweets_dia": 199.87,
+      "reply_share": 0.5,
+      "followers": 25,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 2,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 8,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 7,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 3,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 7
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0035",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 26,
+      "tweets_dia": 220.19,
+      "reply_share": 0.5,
+      "followers": 16,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 3,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 12,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 6,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 2,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0036",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 41,
+      "tweets_dia": 424.73,
+      "reply_share": 0.65,
+      "followers": 3,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 5,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 10,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0037",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 41,
+      "tweets_dia": 261.11,
+      "reply_share": 0.75,
+      "followers": 1,
+      "senales": [
+        "cuenta muy nueva",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 6,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 12,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 4,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0038",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 58,
+      "tweets_dia": 210.71,
+      "reply_share": 0.55,
+      "followers": 18,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 5,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 10,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 5,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 4,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 5
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0039",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 57,
+      "tweets_dia": 322.66,
+      "reply_share": 0.65,
+      "followers": 38,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 5,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 10,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 4,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0040",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 8,
+      "edad_dias": 46,
+      "tweets_dia": 401.84,
+      "reply_share": 0.5,
+      "followers": 1,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 2,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 6,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0041",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 11,
+      "edad_dias": 12,
+      "tweets_dia": 985.7,
+      "reply_share": 0.75,
+      "followers": 28,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "casi solo responde/comenta (torpedo)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 11,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 3,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 22,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 3,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 1,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 1,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 11
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0042",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 10,
+      "edad_dias": 12,
+      "tweets_dia": 971.79,
+      "reply_share": 0.65,
+      "followers": 21,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 8,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 16,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 8
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0043",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 53,
+      "tweets_dia": 199.87,
+      "reply_share": 0.5,
+      "followers": 25,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 4,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 2,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@periodistacritico",
+          "n": 8,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 8,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 7,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 4,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 3,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 7
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 4
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 3
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0044",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 26,
+      "tweets_dia": 220.19,
+      "reply_share": 0.5,
+      "followers": 16,
+      "senales": [
+        "cuenta muy nueva",
+        "cuenta recién creada (<30 días)",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 6,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 3,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 1,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@senadoropositor",
+          "n": 12,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 6,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 2,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 2,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 6
+        },
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 3
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        },
+        {
+          "texto": "rt @prensaafin: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "fanpatriota0045",
+      "pct": 100,
+      "banda": "Alta señal de automatización",
+      "n_flags": 9,
+      "edad_dias": 41,
+      "tweets_dia": 424.73,
+      "reply_share": 0.65,
+      "followers": 3,
+      "senales": [
+        "cuenta muy nueva",
+        "hiperactividad",
+        "actividad extrema",
+        "sigue a muchos / pocos seguidores",
+        "handle aleatorio",
+        "sin biografía",
+        "avatar por defecto",
+        "perfil sin personalizar",
+        "contenido repetido"
+      ],
+      "ataca": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 6,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 5,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 2,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@lideroposicion",
+          "n": 12,
+          "nombre": "Líder de oposición (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@senadoropositor",
+          "n": 10,
+          "nombre": "Senador opositor (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@candidatooficial",
+          "n": 4,
+          "nombre": "Candidato (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@periodistacritico",
+          "n": 4,
+          "nombre": "Periodista crítico (demo · objetivo)",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@vocerodecampana",
+          "n": 2,
+          "nombre": "Vocero de campaña (demo)",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@prensaafin",
+          "n": 1,
+          "nombre": "Medio afín (demo)",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@lideroposicion puro show, este señor no representa a nadie",
+          "veces": 6
+        },
+        {
+          "texto": "@senadoropositor puro show, este señor no representa a nadie",
+          "veces": 5
+        },
+        {
+          "texto": "rt @candidatooficial: el cambio es imparable, todos unidos vamos!",
+          "veces": 4
+        },
+        {
+          "texto": "@periodistacritico puro show, este señor no representa a nadie",
+          "veces": 2
+        },
+        {
+          "texto": "rt @vocerodecampana: el cambio es imparable, todos unidos vamos!",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "maria_real1",
       "pct": 20,
       "banda": "Sospechosa",
       "n_flags": 1,
-      "edad_dias": 1336,
-      "tweets_dia": 0.36,
+      "edad_dias": 1529,
+      "tweets_dia": 0.48,
       "reply_share": 0,
-      "followers": 392,
-      "fuente": "mock",
+      "followers": 196,
       "senales": [
         "contenido repetido"
       ],
       "ataca": [],
       "amplifica": [
-        {
-          "cuenta": "@seleccioncol",
-          "n": 2,
-          "nombre": null,
-          "bando": null
-        },
         {
           "cuenta": "@eltiempo",
           "n": 1,
@@ -377,15 +4520,146 @@
       ],
       "repetidos": [
         {
-          "texto": "el agua es vida, cuidémosla",
-          "veces": 2
+          "texto": "café y a trabajar",
+          "veces": 3
         },
         {
           "texto": "feliz finde a la familia",
           "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "maria_real2",
+      "pct": 20,
+      "banda": "Sospechosa",
+      "n_flags": 1,
+      "edad_dias": 1970,
+      "tweets_dia": 0.08,
+      "reply_share": 0,
+      "followers": 326,
+      "senales": [
+        "contenido repetido"
+      ],
+      "ataca": [],
+      "amplifica": [
+        {
+          "cuenta": "@seleccioncol",
+          "n": 3,
+          "nombre": null,
+          "bando": null
+        },
+        {
+          "cuenta": "@eltiempo",
+          "n": 2,
+          "nombre": null,
+          "bando": null
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "vamos colombia @seleccioncol",
+          "veces": 3
+        },
+        {
+          "texto": "el agua es vida, cuidémosla",
+          "veces": 2
+        },
+        {
+          "texto": "hoy llueve en bogotá @eltiempo",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "maria_real3",
+      "pct": 20,
+      "banda": "Sospechosa",
+      "n_flags": 1,
+      "edad_dias": 2479,
+      "tweets_dia": 0.7,
+      "reply_share": 0,
+      "followers": 56,
+      "senales": [
+        "contenido repetido"
+      ],
+      "ataca": [],
+      "amplifica": [
+        {
+          "cuenta": "@seleccioncol",
+          "n": 4,
+          "nombre": null,
+          "bando": null
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "vamos colombia @seleccioncol",
+          "veces": 4
+        },
+        {
+          "texto": "qué día tan bonito en la ciudad",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "maria_real4",
+      "pct": 20,
+      "banda": "Sospechosa",
+      "n_flags": 1,
+      "edad_dias": 1755,
+      "tweets_dia": 2.15,
+      "reply_share": 0,
+      "followers": 1373,
+      "senales": [
+        "contenido repetido"
+      ],
+      "ataca": [],
+      "amplifica": [],
+      "repetidos": [
+        {
+          "texto": "buen partido anoche",
+          "veces": 4
+        },
+        {
+          "texto": "café y a trabajar",
+          "veces": 3
+        }
+      ]
+    },
+    {
+      "handle": "maria_real5",
+      "pct": 20,
+      "banda": "Sospechosa",
+      "n_flags": 1,
+      "edad_dias": 2946,
+      "tweets_dia": 0.2,
+      "reply_share": 0,
+      "followers": 684,
+      "senales": [
+        "contenido repetido"
+      ],
+      "ataca": [],
+      "amplifica": [
+        {
+          "cuenta": "@seleccioncol",
+          "n": 3,
+          "nombre": null,
+          "bando": null
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "qué día tan bonito en la ciudad",
+          "veces": 3
         },
         {
           "texto": "vamos colombia @seleccioncol",
+          "veces": 3
+        },
+        {
+          "texto": "el agua es vida, cuidémosla",
           "veces": 2
         }
       ]
@@ -394,64 +4668,64 @@
   "narrativa": {
     "palabras": [
       {
-        "termino": "vamos",
-        "n": 32
-      },
-      {
         "termino": "nadie",
-        "n": 30
+        "n": 550
       },
       {
         "termino": "puro",
-        "n": 30
+        "n": 550
       },
       {
         "termino": "representa",
-        "n": 30
+        "n": 550
       },
       {
         "termino": "señor",
-        "n": 30
+        "n": 550
       },
       {
         "termino": "show",
-        "n": 30
+        "n": 550
+      },
+      {
+        "termino": "vamos",
+        "n": 360
       },
       {
         "termino": "cambio",
-        "n": 30
+        "n": 350
       },
       {
         "termino": "imparable",
-        "n": 30
+        "n": 350
       },
       {
         "termino": "unidos",
-        "n": 30
+        "n": 350
       },
       {
-        "termino": "familia",
-        "n": 5
+        "termino": "colombia",
+        "n": 10
       },
       {
-        "termino": "feliz",
-        "n": 5
+        "termino": "bonito",
+        "n": 8
       },
       {
-        "termino": "finde",
-        "n": 5
+        "termino": "ciudad",
+        "n": 8
+      },
+      {
+        "termino": "café",
+        "n": 7
+      },
+      {
+        "termino": "trabajar",
+        "n": 7
       },
       {
         "termino": "anoche",
-        "n": 3
-      },
-      {
-        "termino": "buen",
-        "n": 3
-      },
-      {
-        "termino": "partido",
-        "n": 3
+        "n": 5
       }
     ],
     "hashtags": []
@@ -459,70 +4733,334 @@
   "red": {
     "nodes": [
       {
-        "id": "@vozpatriota7777",
+        "id": "@fanpatriota0001",
         "bando": null,
         "tipo": "analizada",
         "grado": 6
       },
       {
-        "id": "@user88231",
+        "id": "@fanpatriota0002",
         "bando": null,
         "tipo": "analizada",
         "grado": 6
       },
       {
-        "id": "@maria_lopez",
+        "id": "@fanpatriota0003",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0004",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0005",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0006",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0007",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0008",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0009",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0010",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0011",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0012",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0013",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0014",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0015",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0016",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0017",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0018",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0019",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0020",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0021",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0022",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0023",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0024",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0025",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0026",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0027",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0028",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0029",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0030",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0031",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0032",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0033",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0034",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0035",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0036",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0037",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0038",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0039",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0040",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0041",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0042",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0043",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 5
+      },
+      {
+        "id": "@fanpatriota0044",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@fanpatriota0045",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 6
+      },
+      {
+        "id": "@maria_real1",
         "bando": null,
         "tipo": "analizada",
         "grado": 1
       },
       {
-        "id": "@fanderecha9012",
-        "bando": null,
-        "tipo": "analizada",
-        "grado": 6
-      },
-      {
-        "id": "@cuentareal_juan",
+        "id": "@maria_real2",
         "bando": null,
         "tipo": "analizada",
         "grado": 2
       },
       {
-        "id": "@periodistacritico",
-        "bando": "pacto",
-        "tipo": "amplificada",
-        "grado": 3
+        "id": "@maria_real3",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 1
+      },
+      {
+        "id": "@maria_real5",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 1
       },
       {
         "id": "@lideroposicion",
         "bando": "pacto",
         "tipo": "amplificada",
-        "grado": 3
+        "grado": 45
+      },
+      {
+        "id": "@periodistacritico",
+        "bando": "pacto",
+        "tipo": "amplificada",
+        "grado": 45
       },
       {
         "id": "@senadoropositor",
         "bando": "pacto",
         "tipo": "amplificada",
-        "grado": 3
+        "grado": 45
       },
       {
         "id": "@candidatooficial",
         "bando": "derecha",
         "tipo": "amplificada",
-        "grado": 3
-      },
-      {
-        "id": "@prensaafin",
-        "bando": "derecha",
-        "tipo": "amplificada",
-        "grado": 3
+        "grado": 43
       },
       {
         "id": "@vocerodecampana",
         "bando": "derecha",
         "tipo": "amplificada",
-        "grado": 3
+        "grado": 45
+      },
+      {
+        "id": "@prensaafin",
+        "bando": "derecha",
+        "tipo": "amplificada",
+        "grado": 37
       },
       {
         "id": "@eltiempo",
@@ -534,134 +5072,1598 @@
         "id": "@seleccioncol",
         "bando": null,
         "tipo": "amplificada",
-        "grado": 1
+        "grado": 3
       }
     ],
     "edges": [
       {
-        "from": "@vozpatriota7777",
-        "to": "@periodistacritico",
-        "weight": 10,
-        "bando_to": "pacto"
-      },
-      {
-        "from": "@vozpatriota7777",
+        "from": "@fanpatriota0001",
         "to": "@lideroposicion",
-        "weight": 6,
+        "weight": 8,
         "bando_to": "pacto"
       },
       {
-        "from": "@vozpatriota7777",
+        "from": "@fanpatriota0001",
+        "to": "@periodistacritico",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0001",
         "to": "@senadoropositor",
         "weight": 6,
         "bando_to": "pacto"
       },
       {
-        "from": "@vozpatriota7777",
+        "from": "@fanpatriota0001",
         "to": "@candidatooficial",
         "weight": 4,
         "bando_to": "derecha"
       },
       {
-        "from": "@vozpatriota7777",
-        "to": "@prensaafin",
-        "weight": 4,
+        "from": "@fanpatriota0001",
+        "to": "@vocerodecampana",
+        "weight": 3,
         "bando_to": "derecha"
       },
       {
-        "from": "@vozpatriota7777",
+        "from": "@fanpatriota0001",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0002",
+        "to": "@periodistacritico",
+        "weight": 14,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0002",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0002",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0002",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0002",
         "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0002",
+        "to": "@candidatooficial",
         "weight": 1,
         "bando_to": "derecha"
       },
       {
-        "from": "@user88231",
+        "from": "@fanpatriota0003",
         "to": "@lideroposicion",
-        "weight": 12,
+        "weight": 10,
         "bando_to": "pacto"
       },
       {
-        "from": "@user88231",
+        "from": "@fanpatriota0003",
         "to": "@senadoropositor",
         "weight": 8,
         "bando_to": "pacto"
       },
       {
-        "from": "@user88231",
-        "to": "@vocerodecampana",
+        "from": "@fanpatriota0003",
+        "to": "@periodistacritico",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0003",
+        "to": "@candidatooficial",
         "weight": 4,
         "bando_to": "derecha"
       },
       {
-        "from": "@user88231",
+        "from": "@fanpatriota0003",
         "to": "@prensaafin",
         "weight": 3,
         "bando_to": "derecha"
       },
       {
-        "from": "@user88231",
+        "from": "@fanpatriota0003",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0004",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0004",
         "to": "@candidatooficial",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0004",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0004",
+        "to": "@senadoropositor",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0004",
+        "to": "@prensaafin",
         "weight": 2,
         "bando_to": "derecha"
       },
       {
-        "from": "@user88231",
-        "to": "@periodistacritico",
+        "from": "@fanpatriota0004",
+        "to": "@vocerodecampana",
         "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0005",
+        "to": "@lideroposicion",
+        "weight": 22,
         "bando_to": "pacto"
       },
       {
-        "from": "@maria_lopez",
-        "to": "@eltiempo",
-        "weight": 2,
-        "bando_to": null
-      },
-      {
-        "from": "@fanderecha9012",
-        "to": "@periodistacritico",
-        "weight": 8,
-        "bando_to": "pacto"
-      },
-      {
-        "from": "@fanderecha9012",
+        "from": "@fanpatriota0005",
         "to": "@senadoropositor",
         "weight": 6,
         "bando_to": "pacto"
       },
       {
-        "from": "@fanderecha9012",
+        "from": "@fanpatriota0005",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0005",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0005",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0005",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0006",
+        "to": "@lideroposicion",
+        "weight": 16,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0006",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0006",
         "to": "@candidatooficial",
         "weight": 4,
         "bando_to": "derecha"
       },
       {
-        "from": "@fanderecha9012",
+        "from": "@fanpatriota0006",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0006",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0006",
         "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0007",
+        "to": "@periodistacritico",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0007",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0007",
+        "to": "@candidatooficial",
+        "weight": 7,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0007",
+        "to": "@lideroposicion",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0007",
+        "to": "@vocerodecampana",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0008",
+        "to": "@senadoropositor",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0008",
+        "to": "@lideroposicion",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0008",
+        "to": "@vocerodecampana",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0008",
+        "to": "@candidatooficial",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0008",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0008",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0009",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0009",
+        "to": "@senadoropositor",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0009",
+        "to": "@candidatooficial",
         "weight": 4,
         "bando_to": "derecha"
       },
       {
-        "from": "@fanderecha9012",
+        "from": "@fanpatriota0009",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0009",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0009",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0010",
+        "to": "@lideroposicion",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0010",
+        "to": "@periodistacritico",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0010",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0010",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0010",
+        "to": "@vocerodecampana",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0010",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0011",
+        "to": "@periodistacritico",
+        "weight": 14,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0011",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0011",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0011",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0011",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0011",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0012",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0012",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0012",
+        "to": "@periodistacritico",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0012",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0012",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0012",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0013",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0013",
+        "to": "@candidatooficial",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0013",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0013",
+        "to": "@senadoropositor",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0013",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0013",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0014",
+        "to": "@lideroposicion",
+        "weight": 22,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0014",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0014",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0014",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0014",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0014",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0015",
+        "to": "@lideroposicion",
+        "weight": 16,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0015",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0015",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0015",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0015",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0015",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0016",
+        "to": "@periodistacritico",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0016",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0016",
+        "to": "@candidatooficial",
+        "weight": 7,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0016",
+        "to": "@lideroposicion",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0016",
+        "to": "@vocerodecampana",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0017",
+        "to": "@senadoropositor",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0017",
+        "to": "@lideroposicion",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0017",
+        "to": "@vocerodecampana",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0017",
+        "to": "@candidatooficial",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0017",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0017",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0018",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0018",
+        "to": "@senadoropositor",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0018",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0018",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0018",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0018",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0019",
+        "to": "@periodistacritico",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0019",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0019",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0019",
         "to": "@vocerodecampana",
         "weight": 4,
         "bando_to": "derecha"
       },
       {
-        "from": "@fanderecha9012",
+        "from": "@fanpatriota0019",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0020",
+        "to": "@periodistacritico",
+        "weight": 14,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0020",
         "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0020",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0020",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0020",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0020",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0021",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0021",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0021",
+        "to": "@periodistacritico",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0021",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0021",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0021",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0022",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0022",
+        "to": "@candidatooficial",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0022",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0022",
+        "to": "@senadoropositor",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0022",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0022",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0023",
+        "to": "@lideroposicion",
+        "weight": 22,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0023",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0023",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0023",
+        "to": "@periodistacritico",
         "weight": 2,
         "bando_to": "pacto"
       },
       {
-        "from": "@cuentareal_juan",
+        "from": "@fanpatriota0023",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0023",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0024",
+        "to": "@lideroposicion",
+        "weight": 16,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0024",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0024",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0024",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0024",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0024",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0025",
+        "to": "@periodistacritico",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0025",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0025",
+        "to": "@candidatooficial",
+        "weight": 7,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0025",
+        "to": "@lideroposicion",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0025",
+        "to": "@vocerodecampana",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0026",
+        "to": "@senadoropositor",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0026",
+        "to": "@lideroposicion",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0026",
+        "to": "@vocerodecampana",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0026",
+        "to": "@candidatooficial",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0026",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0026",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0027",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0027",
+        "to": "@senadoropositor",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0027",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0027",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0027",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0027",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0028",
+        "to": "@periodistacritico",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0028",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0028",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0028",
+        "to": "@vocerodecampana",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0028",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0029",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0029",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0029",
+        "to": "@prensaafin",
+        "weight": 5,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0029",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0029",
+        "to": "@vocerodecampana",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0030",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0030",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0030",
+        "to": "@periodistacritico",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0030",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0030",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0030",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0031",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0031",
+        "to": "@candidatooficial",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0031",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0031",
+        "to": "@senadoropositor",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0031",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0031",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0032",
+        "to": "@lideroposicion",
+        "weight": 22,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0032",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0032",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0032",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0032",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0032",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0033",
+        "to": "@lideroposicion",
+        "weight": 16,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0033",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0033",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0033",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0033",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0033",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0034",
+        "to": "@periodistacritico",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0034",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0034",
+        "to": "@candidatooficial",
+        "weight": 7,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0034",
+        "to": "@lideroposicion",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0034",
+        "to": "@vocerodecampana",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0035",
+        "to": "@senadoropositor",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0035",
+        "to": "@lideroposicion",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0035",
+        "to": "@vocerodecampana",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0035",
+        "to": "@candidatooficial",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0035",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0035",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0036",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0036",
+        "to": "@senadoropositor",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0036",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0036",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0036",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0036",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0037",
+        "to": "@periodistacritico",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0037",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0037",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0037",
+        "to": "@vocerodecampana",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0037",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0038",
+        "to": "@lideroposicion",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0038",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0038",
+        "to": "@prensaafin",
+        "weight": 5,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0038",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0038",
+        "to": "@vocerodecampana",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0039",
+        "to": "@periodistacritico",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0039",
+        "to": "@lideroposicion",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0039",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0039",
+        "to": "@vocerodecampana",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0039",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0039",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0040",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0040",
+        "to": "@candidatooficial",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0040",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0040",
+        "to": "@senadoropositor",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0040",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0040",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0041",
+        "to": "@lideroposicion",
+        "weight": 22,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0041",
+        "to": "@senadoropositor",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0041",
+        "to": "@prensaafin",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0041",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0041",
+        "to": "@candidatooficial",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0041",
+        "to": "@vocerodecampana",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0042",
+        "to": "@lideroposicion",
+        "weight": 16,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0042",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0042",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0042",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0042",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0042",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0043",
+        "to": "@periodistacritico",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0043",
+        "to": "@senadoropositor",
+        "weight": 8,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0043",
+        "to": "@candidatooficial",
+        "weight": 7,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0043",
+        "to": "@lideroposicion",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0043",
+        "to": "@vocerodecampana",
+        "weight": 3,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0044",
+        "to": "@senadoropositor",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0044",
+        "to": "@lideroposicion",
+        "weight": 6,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0044",
+        "to": "@vocerodecampana",
+        "weight": 6,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0044",
+        "to": "@candidatooficial",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0044",
+        "to": "@periodistacritico",
+        "weight": 2,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0044",
+        "to": "@prensaafin",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0045",
+        "to": "@lideroposicion",
+        "weight": 12,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0045",
+        "to": "@senadoropositor",
+        "weight": 10,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0045",
+        "to": "@candidatooficial",
+        "weight": 4,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0045",
+        "to": "@periodistacritico",
+        "weight": 4,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@fanpatriota0045",
+        "to": "@vocerodecampana",
+        "weight": 2,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@fanpatriota0045",
+        "to": "@prensaafin",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@maria_real1",
+        "to": "@eltiempo",
+        "weight": 1,
+        "bando_to": null
+      },
+      {
+        "from": "@maria_real2",
         "to": "@seleccioncol",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@maria_real2",
+        "to": "@eltiempo",
         "weight": 2,
         "bando_to": null
       },
       {
-        "from": "@cuentareal_juan",
-        "to": "@eltiempo",
-        "weight": 1,
+        "from": "@maria_real3",
+        "to": "@seleccioncol",
+        "weight": 4,
+        "bando_to": null
+      },
+      {
+        "from": "@maria_real5",
+        "to": "@seleccioncol",
+        "weight": 3,
         "bando_to": null
       }
     ]
