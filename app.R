@@ -55,7 +55,7 @@ tab_buscar <- nav_panel(
   div(class = "p-2",
     h4(class = "hero", style = paste0("color:", AZ),
        "¿ESTA CUENTA ES REAL O INFLADA?"),
-    p(class = "nota", "Escribí un usuario y mirá su índice de inautenticidad con los datos clave. ",
+    p(class = "nota", "Escribe un usuario y mira su índice de inautenticidad con los datos clave. ",
       "Es una estimación con criterios transparentes, no un veredicto de 'bot'."),
     layout_columns(
       col_widths = c(5, 3, 2, 2), gap = "10px",
@@ -155,7 +155,7 @@ server <- function(input, output, session) {
   output$card_share <- renderUI({
     r <- perfil()
     if (is.null(r))
-      return(div(class = "nota", "Escribí un usuario y dale a Analizar para ver la tarjeta."))
+      return(div(class = "nota", "Escribe un usuario y dale clic a Analizar para ver la tarjeta."))
     if (!is.null(r$error))
       return(div(class = "text-danger p-2",
         icon("triangle-exclamation"), paste(" No se pudo consultar:", r$error),
@@ -268,7 +268,7 @@ server <- function(input, output, session) {
     cuenta nueva, hiperactividad, ratio seguidos/seguidores, handle aleatorio, avatar por defecto)
     y <b>bodegas / cuentas coordinadas</b> (se ven en el grupo: mismo texto publicado por muchas
     cuentas en segundos, cohortes creadas el mismo día). Un detector de bots solo no pilla a los bodegueros.</p>
-    <p><b>Lectura honesta:</b> reportá <i>'X%% de las cuentas muestran ≥3 señales fuertes (IC 95%%)'</i>,
+    <p><b>Lectura honesta:</b> reporta <i>'X%% de las cuentas muestran ≥3 señales fuertes (IC 95%%)'</i>,
     nunca 'son bots'. La incertidumbre se comunica siempre.</p>
     <p class='nota'>Marco de literatura y pesos: <a href='%s/blob/main/CATEGORIAS.md' target='_blank'>CATEGORIAS.md</a> ·
     <a href='%s/blob/main/METODOLOGIA.md' target='_blank'>METODOLOGIA.md</a>. Código abierto en GitHub.</p>", AZ, REPO, REPO)))
