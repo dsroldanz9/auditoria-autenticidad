@@ -69,6 +69,23 @@ atacantes_hostiles <- function(target, max_pages = 6) {
   unique(paste0("@", acc[!is.na(acc) & nzchar(acc)]))
 }
 
+# postura por LÉXICO (fallback gratis cuando no hay IA): usa la muestra de textos + mensajes repetidos
+L_ANTI <- c("castrochav","comunis","dictadu","narcopresident","fuera petro","petro corrupto","petro ladron",
+  "régimen","regimen","vendepatr","mermelada","expropi","venezolaniz","chavis","terrorist","narcoestado",
+  "narco estado","castro","farc","payaso petro","renuncie","sapo petro","petro mentiroso","robaron","tirano")
+L_PRO <- c("narco fico","paraco","banda narco","falsos positivos","defender narco","defiende narco","ñeñe",
+  "genocida","uribe preso","8000","narcoparamilitar","abelardo narco","fico narco","uribe paraco",
+  "fuerza petro","vamos petro","petro presidente","verguenza abelardo","narco abelardo")
+postura_lexico <- function(r) {
+  partes <- r$textos %||% character(0)
+  if (!is.null(r$repetidos) && nrow(r$repetidos)) partes <- c(partes, r$repetidos$texto)
+  txt <- tolower(paste(partes, collapse=" "))
+  if (nchar(txt) < 5) return("indeterminado")
+  a <- sum(vapply(L_ANTI, function(k) grepl(k, txt, fixed=TRUE), logical(1)))
+  p <- sum(vapply(L_PRO,  function(k) grepl(k, txt, fixed=TRUE), logical(1)))
+  if (a > p) "ataca_pacto" else if (p > a) "apoya_pacto" else "indeterminado"
+}
+
 # ---- arma la lista de cuentas a investigar ----
 lineas <- if (file.exists("data/objetivos.txt")) trimws(readLines("data/objetivos.txt", warn = FALSE)) else character(0)
 lineas <- lineas[nchar(lineas) > 0]
@@ -108,8 +125,9 @@ res <- lapply(res, function(r) {
   else if (nhard >= 2 || nflags >= 4) r$banda <- "Alta señal de automatización"
   else if (nflags >= 2) r$banda <- "Sospechosa"
   else r$banda <- "Probablemente humana"
-  r$stance <- if (USAR_IA) tryCatch(clasificar_postura_llm(r$textos), error=function(e) NA) else NA
-  if (is.na(r$stance %||% NA)) r$stance <- "indeterminado"
+  st <- if (USAR_IA) tryCatch(clasificar_postura_llm(r$textos), error=function(e) NA_character_) else NA_character_
+  if (is.na(st %||% NA) || !nzchar(st %||% "")) st <- postura_lexico(r)   # fallback léxico
+  r$stance <- st
   r
 })
 

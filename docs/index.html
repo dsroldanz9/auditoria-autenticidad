@@ -151,7 +151,7 @@ function card(p){const col=colBanda(p.banda);
   const reps=(p.repetidos&&p.repetidos.length)?'<div class="sec-h">MENSAJES QUE REPITE</div>'+p.repetidos.slice(0,3).map(r=>`<div class="lst">“${r.texto}” <b>(${r.veces})</b></div>`).join(''):'';
   return `<div class="card">
     <div style="text-align:center">${donut(p.pct,col)}<div class="pill" style="background:${col};margin-top:6px">${p.banda}</div></div>
-    <div><span class="h">@${p.handle}</span>
+    <div><span class="h">@${p.handle}</span> ${p.stance==='ataca_pacto'?'<span class="pill" style="background:#FF4403">⚔ ataca al Pacto</span>':(p.stance==='apoya_pacto'?'<span class="pill" style="background:#16A34A">apoya al Pacto</span>':'')}
       <div class="chips"><div class="chip">Edad <b>${p.edad_dias}d</b></div><div class="chip">Tweets/día <b>${p.tweets_dia}</b></div>
         <div class="chip">% respuestas <b>${rs}</b></div><div class="chip">Seguidores <b>${fmt(p.followers)}</b></div></div>
       <div class="sec-h">SEÑALES (${p.n_flags})</div><div class="tags">${senales}</div>
@@ -218,10 +218,11 @@ function conclusiones(c,narr){if(!c)return;const v=(c.top_victimas||[]);
   const frase=v.slice(0,5).map(x=>`<b>${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta}</b> (${fmt(x.veces)} cuentas)`).join(", ");
   const pal=(narr&&narr.palabras||[]).slice(0,6).map(w=>w.termino).join(", ");
   const cx=(c.conexion&&c.conexion.n_puente>0)?`<div class="exp" style="margin-top:10px;border-top:1px solid #ffffff55;padding-top:8px">🔗 <b>${fmt(c.conexion.n_puente)} cuentas (${c.conexion.pct}%)</b> atacan al Pacto <b>y a la vez amplifican a la derecha</b> — el puente que conecta la operación.</div>`:'';
+  const obj=(c.n_objetivo!=null)?` <b>${fmt(c.n_objetivo)}</b> son además hostiles automatizadas (el blanco).`:'';
   document.getElementById('concl').innerHTML=`<div class="titular">
-    <div class="big">${fmt(c.n_alta)} de ${fmt(c.n_total)} cuentas (${c.pct_alta}%) muestran ALTA SEÑAL de automatización</div>
-    <div class="exp">Atacan de forma coordinada a líderes del Pacto Histórico —especialmente ${frase}—${c.mensaje_top?`, repitiendo mensajes como <i>“${c.mensaje_top}”</i>`:''}.
-    ${pal?`La narrativa gira en torno a: <b>${pal}</b>.`:''}</div>${cx}</div>`;
+    <div class="big">Investigamos ${fmt(c.n_total)} cuentas que ATACAN al Pacto Histórico</div>
+    <div class="exp"><b>${fmt(c.n_alta)} (${c.pct_alta}%) muestran alta señal de automatización</b> (probables bots).${obj}
+    Los más atacados: ${frase}.${pal?` Narrativa que repiten: <b>${pal}</b>.`:''}</div>${cx}</div>`;
   document.getElementById('s_vic').textContent=v.length;
   const vb=document.getElementById('vbtns');
   vb.innerHTML=v.slice(0,5).map(x=>`<button class="vbtn" onclick="focusNode('${x.cuenta}')">🎯 ${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta} <b>· ${fmt(x.veces)}</b></button>`).join('');}
