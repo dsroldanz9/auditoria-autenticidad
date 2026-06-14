@@ -75,6 +75,16 @@
     <div class="stat"><div class="n" id="s_fecha">…</div><div class="l">Actualizado</div></div>
   </div>
 
+  <div class="panel" style="border:2px solid var(--oro)">
+    <div class="sec" style="margin:0 0 4px">🚩 ¿VISTE UNA CUENTA SOSPECHOSA? DENÚNCIALA</div>
+    <div class="nota" style="margin-bottom:8px">Ayúdanos a decidir qué cuentas investigar. Escribe el @ y por qué te parece bot o cuenta coordinada — se envía como tweet a @RoldnSantiago.</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <input id="den_h" placeholder="@cuenta_sospechosa" style="flex:1;min-width:180px;padding:11px 14px;border:2px solid #D6D9EC;border-radius:10px;font-family:inherit"/>
+      <input id="den_m" placeholder="¿por qué? (opcional)" style="flex:2;min-width:200px;padding:11px 14px;border:2px solid #D6D9EC;border-radius:10px;font-family:inherit"/>
+      <button class="btn" onclick="denunciar()">🚩 Denunciar</button>
+    </div>
+  </div>
+
   <div class="sec">🕸️ MAPA DE LA RED DE ATAQUE</div>
   <div class="grid2">
     <div id="red"></div>
@@ -157,6 +167,12 @@ function render(){const q=document.getElementById('q').value.trim();
   let ps=DATA.perfiles.filter(p=>coincide(p,q)).sort((a,b)=>b.pct-a.pct);const total=ps.length;ps=ps.slice(0,60);
   document.getElementById('resultados').innerHTML=ps.length?ps.map(card).join(''):'<div class="panel nota">Sin resultados.</div>';
   document.getElementById('cuenta_res').textContent=fmt(total)+" perfil(es)"+(total>60?" · mostrando 60":"");}
+function denunciar(){const h=(document.getElementById('den_h').value||'').trim();const m=(document.getElementById('den_m').value||'').trim();
+  if(!h){document.getElementById('den_h').focus();return;}
+  const hh=h.startsWith('@')?h:('@'+h);
+  const txt=encodeURIComponent('@RoldnSantiago 🚩 Denuncio posible cuenta bot/coordinada: '+hh+(m?(' — '+m):'')+'\n(vía el Detector de Autenticidad)');
+  window.open('https://twitter.com/intent/tweet?text='+txt,'_blank');
+  document.getElementById('den_h').value='';document.getElementById('den_m').value='';}
 
 function dibujarRed(d){const cont=document.getElementById('red');
   if(!d.red||!d.red.nodes||!d.red.nodes.length){cont.innerHTML='<div class="nota" style="padding:20px">Sin red aún.</div>';return;}
@@ -201,10 +217,11 @@ function exportar(handle){const p=DATA.perfiles.find(x=>x.handle===handle);if(!p
 function conclusiones(c,narr){if(!c)return;const v=(c.top_victimas||[]);
   const frase=v.slice(0,5).map(x=>`<b>${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta}</b> (${fmt(x.veces)} cuentas)`).join(", ");
   const pal=(narr&&narr.palabras||[]).slice(0,6).map(w=>w.termino).join(", ");
+  const cx=(c.conexion&&c.conexion.n_puente>0)?`<div class="exp" style="margin-top:10px;border-top:1px solid #ffffff55;padding-top:8px">🔗 <b>${fmt(c.conexion.n_puente)} cuentas (${c.conexion.pct}%)</b> atacan al Pacto <b>y a la vez amplifican a la derecha</b> — el puente que conecta la operación.</div>`:'';
   document.getElementById('concl').innerHTML=`<div class="titular">
     <div class="big">${fmt(c.n_alta)} de ${fmt(c.n_total)} cuentas (${c.pct_alta}%) muestran ALTA SEÑAL de automatización</div>
     <div class="exp">Atacan de forma coordinada a líderes del Pacto Histórico —especialmente ${frase}—${c.mensaje_top?`, repitiendo mensajes como <i>“${c.mensaje_top}”</i>`:''}.
-    ${pal?`La narrativa gira en torno a: <b>${pal}</b>.`:''}</div></div>`;
+    ${pal?`La narrativa gira en torno a: <b>${pal}</b>.`:''}</div>${cx}</div>`;
   document.getElementById('s_vic').textContent=v.length;
   const vb=document.getElementById('vbtns');
   vb.innerHTML=v.slice(0,5).map(x=>`<button class="vbtn" onclick="focusNode('${x.cuenta}')">🎯 ${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta} <b>· ${fmt(x.veces)}</b></button>`).join('');}

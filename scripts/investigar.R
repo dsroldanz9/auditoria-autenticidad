@@ -34,6 +34,23 @@ atacantes_de <- function(target, max_pages = 5) {
   unique(paste0("@", acc[!is.na(acc) & nzchar(acc)]))
 }
 
+# trae a quienes AMPLIFICAN (mencionan/RT) a una cuenta — para rastrear la red de la derecha
+amplificadores_de <- function(target, max_pages = 5) {
+  t <- gsub("^[+@]+", "", target); acc <- character(0); cursor <- ""
+  for (pg in seq_len(max_pages)) {
+    r <- tryCatch(request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
+      req_url_query(query = paste0("@", t), queryType = "Latest", cursor = cursor) |>
+      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_perform(), error = function(e) NULL)
+    if (is.null(r)) break
+    d <- resp_body_json(r); arr <- d$tweets %||% list()
+    if (length(arr) == 0) break
+    acc <- c(acc, vapply(arr, function(x) x$author$userName %||% NA_character_, character(1)))
+    if (!isTRUE(d$has_next_page) || identical(d$next_cursor, "")) break
+    cursor <- d$next_cursor
+  }
+  unique(paste0("@", acc[!is.na(acc) & nzchar(acc)]))
+}
+
 # ---- arma la lista de cuentas a investigar ----
 lineas <- if (file.exists("data/objetivos.txt")) trimws(readLines("data/objetivos.txt", warn = FALSE)) else character(0)
 lineas <- lineas[nchar(lineas) > 0]
@@ -43,7 +60,8 @@ if (length(lineas) == 0) {                                  # demo MASIVO: ~1500
 }
 objetivos <- character(0)
 for (l in lineas) {
-  if (startsWith(l, ">")) { if (REAL) { cat("Expandiendo atacantes de", l, "...\n"); objetivos <- c(objetivos, atacantes_de(l)) } }
+  if (startsWith(l, ">")) { if (REAL) { cat("Atacantes de", l, "...\n"); objetivos <- c(objetivos, atacantes_de(l)) } }
+  else if (startsWith(l, "+")) { if (REAL) { cat("Amplificadores de", l, "...\n"); objetivos <- c(objetivos, amplificadores_de(l)) } }
   else objetivos <- c(objetivos, l)
 }
 objetivos <- unique(objetivos)
@@ -68,12 +86,22 @@ victimas <- consolidar_amplificadores(lapply(res, function(r) list(top = r$respu
 amplif   <- consolidar_amplificadores(res)                                                # a quién amplifican
 reps_all <- do.call(rbind, lapply(res, function(r) r$repetidos))
 msg_top  <- if (!is.null(reps_all) && nrow(reps_all)) reps_all$texto[which.max(reps_all$veces)] else NA
+# conexión: cuentas que ATACAN al Pacto Y AMPLIFICAN a la derecha (la huella de la operación)
+con <- tryCatch(read.csv("data/cuentas_conocidas.csv", stringsAsFactors=FALSE, encoding="UTF-8"), error=function(e) NULL)
+der <- if (!is.null(con)) tolower(paste0("@", gsub("^@","",con$handle[con$bando=="derecha"]))) else character(0)
+pac <- if (!is.null(con)) tolower(paste0("@", gsub("^@","",con$handle[con$bando=="pacto"]))) else character(0)
+puente <- vapply(res, function(r) {
+  atk <- tolower(if (nrow(r$respuestas)) r$respuestas$cuenta else character(0))
+  amp <- tolower(if (nrow(r$top)) r$top$cuenta else character(0))
+  any(atk %in% pac) && any(amp %in% der)
+}, logical(1))
 conclusiones <- list(
   n_total = length(res), n_alta = length(alta),
   pct_alta = if (length(res)) round(100*length(alta)/length(res)) else 0,
   top_victimas = df2list(head(victimas, 6)),
   top_amplificados = df2list(head(amplif, 6)),
-  mensaje_top = msg_top
+  mensaje_top = msg_top,
+  conexion = list(n_puente = sum(puente), pct = if (length(res)) round(100*sum(puente)/length(res)) else 0)
 )
 
 narr <- consolidar_narrativa(res); red <- construir_red(res)
