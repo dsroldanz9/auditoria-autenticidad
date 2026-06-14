@@ -5,7 +5,7 @@
 suppressPackageStartupMessages({
   library(shiny); library(DT); library(ggplot2); library(dplyr)
 })
-for (f in c("features.R","score.R","coordination.R","connectors.R","pipeline.R"))
+for (f in c("features.R","score.R","coordination.R","connectors.R","llm.R","ondemand.R","pipeline.R"))
   source(file.path("R", f))
 
 AZ <- "#2839BE"; NAR <- "#FF5A1E"; ORO <- "#F7A40D"; INK <- "#23263A"
@@ -45,6 +45,21 @@ ui <- fluidPage(
         column(3, div(class="kpi", div(class="n", textOutput("k_clus", inline=TRUE)), "clústeres coord."))
       ),
       tabsetPanel(
+        tabPanel("🔎 Buscar un perfil",
+          br(),
+          fluidRow(
+            column(5, textInput("h_handle", NULL, placeholder="@cuenta_a_revisar", width="100%")),
+            column(3, selectInput("h_fuente", NULL,
+                       c("Demo (mock, gratis)"="mock","X API v2"="x_api","twitterapi.io"="twitterapi_io"))),
+            column(2, div(style="margin-top:2px", checkboxInput("h_llm","Señal LLM",FALSE))),
+            column(2, actionButton("h_go","Analizar", class="btn-primary", width="100%"))
+          ),
+          div(class="nota","Con 'Demo' funciona sin gastar. Para cuentas reales elegí una fuente con token configurado (.env)."),
+          br(),
+          uiOutput("perfil_out"),
+          br(), div(class="nota","Historial (base de datos local):"),
+          DTOutput("registro_tabla")
+        ),
         tabPanel("Distribución", br(), plotOutput("plot_dist", height="320px"),
                  div(class="nota", "Distribución del índice de inautenticidad (0-1). Las barras de la derecha concentran cuentas con muchas señales.")),
         tabPanel("Cuentas", br(), DTOutput("tabla")),
@@ -117,6 +132,43 @@ server <- function(input, output, session) {
   output$dl <- downloadHandler(
     filename = function() paste0("auditoria_", Sys.Date(), ".csv"),
     content = function(file) write.csv(resultado()$scored, file, row.names=FALSE))
+
+  # ---- modo a demanda: buscar un perfil ----
+  perfil <- eventReactive(input$h_go, {
+    req(nchar(trimws(input$h_handle)) > 0)
+    withProgress(message="Consultando y puntuando...", {
+      tryCatch(auditar_handle(input$h_handle, fuente=input$h_fuente, usar_llm=input$h_llm),
+               error=function(e) list(error=conditionMessage(e)))
+    })
+  })
+
+  output$perfil_out <- renderUI({
+    r <- perfil()
+    if (!is.null(r$error))
+      return(div(style="color:#B23", paste("No se pudo consultar:", r$error,
+        "— ¿token configurado para esa fuente?")))
+    col <- if (r$pct >= 40) NAR else if (r$pct >= 20) ORO else "#2BA46B"
+    sen <- if (length(r$senales)>0)
+      tags$ul(lapply(r$senales, function(s) tags$li(s))) else tags$i("ninguna señal de riesgo")
+    div(class="kpi", style="padding:22px",
+      fluidRow(
+        column(4, div(style=sprintf("font-size:64px;font-weight:800;color:%s;line-height:1",col),
+                      paste0(r$pct,"%")),
+                  div(class="nota","índice de inautenticidad")),
+        column(8, div(style="font-size:18px;font-weight:700", paste0("@",r$handle," — ",r$banda)),
+                  div(class="nota", sprintf("%d señales activas · fuente: %s", r$n_flags, r$fuente)),
+                  br(), tags$b("Señales detectadas:"), sen)
+      ),
+      div(class="nota", style="margin-top:8px",
+        "Recordá: es una estimación con criterios transparentes, no un veredicto de 'bot'."))
+  })
+
+  output$registro_tabla <- renderDT({
+    input$h_go
+    if (!file.exists("data/registro.csv")) return(datatable(data.frame(Info="Aún no hay búsquedas")))
+    df <- read.csv("data/registro.csv", stringsAsFactors=FALSE)
+    datatable(df[rev(seq_len(nrow(df))),], rownames=FALSE, options=list(pageLength=8))
+  })
 
   output$metodo <- renderUI({
     HTML("<div style='max-width:760px'>

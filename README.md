@@ -53,6 +53,28 @@ El ejemplo sintético (`scripts/gen_ejemplo.R`, 70 humanos + 30 bots coordinados
 sirve para verificar el motor: en él logra 100 % de recall sobre los bots y 0
 falsos positivos, y aísla los dos clústeres de consigna coordinada.
 
+## Modo "a demanda" (buscar un perfil)
+
+Buscás un `@handle` y obtenés el % en vivo con el desglose de señales:
+
+```r
+source_all <- function() for (f in c("features.R","score.R","coordination.R",
+  "connectors.R","llm.R","ondemand.R","pipeline.R")) source(file.path("R", f))
+source_all()
+auditar_handle("@cuenta", fuente = "mock")        # "mock" = prueba sin gastar
+auditar_handle("@cuenta", fuente = "x_api")        # X API v2 (X_BEARER_TOKEN)
+auditar_handle("@cuenta", fuente = "twitterapi_io")# proveedor tercero barato
+```
+
+Cada consulta se guarda en `data/registro.csv` (la "base de datos" local). En la app
+está la pestaña **🔎 Buscar un perfil** con caja de búsqueda, medidor y señales.
+
+> **Importante: una API de ChatGPT/OpenAI NO trae datos de Twitter.** Para obtener el
+> perfil real de `@cuenta` (edad, seguidores, tweets) hace falta una *fuente de datos
+> de Twitter* (X API v2, o un tercero tipo twitterapi.io/Apify). El LLM (opcional,
+> `R/llm.R`) solo se usa para **evaluar el estilo del texto** de tweets ya obtenidos —
+> nunca para inventar métricas de la cuenta.
+
 ## De dónde salen los datos (el cuello de botella honesto)
 
 El motor corre sobre un **CSV que tú alimentes legítimamente**. Opciones:

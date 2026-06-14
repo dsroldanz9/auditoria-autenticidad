@@ -17,10 +17,12 @@ REGLAS_DEFAULT <- list(
   sin_bio            = list(peso = 0.5, fn = function(d) d$bio_vacia),
   avatar_default     = list(peso = 1.0, fn = function(d) d$avatar_default),
   perfil_default     = list(peso = 0.5, fn = function(d) d$perfil_default),
-  # las siguientes solo aplican si hay datos de tweets:
-  casi_solo_rt       = list(peso = 1.0, fn = function(d) "share_retweets"   %in% names(d) & coalesce(d$share_retweets, 0)   > 0.95),
-  contenido_repetido = list(peso = 1.5, fn = function(d) "ratio_duplicados" %in% names(d) & coalesce(d$ratio_duplicados, 0) > 0.30),
-  sin_descanso       = list(peso = 1.0, fn = function(d) "horas_activas"    %in% names(d) & coalesce(d$horas_activas, 12)   >= 23)
+  # las siguientes solo aplican si hay datos de tweets (FALSE limpio si la columna falta):
+  casi_solo_rt       = list(peso = 1.0, fn = function(d) if(!"share_retweets"   %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$share_retweets, 0)   > 0.95),
+  contenido_repetido = list(peso = 1.5, fn = function(d) if(!"ratio_duplicados" %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$ratio_duplicados, 0) > 0.30),
+  sin_descanso       = list(peso = 1.0, fn = function(d) if(!"horas_activas"    %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$horas_activas, 12)   >= 23),
+  # señal opcional de contenido (LLM): solo activa si existe la columna llm_contenido
+  texto_automatizado = list(peso = 1.0, fn = function(d) if(!"llm_contenido"    %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$llm_contenido, 0)    > 0.70)
 )
 
 #' Calcula el índice de inautenticidad por cuenta.
