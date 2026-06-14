@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Detector de Autenticidad · Investigación de desinformación</title>
+<meta name="description" content="Investigación abierta de autenticidad en X: qué cuentas muestran señales de automatización y coordinación, a quién atacan y qué narrativa repiten."/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap"/>
+<style>
+  :root{--az:#2839BE;--nar:#FF4403;--oro:#F7A40D;--verde:#16A34A;--ink:#1B1F3B;--bg:#EEF0FA}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+  header{background:var(--az);color:#fff;padding:22px 0}
+  header .row{display:flex;align-items:center;gap:12px}
+  header img{height:42px;border-radius:50%}
+  .kick{font-family:'Archivo Black';font-size:13px;color:var(--oro)}
+  h1{font-family:'Archivo Black';font-size:30px;margin:8px 0 4px}
+  .lead{color:#D7DBF5;font-size:15px;max-width:680px}
+  .panel{background:#fff;border:1px solid #E0E4F2;border-radius:14px;padding:16px 18px;margin:16px 0}
+  .stats{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+  .stat{background:#fff;border:1px solid #E0E4F2;border-radius:12px;padding:12px 16px;flex:1;min-width:140px}
+  .stat .n{font-family:'Archivo Black';font-size:26px;color:var(--az)}
+  .stat .l{font-size:12px;color:#6B6F7A}
+  #q{width:100%;padding:13px 16px;font-size:16px;border:2px solid #D6D9EC;border-radius:12px;font-family:inherit}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0 4px}
+  .btn{background:var(--oro);color:#1B1F3B;font-weight:800;border:none;border-radius:9px;padding:9px 14px;text-decoration:none;font-size:13px;cursor:pointer}
+  .card{background:#fff;border:1px solid #E0E4F2;border-radius:14px;padding:16px;margin:12px 0;display:grid;grid-template-columns:120px 1fr;gap:16px}
+  .donut-num{font-family:'Archivo Black';font-size:28px;text-anchor:middle}
+  .h{font-family:'Archivo Black';font-size:20px}
+  .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;color:#fff}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+  .chip{background:#F4F6FC;border:1px solid #E0E4F2;border-radius:9px;padding:5px 9px;font-size:12px}
+  .chip b{font-family:'Archivo Black'}
+  .tags span{display:inline-block;background:#EDEFFb;border-radius:8px;padding:3px 8px;margin:2px;font-size:12px}
+  .sec-h{font-family:'Archivo Black';color:var(--az);font-size:13px;margin:10px 0 4px}
+  .lst{font-size:13px}.lst .d{color:var(--nar);font-weight:700}.lst .p{color:var(--verde);font-weight:700}
+  .nota{font-size:12px;color:#6B6F7A}
+  footer{padding:24px 0;color:#6B6F7A;font-size:12px}
+  @media(max-width:640px){.card{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="row"><img src="logo.png" alt="logo"/><span class="kick">ME LA JUEGO POR LA VIDA · @RoldnSantiago</span></div>
+  <h1>DETECTOR DE AUTENTICIDAD</h1>
+  <div class="lead">Investigación abierta de desinformación en X. Busca un perfil o una palabra y mira qué encontramos: señales de automatización, a quién ataca y qué narrativa repite. Es una estimación con criterios transparentes — no un veredicto de "bot".</div>
+</div></header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="n" id="s_total">—</div><div class="l">Perfiles investigados</div></div>
+    <div class="stat"><div class="n" id="s_alta">—</div><div class="l">Alta señal de automatización</div></div>
+    <div class="stat"><div class="n" id="s_fecha">—</div><div class="l">Última actualización</div></div>
+  </div>
+
+  <div class="panel">
+    <input id="q" placeholder="Busca un @perfil, una víctima de ataques o una palabra…" oninput="render()"/>
+    <div class="toolbar">
+      <span class="nota" id="cuenta_res"></span>
+      <span style="flex:1"></span>
+      <a class="btn" href="data/investigacion.csv" download>⬇ Descargar CSV</a>
+      <a class="btn" href="data/investigacion.json" download>⬇ Descargar JSON</a>
+    </div>
+  </div>
+
+  <div id="resultados"></div>
+
+  <div class="panel">
+    <div class="sec-h">NARRATIVA — palabras más repetidas en la red</div>
+    <div class="tags" id="narrativa"></div>
+  </div>
+
+  <footer class="wrap">
+    Metodología abierta y código en <a href="https://github.com/dsroldanz9/auditoria-autenticidad">GitHub</a>.
+    Las clasificaciones son estimaciones probabilísticas basadas en señales públicas (antigüedad de la cuenta,
+    proporción de respuestas, patrones de amplificación). No afirman intención ni identidad. Datos descargables arriba.
+  </footer>
+</div>
+
+<script>
+let DATA = {perfiles:[], narrativa:{palabras:[]}};
+const colBanda = b => b && b.indexOf("Alta")>=0 ? "#FF4403" : (b && b.indexOf("Sospechosa")>=0 ? "#F7A40D" : "#16A34A");
+const colBando = b => b==="derecha" ? "d" : (b==="pacto" ? "p" : "");
+
+function donut(pct,col){
+  const r=34,c=2*Math.PI*r,off=c*(1-pct/100);
+  return `<svg width="110" height="110" viewBox="0 0 90 90">
+    <circle cx="45" cy="45" r="34" fill="none" stroke="#E6E9F5" stroke-width="10"/>
+    <circle cx="45" cy="45" r="34" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round"
+      stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 45 45)"/>
+    <text x="45" y="50" class="donut-num" fill="${col}">${pct}%</text></svg>`;
+}
+function lista(arr,campo){
+  if(!arr||!arr.length) return '<span class="nota">—</span>';
+  return '<div class="lst">'+arr.slice(0,6).map(o=>{
+    const cl=colBando(o.bando); const nom=o.nombre&&o.nombre!=="NA"?(" · "+o.nombre):"";
+    return `<div class="${cl}">${o.cuenta} <b>(${o.n})</b><span class="nota">${nom}</span></div>`;
+  }).join('')+'</div>';
+}
+function card(p){
+  const col=colBanda(p.banda);
+  const rs = (p.reply_share!=null && !isNaN(p.reply_share)) ? Math.round(p.reply_share*100)+"%" : "—";
+  const senales = (p.senales&&p.senales.length)? p.senales.map(s=>`<span>${s}</span>`).join('') : '<span class="nota">sin señales</span>';
+  const reps = (p.repetidos&&p.repetidos.length)? '<div class="sec-h">MENSAJES QUE REPITE</div>'+p.repetidos.slice(0,3).map(r=>`<div class="lst">“${r.texto}” <b>(${r.veces})</b></div>`).join('') : '';
+  return `<div class="card">
+    <div style="text-align:center">${donut(p.pct,col)}
+      <div class="pill" style="background:${col};margin-top:6px">${p.banda}</div></div>
+    <div>
+      <span class="h">@${p.handle}</span>
+      <div class="chips">
+        <div class="chip">Edad <b>${p.edad_dias} días</b></div>
+        <div class="chip">Tweets/día <b>${p.tweets_dia}</b></div>
+        <div class="chip">% respuestas <b>${rs}</b></div>
+        <div class="chip">Seguidores <b>${p.followers}</b></div>
+      </div>
+      <div class="sec-h">SEÑALES (${p.n_flags})</div><div class="tags">${senales}</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <div><div class="sec-h">🎯 A QUIÉN ATACA</div>${lista(p.ataca)}</div>
+        <div><div class="sec-h">📢 A QUIÉN AMPLIFICA</div>${lista(p.amplifica)}</div>
+      </div>
+      ${reps}
+    </div></div>`;
+}
+function coincide(p,q){
+  if(!q) return true; q=q.toLowerCase();
+  const hay = [p.handle, p.banda, ...(p.senales||[]),
+    ...((p.ataca||[]).map(x=>x.cuenta+" "+(x.nombre||""))),
+    ...((p.amplifica||[]).map(x=>x.cuenta+" "+(x.nombre||""))),
+    ...((p.repetidos||[]).map(x=>x.texto))].join(" ").toLowerCase();
+  return hay.indexOf(q.replace(/^@/,''))>=0;
+}
+function render(){
+  const q=document.getElementById('q').value.trim();
+  const ps=DATA.perfiles.filter(p=>coincide(p,q)).sort((a,b)=>b.pct-a.pct);
+  document.getElementById('resultados').innerHTML = ps.length? ps.map(card).join('')
+    : '<div class="panel nota">Sin resultados para esa búsqueda.</div>';
+  document.getElementById('cuenta_res').textContent = ps.length+" perfil(es)";
+}
+fetch('data/investigacion.json').then(r=>r.json()).then(d=>{
+  DATA=d;
+  document.getElementById('s_total').textContent=d.perfiles.length;
+  document.getElementById('s_alta').textContent=d.perfiles.filter(p=>p.banda&&p.banda.indexOf("Alta")>=0).length;
+  document.getElementById('s_fecha').textContent=(d.generado||"").slice(0,10);
+  const pal=(d.narrativa&&d.narrativa.palabras)||[];
+  document.getElementById('narrativa').innerHTML = pal.length? pal.map(w=>`<span>${w.termino} <b>(${w.n})</b></span>`).join('') : '<span class="nota">Requiere tweets reales</span>';
+  render();
+}).catch(e=>{document.getElementById('resultados').innerHTML='<div class="panel">No se pudo cargar la investigación.</div>';});
+</script>
+</body>
+</html>
