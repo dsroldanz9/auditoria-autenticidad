@@ -24,7 +24,7 @@ normalizar_texto <- function(x) {
 detectar_cotweet <- function(tweets, ventana_seg = 120, min_cuentas = 3) {
   stopifnot(all(c("handle","created_at","text") %in% names(tweets)))
   tw <- tweets %>%
-    mutate(ts = suppressWarnings(as.POSIXct(created_at, tz = "UTC")),
+    mutate(ts = parse_fecha(created_at),
            tn = normalizar_texto(text)) %>%
     filter(nchar(tn) >= 25) %>%               # ignorar frases cortas/triviales (evita falsa coordinación)
     arrange(tn, ts)
@@ -76,7 +76,7 @@ detectar_courl <- function(tweets, ventana_seg = 300, min_cuentas = 3) {
       created_at = tweets$created_at[i], url = url, stringsAsFactors = FALSE)
   }
   if (length(rows) == 0) return(list(clusters = tibble(), detalle = tibble()))
-  df <- bind_rows(rows) %>% mutate(ts = suppressWarnings(as.POSIXct(created_at, tz = "UTC"))) %>% arrange(url, ts)
+  df <- bind_rows(rows) %>% mutate(ts = parse_fecha(created_at)) %>% arrange(url, ts)
 
   res <- df %>% group_by(url) %>% group_modify(function(g, key) {
     g <- arrange(g, ts); mejor <- NULL
@@ -116,7 +116,7 @@ handles_coordinados <- function(...) {
 detectar_cohortes_creacion <- function(cuentas, z_umbral = 3) {
   stopifnot("created_at" %in% names(cuentas))
   dias <- cuentas %>%
-    mutate(dia = as.Date(suppressWarnings(as.POSIXct(created_at, tz="UTC")))) %>%
+    mutate(dia = as.Date(parse_fecha(created_at))) %>%
     filter(!is.na(dia)) %>%
     count(dia, name = "n_cuentas")
   if (nrow(dias) < 3) return(tibble())

@@ -6,6 +6,16 @@ suppressPackageStartupMessages({
   library(dplyr); library(stringr); library(lubridate)
 })
 
+# Parsea fechas en ISO (8601) Y en formato Twitter clásico ("Tue Dec 10 07:00:30 +0000 2024"),
+# que es el que devuelve twitterapi.io / la X API v1.1. Vital para calcular bien la edad.
+# Usa lubridate (devuelve NA en vez de lanzar error con formatos no estándar).
+parse_fecha <- function(x) {
+  ts <- suppressWarnings(parse_date_time(as.character(x),
+          orders = c("a b d H:M:S z Y", "Ymd HMS", "Ymd HMSz", "Ymd", "mdY", "dmY"),
+          tz = "UTC", quiet = TRUE))
+  as.POSIXct(ts)
+}
+
 # Entropía de Shannon de un string (un handle aleatorio "x8f3kq92" tiene alta entropía)
 entropia_shannon <- function(s) {
   s <- tolower(gsub("[^a-z0-9]", "", s))
@@ -32,9 +42,7 @@ ratio_digitos <- function(s) {
 extraer_features_cuenta <- function(cuentas, ref_fecha = Sys.time()) {
   stopifnot(all(c("handle","created_at","followers","following","n_tweets") %in% names(cuentas)))
   c0 <- cuentas
-  # parseo robusto de la fecha de creación
-  ca <- suppressWarnings(as.POSIXct(c0$created_at, tz = "UTC"))
-  if (all(is.na(ca))) ca <- suppressWarnings(lubridate::parse_date_time(c0$created_at, orders = c("ymd HMS","ymd","mdy","dmy")))
+  ca <- parse_fecha(c0$created_at)
   edad_dias <- as.numeric(difftime(ref_fecha, ca, units = "days"))
   edad_dias[is.na(edad_dias) | edad_dias < 1] <- 1
 
@@ -73,7 +81,7 @@ extraer_features_tweets <- function(tweets) {
   if (is.null(tweets) || nrow(tweets) == 0) return(NULL)
   stopifnot(all(c("handle","created_at","text") %in% names(tweets)))
   tw <- tweets
-  tw$ts <- suppressWarnings(as.POSIXct(tw$created_at, tz = "UTC"))
+  tw$ts <- parse_fecha(tw$created_at)
   tw$hora <- lubridate::hour(tw$ts)
   tw$text_norm <- tolower(trimws(gsub("\\s+", " ", gsub("https?://\\S+", "", tw$text))))
   es_rt <- if ("is_retweet" %in% names(tw)) as.logical(tw$is_retweet) else grepl("^rt @", tw$text_norm)
