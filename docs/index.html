@@ -70,7 +70,7 @@
 
   <div class="stats">
     <div class="stat"><div class="n" id="s_total">…</div><div class="l">Cuentas analizadas</div></div>
-    <div class="stat"><div class="n" id="s_alta">…</div><div class="l">Alta señal (probables bots)</div></div>
+    <div class="stat"><div class="n" id="s_alta">…</div><div class="l">Bodega (texto coordinado / fuente)</div></div>
     <div class="stat"><div class="n" id="s_vic">…</div><div class="l">Líderes atacados</div></div>
     <div class="stat"><div class="n" id="s_fecha">…</div><div class="l">Actualizado</div></div>
   </div>
@@ -122,9 +122,9 @@
   <div class="panel">
     <div class="step"><span class="num">1</span><b>Semillas:</b> partimos de los líderes del Pacto que reciben más ataques (Cepeda, Mafe Carrascal, Petro, Bolívar, Muhamad).</div>
     <div class="step"><span class="num">2</span><b>Rastreo:</b> traemos todas las cuentas que les responden/atacan en X (vía API oficial de datos).</div>
-    <div class="step"><span class="num">3</span><b>Señales por cuenta:</b> medimos antigüedad, % de respuestas, ratio seguidos/seguidores, handle aleatorio, avatar por defecto y contenido repetido.</div>
-    <div class="step"><span class="num">4</span><b>Clasificación:</b> marcamos "alta señal" cuando una cuenta acumula 3 o más señales. Es una estimación probabilística, <b>no</b> un veredicto.</div>
-    <div class="step"><span class="num">5</span><b>Coordinación:</b> cuando muchas cuentas atacan a las mismas víctimas con el mismo mensaje, eso es comportamiento de bodega — y es lo que el mapa hace visible.</div>
+    <div class="step"><span class="num">3</span><b>Coordinación de texto:</b> una bodega se delata cuando MUCHAS cuentas distintas postean el <b>mismo texto idéntico</b> (un humano repite lo suyo; una operación calca la consigna en decenas de cuentas).</div>
+    <div class="step"><span class="num">4</span><b>Fuente de publicación:</b> revisamos cómo publican (campo <code>source</code>). Publicar vía herramientas de automatización en vez de la app de Twitter es señal fuerte.</div>
+    <div class="step"><span class="num">5</span><b>No marcamos por metadata:</b> tener handle con números, no tener bio o ser muy activo NO te hace bot — eso describe a un humano apasionado. Solo marcamos coordinación o automatización reales. Es estimación, no veredicto.</div>
     <div class="nota">Metodología y código abiertos en <a href="https://github.com/dsroldanz9/auditoria-autenticidad">GitHub</a>. Cualquiera puede auditarla.</div>
   </div>
 
@@ -136,7 +136,7 @@
 <script>
 let DATA={perfiles:[]}, NET=null, NODES=null, ADJ={}, BASE={};
 const fmt=n=>(n||0).toLocaleString('es-CO');
-const colBanda=b=> b&&b.indexOf("Alta")>=0?"#FF4403":(b&&b.indexOf("Sospechosa")>=0?"#F7A40D":"#16A34A");
+const colBanda=b=> b&&(b.indexOf("Bodega")>=0)?"#FF4403":(b&&b.indexOf("Automatizada")>=0?"#F7A40D":"#16A34A");
 const colBando=b=> b==="derecha"?"d":(b==="pacto"?"p":"");
 function donut(pct,col,sz,tc){sz=sz||110;tc=tc||"#1B1F3B";const r=34,c=2*Math.PI*r,off=c*(1-pct/100);const fs=pct>=100?20:24;
   return `<svg width="${sz}" height="${sz}" viewBox="0 0 90 90"><circle cx="45" cy="45" r="34" fill="none" stroke="#E6E9F5" stroke-width="9"/>
@@ -154,7 +154,12 @@ function card(p){const col=colBanda(p.banda);
     <div><span class="h">@${p.handle}</span> ${p.stance==='ataca_pacto'?'<span class="pill" style="background:#FF4403">⚔ ataca al Pacto</span>':(p.stance==='apoya_pacto'?'<span class="pill" style="background:#16A34A">apoya al Pacto</span>':'')}
       <div class="chips"><div class="chip">Edad <b>${p.edad_dias}d</b></div><div class="chip">Tweets/día <b>${p.tweets_dia}</b></div>
         <div class="chip">% respuestas <b>${rs}</b></div><div class="chip">Seguidores <b>${fmt(p.followers)}</b></div></div>
-      <div class="sec-h">SEÑALES (${p.n_flags})</div><div class="tags">${senales}</div>
+      <div class="sec-h">EVIDENCIA DE COORDINACIÓN</div><div class="tags">${
+        (p.comparten>1?`<span>📋 mismo texto que ${p.comparten} cuentas</span>`:'')+
+        (p.share_auto>0?`<span>🤖 ${Math.round(p.share_auto*100)}% vía fuente automatizada</span>`:'')+
+        (p.en_cohorte?'<span>📅 creada en cohorte</span>':'')+
+        ((p.comparten<=1&&!(p.share_auto>0)&&!p.en_cohorte)?'<span class="nota">sin señales de coordinación — parece cuenta real</span>':'')
+      }</div>
       <div style="display:flex;gap:24px;flex-wrap:wrap"><div><div class="sec-h">🎯 A QUIÉN ATACA</div>${lista(p.ataca)}</div>
         <div><div class="sec-h">📢 A QUIÉN AMPLIFICA</div>${lista(p.amplifica)}</div></div>${reps}
       <div class="acc"><button class="btn s" onclick="focusNode('@${p.handle}')">📍 Ver en el mapa</button>
@@ -218,11 +223,10 @@ function conclusiones(c,narr){if(!c)return;const v=(c.top_victimas||[]);
   const frase=v.slice(0,5).map(x=>`<b>${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta}</b> (${fmt(x.veces)} cuentas)`).join(", ");
   const pal=(narr&&narr.palabras||[]).slice(0,6).map(w=>w.termino).join(", ");
   const cx=(c.conexion&&c.conexion.n_puente>0)?`<div class="exp" style="margin-top:10px;border-top:1px solid #ffffff55;padding-top:8px">🔗 <b>${fmt(c.conexion.n_puente)} cuentas (${c.conexion.pct}%)</b> atacan al Pacto <b>y a la vez amplifican a la derecha</b> — el puente que conecta la operación.</div>`:'';
-  const obj=(c.n_objetivo!=null)?` <b>${fmt(c.n_objetivo)}</b> son además hostiles automatizadas (el blanco).`:'';
+  const det=(c.n_coordinada!=null)?` (${fmt(c.n_coordinada)} comparten texto idéntico, ${fmt(c.n_automatizada)} vía fuente automatizada)`:'';
   document.getElementById('concl').innerHTML=`<div class="titular">
-    <div class="big">Investigamos ${fmt(c.n_total)} cuentas que ATACAN al Pacto Histórico</div>
-    <div class="exp"><b>${fmt(c.n_alta)} (${c.pct_alta}%) muestran alta señal de automatización</b> (probables bots).${obj}
-    Los más atacados: ${frase}.${pal?` Narrativa que repiten: <b>${pal}</b>.`:''}</div>${cx}</div>`;
+    <div class="big">${fmt(c.n_total)} cuentas analizadas · ${fmt(c.n_alta)} con coordinación de bodega</div>
+    <div class="exp"><b>${fmt(c.n_alta)} (${c.pct_alta}%)</b> postean el MISMO texto que muchas otras cuentas o publican vía herramienta automatizada${det}. El resto parecen cuentas reales (aunque sean hostiles).${pal?` Narrativa: <b>${pal}</b>.`:''}</div>${cx}</div>`;
   document.getElementById('s_vic').textContent=v.length;
   const vb=document.getElementById('vbtns');
   vb.innerHTML=v.slice(0,5).map(x=>`<button class="vbtn" onclick="focusNode('${x.cuenta}')">🎯 ${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta} <b>· ${fmt(x.veces)}</b></button>`).join('');}

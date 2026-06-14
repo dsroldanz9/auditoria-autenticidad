@@ -130,6 +130,7 @@ ta_io_buscar_tweets <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY"),
     media = tryCatch(t$extendedEntities$media[[1]]$media_url_https %||%
                      (t$entities$media[[1]]$media_url_https %||% NA_character_),
                      error = function(e) NA_character_),
+    source = t$source %||% NA_character_,
     stringsAsFactors = FALSE)))
 }
 
@@ -140,7 +141,7 @@ fetch_mock <- function(handle) {
   parece_granja <- grepl("[0-9]{4,}$", h) || grepl("^(user|fan|bot|voz|real)", tolower(h))
   if (parece_granja) {
     cuenta <- data.frame(handle=h, display_name=h,
-      created_at=format(Sys.time()-runif(1,10,80)*86400,"%Y-%m-%dT%H:%M:%SZ"),
+      created_at=format(Sys.time()-sample(c(18,19,20,21),1)*86400,"%Y-%m-%dT%H:%M:%SZ"),  # cohorte (mismo lote)
       followers=round(runif(1,0,40)), following=round(runif(1,300,900)),
       n_tweets=round(runif(1,5000,20000)), bio="", verified=FALSE,
       default_avatar=TRUE, default_profile=TRUE, stringsAsFactors=FALSE)
@@ -163,6 +164,7 @@ fetch_mock <- function(handle) {
       reply_to = ifelse(tipo=="reply", tolower(drep), NA_character_),
       media = ifelse(tipo=="reply" & runif(20) < .5, sample(c("https://pbs.twimg.com/media/MEME_A.jpg",
               "https://pbs.twimg.com/media/MEME_B.jpg"), 20, TRUE), NA_character_),
+      source = "AutoPoster Pro",                                   # fuente automatizada (bodega)
       stringsAsFactors=FALSE)
   } else {
     cuenta <- data.frame(handle=h, display_name=h,
@@ -172,10 +174,13 @@ fetch_mock <- function(handle) {
       verified=FALSE, default_avatar=FALSE, default_profile=FALSE, stringsAsFactors=FALSE)
     tw <- data.frame(handle=h,
       created_at=format(Sys.time()-runif(8,0,40)*86400,"%Y-%m-%dT%H:%M:%SZ"),
-      text=sample(c("Qué día tan bonito en la ciudad","Vamos Colombia @SeleccionCol",
-                    "Buen partido anoche","Café y a trabajar","Feliz finde a la familia",
-                    "El agua es vida, cuidémosla","Hoy llueve en Bogotá @ElTiempo"),8,TRUE),
-      es_respuesta=FALSE, reply_to=NA_character_, stringsAsFactors=FALSE)
+      # texto ÚNICO por humano (frase + handle + número) -> no genera falsa coordinación
+      text=paste0(sample(c("Qué día tan bonito en la ciudad","Vamos Colombia con toda la fe",
+                    "Buen partido anoche del equipo","Café y a trabajar como siempre","Feliz finde a la familia linda",
+                    "El agua es vida cuidémosla entre todos","Hoy llueve fuerte en Bogotá"),8,TRUE), " ", h, " ", sample(1000:99999,8)),
+      es_respuesta=FALSE, reply_to=NA_character_,
+      source=sample(c("Twitter for iPhone","Twitter for Android","Twitter Web App"),8,TRUE),
+      stringsAsFactors=FALSE)
   }
   list(cuenta = cuenta, tweets = tw)
 }
@@ -249,6 +254,9 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
   res$imagenes   <- imagenes_repetidas(p$tweets)           # imágenes que repite
   res$narrativa  <- if (exists("extraer_narrativa")) extraer_narrativa(p$tweets) else NULL
   res$textos     <- if (!is.null(p$tweets) && nrow(p$tweets) > 0) utils::head(p$tweets$text, 30) else character(0)
+  res$cuenta_creada  <- p$cuenta$created_at[1]
+  res$tweets_muestra <- if (!is.null(p$tweets) && nrow(p$tweets) > 0)
+    utils::head(p$tweets[, intersect(c("handle","created_at","text","source"), names(p$tweets)), drop=FALSE], 40) else NULL
 
   # guardar en la "base de datos"
   fila <- data.frame(fecha=as.character(Sys.time()), handle=res$handle, pct=res$pct,

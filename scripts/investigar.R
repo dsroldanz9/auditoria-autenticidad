@@ -9,7 +9,7 @@
 
 if (basename(getwd()) != "auditoria-autenticidad" && dir.exists("C:/Users/LENOVO/Documents/auditoria-autenticidad"))
   setwd("C:/Users/LENOVO/Documents/auditoria-autenticidad")
-for (f in c("features.R","score.R","coordination.R","connectors.R","llm.R","ondemand.R","colectivo.R","pipeline.R"))
+for (f in c("features.R","score.R","coordination.R","connectors.R","llm.R","ondemand.R","colectivo.R","bodega.R","pipeline.R"))
   source(file.path("R", f))
 suppressPackageStartupMessages(library(jsonlite))
 
@@ -90,8 +90,7 @@ postura_lexico <- function(r) {
 lineas <- if (file.exists("data/objetivos.txt")) trimws(readLines("data/objetivos.txt", warn = FALSE)) else character(0)
 lineas <- lineas[nchar(lineas) > 0]
 if (length(lineas) == 0) {                                  # demo MASIVO: ~1500 granja + 120 humanas
-  lineas <- c(sprintf("@fanpatriota%04d", 1:850), sprintf("@vozreal%04d", 1:450),
-              sprintf("@patriota_col%04d", 1:200), sprintf("@ciudadano_real_%d", 1:120))
+  lineas <- c(sprintf("@fanpatriota%04d", 1:60), sprintf("@ciudadano_real_%d", 1:200))  # demo: minoría bodega + mayoría reales
 }
 objetivos <- character(0)
 for (l in lineas) {
@@ -101,9 +100,8 @@ for (l in lineas) {
   else objetivos <- c(objetivos, l)
 }
 objetivos <- unique(objetivos)
-if (length(objetivos) == 0) {                               # fallback (p.ej. mock con solo semillas >/+)
-  objetivos <- c(sprintf("@fanpatriota%04d", 1:850), sprintf("@vozreal%04d", 1:450),
-                 sprintf("@patriota_col%04d", 1:200), sprintf("@ciudadano_real_%d", 1:120))
+if (length(objetivos) == 0) {                               # fallback (mock con solo semillas !/>/+)
+  objetivos <- c(sprintf("@fanpatriota%04d", 1:60), sprintf("@ciudadano_real_%d", 1:200))  # minoría bodega + mayoría reales
 }
 if (length(objetivos) > MAX) { cat("Limitando a", MAX, "cuentas (de", length(objetivos), ")\n"); objetivos <- objetivos[1:MAX] }
 cat("Investigando", length(objetivos), "cuentas | fuente:", fuente, "\n")
@@ -112,35 +110,38 @@ res <- lapply(objetivos, function(h) tryCatch(auditar_handle(h, fuente = fuente)
 res <- res[!vapply(res, is.null, logical(1))]
 names(res) <- vapply(res, function(x) x$handle, character(1))
 
-# ---- reclasificación: separar AUTOMATIZACIÓN de POSTURA + exención por reputación ----
-HARD <- c("cuenta muy nueva","cuenta recién creada (<30 días)","sigue a muchos / pocos seguidores",
-  "avatar por defecto","perfil sin personalizar")
+# ---- clasificación NUEVA: BODEGA por COORDINACIÓN + FUENTE (no metadata) + POSTURA con IA ----
 USAR_IA <- Sys.getenv("OPENAI_API_KEY") != ""
 cat("Postura con IA:", USAR_IA, "\n")
+# análisis de GRUPO: junta los tweets de todas las cuentas y mide coordinación / fuente / cohortes
+grp <- do.call(rbind, lapply(res, function(r) r$tweets_muestra))
+creacion <- setNames(vapply(res, function(r) r$cuenta_creada %||% NA_character_, character(1)),
+                     vapply(res, function(r) r$handle, character(1)))
+bod <- if (!is.null(grp) && nrow(grp) > 0) analizar_bodega(grp, creacion) else data.frame()
+bmap <- if (nrow(bod)) split(bod, bod$handle) else list()
+cat("Bodega -> coordinadas:", sum(bod$coordinada %||% FALSE), "| automatizadas:", sum(bod$automatizada %||% FALSE), "\n")
 res <- lapply(res, function(r) {
-  fol <- r$detalle$followers[1] %||% 0; ed <- r$detalle$edad_dias[1] %||% 0
-  reput <- fol >= 3000 || (fol >= 1000 && ed >= 730)
-  nhard <- sum(r$senales %in% HARD); nflags <- r$n_flags
-  if (reput) { r$banda <- "Cuenta real (muy activa)"; r$pct <- min(r$pct, 18) }
-  else if (nhard >= 2 || nflags >= 4) r$banda <- "Alta señal de automatización"
-  else if (nflags >= 2) r$banda <- "Sospechosa"
-  else r$banda <- "Probablemente humana"
+  b <- bmap[[r$handle]]
+  if (!is.null(b)) { r$banda <- b$banda[1]; r$bodega <- isTRUE(b$bodega[1])
+    r$share_auto <- b$share_auto[1]; r$comparten <- b$comparten[1]; r$en_cohorte <- isTRUE(b$en_cohorte[1]) }
+  else { r$banda <- "Sin señales de coordinación"; r$bodega <- FALSE; r$share_auto <- 0; r$comparten <- 0L; r$en_cohorte <- FALSE }
   st <- if (USAR_IA) tryCatch(clasificar_postura_llm(r$textos), error=function(e) NA_character_) else NA_character_
-  if (is.na(st %||% NA) || !nzchar(st %||% "")) st <- postura_lexico(r)   # fallback léxico
-  r$stance <- st
+  r$stance <- if (is.na(st %||% NA) || !nzchar(st %||% "")) "indeterminado" else st
   r
 })
 
 df2list <- function(d) if (is.null(d) || nrow(d) == 0) list() else lapply(seq_len(nrow(d)), function(i) as.list(d[i, , drop = FALSE]))
 perfiles <- lapply(res, function(r) list(
-  handle = r$handle, pct = r$pct, banda = r$banda, stance = r$stance, n_flags = r$n_flags,
+  handle = r$handle, banda = r$banda, stance = r$stance, bodega = r$bodega,
+  share_auto = r$share_auto, comparten = r$comparten, en_cohorte = r$en_cohorte,
+  pct = if (isTRUE(r$bodega)) 100 else if (r$share_auto > 0 || r$comparten > 1) 50 else 5,
   edad_dias = round(r$detalle$edad_dias[1]), tweets_dia = r$detalle$tweets_por_dia[1],
   reply_share = if ("reply_share" %in% names(r$detalle)) r$detalle$reply_share[1] else NA,
-  followers = r$detalle$followers[1], senales = as.list(r$senales),
+  followers = r$detalle$followers[1], n_flags = r$n_flags, senales = as.list(r$senales),
   ataca = df2list(r$respuestas), amplifica = df2list(r$top), repetidos = df2list(r$repetidos)))
 
 # ---- CONCLUSIONES (titulares) ----
-alta <- Filter(function(r) grepl("Alta", r$banda), res)
+alta <- Filter(function(r) isTRUE(r$bodega), res)            # bodega = coordinada o automatizada
 victimas <- consolidar_amplificadores(lapply(res, function(r) list(top = r$respuestas)))  # a quién atacan
 amplif   <- consolidar_amplificadores(res)                                                # a quién amplifican
 reps_all <- do.call(rbind, lapply(res, function(r) r$repetidos))
@@ -154,12 +155,15 @@ puente <- vapply(res, function(r) {
   amp <- tolower(if (nrow(r$top)) r$top$cuenta else character(0))
   any(atk %in% pac) && any(amp %in% der)
 }, logical(1))
-# blanco real = ATACA al Pacto (postura) Y muestra alta automatización
+# blanco real = ATACA al Pacto (postura) Y es bodega (coordinada/automatizada)
 n_ataca <- sum(vapply(res, function(r) identical(r$stance, "ataca_pacto"), logical(1)))
-n_obj   <- sum(vapply(res, function(r) identical(r$stance, "ataca_pacto") && grepl("Alta", r$banda), logical(1)))
+n_obj   <- sum(vapply(res, function(r) identical(r$stance, "ataca_pacto") && isTRUE(r$bodega), logical(1)))
+n_coord <- sum(vapply(res, function(r) isTRUE(grepl("coordinado", r$banda)), logical(1)))
+n_auto  <- sum(vapply(res, function(r) isTRUE(grepl("fuente", r$banda)), logical(1)))
 conclusiones <- list(
   n_total = length(res), n_alta = length(alta),
   pct_alta = if (length(res)) round(100*length(alta)/length(res)) else 0,
+  n_coordinada = n_coord, n_automatizada = n_auto,
   n_ataca = n_ataca, n_objetivo = n_obj,
   pct_objetivo = if (length(res)) round(100*n_obj/length(res)) else 0,
   top_victimas = df2list(head(victimas, 6)),
