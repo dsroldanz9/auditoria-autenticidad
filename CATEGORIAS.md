@@ -1,7 +1,16 @@
 # Categorías y pesos — marco de literatura (propuesta para iterar)
 
-> Estado: **propuesta**. Los pesos actuales viven en `R/score.R::REGLAS_DEFAULT`.
-> Este documento justifica una refactorización a **dos ejes** y deja las fuentes a mano.
+> Los pesos viven en `R/score.R::REGLAS_DEFAULT`. Este documento justifica el modelo
+> de **dos ejes** y deja las fuentes a mano.
+
+## ✅ Decisiones tomadas (2026-06)
+1. **Dos ejes**: Automatización (por cuenta, en la tarjeta) + Coordinación/bodega
+   (de grupo: co-tweet, co-URL, cohortes; en el modo "Auditar lista").
+2. **Pesos parejos**: todas las señales pesan 1.0; el % depende de cuántas se prenden.
+3. **Sensible**: hiperactividad >50/día, "señal fuerte" = ≥3 señales. (Atrapa más; por eso
+   el lenguaje público es "muestra señales", nunca "es un bot".)
+4. **co-URL implementado** (`detectar_courl`) + co-tweet con mínimo de 25 caracteres para
+   evitar falsa coordinación por frases triviales.
 
 ## El hallazgo central: son DOS fenómenos, no uno
 

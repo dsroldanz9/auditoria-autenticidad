@@ -8,21 +8,28 @@ suppressPackageStartupMessages({ library(dplyr) })
 
 # Cada regla devuelve un flag 0/1. Los umbrales están a la vista y se pueden discutir.
 # Referencias: literatura de bot detection (Varol et al. 2017; Yang et al. BotometerLite).
+#
+# DECISIONES DEL USUARIO (2026-06):
+#  - PESOS PAREJOS: todas las señales pesan 1.0; el % depende de cuántas se prenden.
+#  - SENSIBLE: umbrales bajos (hiperactividad >50/día, señal fuerte = ≥3 señales).
+#  - DOS EJES: estas reglas son el eje AUTOMATIZACIÓN (por cuenta). El eje
+#    COORDINACIÓN/bodega se calcula aparte sobre el grupo (ver coordination.R / auditar()).
+# Cada regla lleva 'eje' por si más adelante se reportan por separado.
 REGLAS_DEFAULT <- list(
-  cuenta_muy_nueva   = list(peso = 1.0, fn = function(d) d$edad_dias < 90),
-  hiperactividad     = list(peso = 1.5, fn = function(d) d$tweets_por_dia > 50),
-  actividad_extrema  = list(peso = 1.0, fn = function(d) d$tweets_por_dia > 100),
-  ff_desbalanceado   = list(peso = 1.0, fn = function(d) d$ff_ratio > 5 & d$followers < 100),
-  handle_aleatorio   = list(peso = 1.0, fn = function(d) d$handle_entropia > 3.2 | d$handle_ratio_dig > 0.35),
-  sin_bio            = list(peso = 0.5, fn = function(d) d$bio_vacia),
-  avatar_default     = list(peso = 1.0, fn = function(d) d$avatar_default),
-  perfil_default     = list(peso = 0.5, fn = function(d) d$perfil_default),
+  cuenta_muy_nueva   = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$edad_dias < 90),
+  hiperactividad     = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$tweets_por_dia > 50),
+  actividad_extrema  = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$tweets_por_dia > 100),
+  ff_desbalanceado   = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$ff_ratio > 5 & d$followers < 100),
+  handle_aleatorio   = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$handle_entropia > 3.2 | d$handle_ratio_dig > 0.35),
+  sin_bio            = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$bio_vacia),
+  avatar_default     = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$avatar_default),
+  perfil_default     = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$perfil_default),
   # las siguientes solo aplican si hay datos de tweets (FALSE limpio si la columna falta):
-  casi_solo_rt       = list(peso = 1.0, fn = function(d) if(!"share_retweets"   %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$share_retweets, 0)   > 0.95),
-  contenido_repetido = list(peso = 1.5, fn = function(d) if(!"ratio_duplicados" %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$ratio_duplicados, 0) > 0.30),
-  sin_descanso       = list(peso = 1.0, fn = function(d) if(!"horas_activas"    %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$horas_activas, 12)   >= 23),
+  casi_solo_rt       = list(peso = 1.0, eje = "automatizacion", fn = function(d) if(!"share_retweets"   %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$share_retweets, 0)   > 0.95),
+  contenido_repetido = list(peso = 1.0, eje = "automatizacion", fn = function(d) if(!"ratio_duplicados" %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$ratio_duplicados, 0) > 0.30),
+  sin_descanso       = list(peso = 1.0, eje = "automatizacion", fn = function(d) if(!"horas_activas"    %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$horas_activas, 12)   >= 23),
   # señal opcional de contenido (LLM): solo activa si existe la columna llm_contenido
-  texto_automatizado = list(peso = 1.0, fn = function(d) if(!"llm_contenido"    %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$llm_contenido, 0)    > 0.70)
+  texto_automatizado = list(peso = 1.0, eje = "automatizacion", fn = function(d) if(!"llm_contenido"    %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$llm_contenido, 0)    > 0.70)
 )
 
 #' Calcula el índice de inautenticidad por cuenta.

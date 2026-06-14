@@ -25,7 +25,7 @@ donut_svg <- function(pct, col) {
     <circle cx="90" cy="90" r="70" fill="none" stroke="%s" stroke-width="18" stroke-linecap="round"
       stroke-dasharray="%.1f" stroke-dashoffset="%.1f" transform="rotate(-90 90 90)"/>
     <text x="90" y="84" text-anchor="middle" font-family="Archivo Black" font-size="44" fill="#FFFFFF">%d%%</text>
-    <text x="90" y="110" text-anchor="middle" font-family="Inter" font-size="12" fill="%s">inautenticidad</text>
+    <text x="90" y="110" text-anchor="middle" font-family="Inter" font-size="12" fill="%s">automatización</text>
   </svg>', col, circ, off, pct, ORO)
 }
 chip <- function(lab, val)
@@ -87,20 +87,23 @@ tab_lista <- nav_panel(
     ),
     layout_columns(
       col_widths = c(3, 3, 3, 3),
-      value_box("Cuentas", textOutput("k_n"), theme = "primary"),
-      value_box("% señal fuerte", textOutput("k_pct"), theme = "danger"),
-      value_box("IC 95%", textOutput("k_ic"), theme = "secondary"),
-      value_box("Clústeres coord.", textOutput("k_clus"), theme = "warning")
+      value_box("Cuentas analizadas", textOutput("k_n"), theme = "primary"),
+      value_box("Eje A · Automatización (bots)", textOutput("k_pct"), theme = "danger"),
+      value_box("Eje B · Coordinación (bodega)", textOutput("k_coord"), theme = "warning"),
+      value_box("Clústeres coordinados", textOutput("k_clus"), theme = "secondary")
     ),
     navset_card_tab(
       nav_panel("Distribución", plotOutput("plot_dist", height = "320px"),
-        div(class = "nota p-2", "Índice 0–1 por cuenta. La cola derecha concentra cuentas con muchas señales.")),
+        div(class = "nota p-2", "Eje A. Índice 0–1 por cuenta. La cola derecha concentra cuentas con muchas señales de automatización.")),
       nav_panel("Cuentas", DTOutput("tabla")),
-      nav_panel("Coordinación (co-tweet)",
-        div(class = "nota p-2", "Mismo texto, varias cuentas, ventana de segundos = comportamiento coordinado (bodega). La evidencia más fuerte."),
+      nav_panel("Co-tweet (mismo texto)",
+        div(class = "nota p-2", "Eje B. Mismo texto, varias cuentas, ventana de segundos = coordinación (bodega). La evidencia más fuerte."),
         DTOutput("tabla_cot")),
+      nav_panel("Co-URL (mismo link)",
+        div(class = "nota p-2", "Eje B. El mismo enlace difundido por varias cuentas casi a la vez. Solo aparece con tweets reales (el demo no trae links)."),
+        DTOutput("tabla_courl")),
       nav_panel("Cohortes de creación",
-        div(class = "nota p-2", "Días con un nº anómalo de cuentas creadas (z ≥ 3): posibles granjas en lote."),
+        div(class = "nota p-2", "Eje B. Días con un nº anómalo de cuentas creadas (z ≥ 3): posibles granjas en lote."),
         DTOutput("tabla_coh"))
     ),
     div(class = "p-2", downloadButton("dl", "Descargar resultados (CSV)", class = "btn-sm btn-outline-secondary"))
@@ -162,7 +165,7 @@ server <- function(input, output, session) {
         tags$br(), tags$span(class = "nota",
           "¿Configuraste el token de esa fuente? Con 'Demo' funciona sin token.")))
 
-    if (r$pct >= 40) { col <- NAR; verd <- "ALTA SEÑAL DE INAUTENTICIDAD" }
+    if (r$pct >= 40) { col <- NAR; verd <- "ALTA SEÑAL DE AUTOMATIZACIÓN" }
     else if (r$pct >= 20) { col <- ORO; verd <- "CUENTA SOSPECHOSA" }
     else { col <- VERDE; verd <- "PARECE UNA CUENTA REAL" }
 
@@ -198,7 +201,10 @@ server <- function(input, output, session) {
         </div>
       </div>
       <div style='margin-top:14px'><b style='color:%s'>Señales detectadas (%d):</b>%s</div>
-      <div style='margin-top:16px;border-top:1px solid #FFFFFF22;padding-top:10px;font-size:11px;color:#AEB6E8'>
+      <div style='margin-top:14px;font-size:11px;color:#C7CCEF'>
+        Esto mide <b style='color:#fff'>automatización</b> (perfil individual). La <b style='color:#fff'>coordinación / bodega</b> se mide sobre un grupo, en el modo \"Auditar lista\".
+      </div>
+      <div style='margin-top:10px;border-top:1px solid #FFFFFF22;padding-top:10px;font-size:11px;color:#AEB6E8'>
         Estimación con criterios transparentes y abiertos — no es un veredicto de \"bot\".<br>%s
       </div>
     </div>", AZ, ORO, r$handle, donut_svg(r$pct, col), col, verd, chips, ORO, r$n_flags, senales_html, URL_APP))
@@ -226,9 +232,12 @@ server <- function(input, output, session) {
   })
   resultado <- reactive({ req(datos()); auditar(datos()$cuentas, datos()$tweets) })
   output$k_n   <- renderText({ req(resultado()); resultado()$resumen$n_cuentas })
-  output$k_pct <- renderText({ req(resultado()); paste0(resultado()$resumen$pct_senal_fuerte, "%") })
-  output$k_ic  <- renderText({ req(resultado()); r <- resultado()$resumen; paste0(r$ic95_inf, "–", r$ic95_sup) })
-  output$k_clus<- renderText({ req(resultado()); ct <- resultado()$cotweet; if (is.null(ct)) "0" else nrow(ct$clusters) })
+  output$k_pct <- renderText({ req(resultado()); r <- resultado()$resumen
+    paste0(r$pct_senal_fuerte, "%  (IC ", r$ic95_inf, "–", r$ic95_sup, ")") })
+  output$k_coord <- renderText({ req(resultado()); paste0(resultado()$resumen_coord$pct_coordinadas, "%") })
+  output$k_clus<- renderText({ req(resultado())
+    ct <- resultado()$cotweet; cu <- resultado()$courl
+    (if (is.null(ct)) 0 else nrow(ct$clusters)) + (if (is.null(cu)) 0 else nrow(cu$clusters)) })
 
   output$plot_dist <- renderPlot({
     req(resultado())
@@ -252,6 +261,13 @@ server <- function(input, output, session) {
     if (is.null(ct) || nrow(ct$clusters) == 0)
       return(datatable(data.frame(Mensaje = "Sin clústeres (¿cargaste tweets?)"), rownames = FALSE, options = list(dom = "t")))
     datatable(ct$clusters, rownames = FALSE, options = list(pageLength = 8))
+  })
+  output$tabla_courl <- renderDT({
+    req(resultado()); cu <- resultado()$courl
+    if (is.null(cu) || nrow(cu$clusters) == 0)
+      return(datatable(data.frame(Mensaje = "Sin co-URL (el demo no trae links; aparece con datos reales)"),
+                       rownames = FALSE, options = list(dom = "t")))
+    datatable(cu$clusters, rownames = FALSE, options = list(pageLength = 8))
   })
   output$tabla_coh <- renderDT({
     req(resultado()); ch <- resultado()$cohortes

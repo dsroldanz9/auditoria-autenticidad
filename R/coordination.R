@@ -26,7 +26,7 @@ detectar_cotweet <- function(tweets, ventana_seg = 120, min_cuentas = 3) {
   tw <- tweets %>%
     mutate(ts = suppressWarnings(as.POSIXct(created_at, tz = "UTC")),
            tn = normalizar_texto(text)) %>%
-    filter(nchar(tn) >= 15) %>%               # ignorar textos triviales
+    filter(nchar(tn) >= 25) %>%               # ignorar frases cortas/triviales (evita falsa coordinación)
     arrange(tn, ts)
 
   if (nrow(tw) == 0) return(list(clusters = tibble(), detalle = tibble()))
@@ -60,6 +60,53 @@ detectar_cotweet <- function(tweets, ventana_seg = 120, min_cuentas = 3) {
     transmute(texto = str_trunc(tn, 80), n_cuentas, n_posts, span_seg, t_ini) %>%
     arrange(desc(n_cuentas))
   list(clusters = clusters, detalle = res)
+}
+
+#' Detecta co-URL: el MISMO enlace compartido por varias cuentas en una ventana corta.
+#' Señal clásica de bodega (difundir el mismo link de forma coordinada).
+#' @param tweets data.frame: handle, created_at, text (los URLs se extraen del texto).
+#' @return lista con: clusters (resumen por URL) y detalle (cuentas implicadas).
+detectar_courl <- function(tweets, ventana_seg = 300, min_cuentas = 3) {
+  stopifnot(all(c("handle","created_at","text") %in% names(tweets)))
+  ext <- regmatches(tweets$text, gregexpr("https?://[^\\s]+", tweets$text, perl = TRUE))
+  rows <- list()
+  for (i in seq_len(nrow(tweets))) for (u in ext[[i]]) {
+    url <- tolower(gsub("[)\\].,]+$", "", u))                 # limpiar puntuación final
+    rows[[length(rows)+1]] <- data.frame(handle = tweets$handle[i],
+      created_at = tweets$created_at[i], url = url, stringsAsFactors = FALSE)
+  }
+  if (length(rows) == 0) return(list(clusters = tibble(), detalle = tibble()))
+  df <- bind_rows(rows) %>% mutate(ts = suppressWarnings(as.POSIXct(created_at, tz = "UTC"))) %>% arrange(url, ts)
+
+  res <- df %>% group_by(url) %>% group_modify(function(g, key) {
+    g <- arrange(g, ts); mejor <- NULL
+    for (i in seq_len(nrow(g))) {
+      j <- which(g$ts >= g$ts[i] & g$ts <= g$ts[i] + ventana_seg)
+      cuentas <- unique(g$handle[j])
+      if (length(cuentas) >= min_cuentas) {
+        cand <- tibble(n_cuentas = length(cuentas), n_posts = length(j),
+          t_ini = min(g$ts[j]), span_seg = as.numeric(difftime(max(g$ts[j]), min(g$ts[j]), units="secs")),
+          cuentas = paste(cuentas, collapse=", "))
+        if (is.null(mejor) || cand$n_cuentas > mejor$n_cuentas) mejor <- cand
+      }
+    }
+    if (is.null(mejor)) tibble() else mejor
+  }) %>% ungroup()
+
+  if (nrow(res) == 0) return(list(clusters = tibble(), detalle = tibble()))
+  clusters <- res %>% transmute(url = str_trunc(url, 60), n_cuentas, n_posts, span_seg, t_ini) %>%
+    arrange(desc(n_cuentas))
+  list(clusters = clusters, detalle = res)
+}
+
+#' Devuelve el conjunto de handles que participan en CUALQUIER clúster coordinado
+#' (co-tweet y/o co-URL). Sirve para marcar el eje "coordinación/bodega" por cuenta.
+handles_coordinados <- function(...) {
+  detalles <- list(...)
+  hs <- character(0)
+  for (d in detalles) if (!is.null(d) && nrow(d) > 0 && "cuentas" %in% names(d))
+    hs <- c(hs, trimws(unlist(strsplit(paste(d$cuentas, collapse = ", "), ","))))
+  unique(hs[nchar(hs) > 0])
 }
 
 #' Detecta cohortes de creación: días con un número anómalo de cuentas creadas.
