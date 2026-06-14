@@ -8,6 +8,7 @@
 # Secretos y credenciales (NUNCA subir)
 .env
 .Renviron
+secret.R
 *_token*
 *secret*
 

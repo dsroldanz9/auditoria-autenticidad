@@ -6,6 +6,8 @@ suppressPackageStartupMessages({
 })
 for (f in c("features.R","score.R","coordination.R","connectors.R","llm.R","ondemand.R","pipeline.R"))
   source(file.path("R", f))
+# Carga tokens (TWITTERAPI_IO_KEY, etc.) en shinyapps.io. secret.R NO se sube a GitHub (gitignored).
+if (file.exists("secret.R")) try(source("secret.R"), silent = TRUE)
 
 AZ <- "#2839BE"; NAR <- "#FF4403"; ORO <- "#F7A40D"; VERDE <- "#16A34A"; INK <- "#1B1F3B"
 REPO <- "https://github.com/dsroldanz9/auditoria-autenticidad"
