@@ -15,6 +15,7 @@ secret.R
 # Datos reales recolectados por el usuario (solo se versiona el ejemplo sintético)
 data/*.csv
 !data/ejemplo_*.csv
+!data/cuentas_conocidas.csv
 data/registro.csv
 
 # Salidas

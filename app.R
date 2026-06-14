@@ -178,29 +178,42 @@ server <- function(input, output, session) {
         tags$br(), tags$span(class = "nota",
           "¿Configuraste el token de esa fuente? Con 'Demo' funciona sin token.")))
 
-    if (r$pct >= 40) { col <- NAR; verd <- "ALTA SEÑAL DE AUTOMATIZACIÓN" }
-    else if (r$pct >= 20) { col <- ORO; verd <- "CUENTA SOSPECHOSA" }
+    # color y veredicto según la banda (nº de señales), no un % diluido
+    if (grepl("Alta", r$banda)) { col <- NAR; verd <- "ALTA SEÑAL DE AUTOMATIZACIÓN" }
+    else if (grepl("Sospechosa", r$banda)) { col <- ORO; verd <- "CUENTA SOSPECHOSA" }
     else { col <- VERDE; verd <- "PARECE UNA CUENTA REAL" }
 
     det <- r$detalle
-    rt <- if ("share_retweets" %in% names(det) && !is.na(det$share_retweets[1]))
-      paste0(round(100*det$share_retweets[1]), "%") else "—"
+    resp <- if ("reply_share" %in% names(det) && !is.na(det$reply_share[1]))
+      paste0(round(100*det$reply_share[1]), "%") else "—"
+    # chip de edad en rojo si la cuenta es muy nueva (<30 días)
+    edad_chip <- if (!is.na(det$edad_dias[1]) && det$edad_dias[1] < 30)
+      sprintf('<div style="background:#FF440333;border:1px solid %s;border-radius:10px;padding:8px 11px">
+        <div style="font-size:11px;color:#FFD7C9">⚠ Edad de la cuenta</div>
+        <div style="font-family:Archivo Black;font-size:16px;color:#fff">%s</div></div>', NAR, fmt_edad(det$edad_dias[1]))
+      else chip("Edad de la cuenta", fmt_edad(det$edad_dias[1]))
     chips <- paste0(
-      chip("Edad de la cuenta", fmt_edad(det$edad_dias[1])),
+      edad_chip,
       chip("Tweets por día", format(round(det$tweets_por_dia[1]), big.mark=".")),
       chip("Sigue ÷ seguidores", det$ff_ratio[1]),
-      chip("% retweets", rt))
+      chip("% respuestas (comenta)", resp))
     senales_html <- if (length(r$senales) > 0)
       paste0("<ul style='margin:6px 0 0;padding-left:18px;color:#EEF0FA;columns:2'>",
              paste0("<li>", r$senales, "</li>", collapse=""), "</ul>")
     else "<p style='color:#BFE8CF;margin:6px 0 0'>Sin señales de riesgo detectadas.</p>"
 
+    color_bando <- function(b) if (is.na(b)) "#AEB6E8" else if (b=="derecha") "#FF8A66" else if (b=="pacto") "#7FE0C4" else "#C7CCEF"
     top_html <- if (!is.null(r$top) && nrow(r$top) > 0)
-      paste0(vapply(seq_len(nrow(r$top)), function(i) sprintf(
-        "<div style='display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #FFFFFF14'>
-           <span style='font-size:13px;color:#EEF0FA'>%d. %s</span>
-           <span style='font-family:Archivo Black;font-size:13px;color:%s'>%d</span></div>",
-        i, r$top$cuenta[i], ORO, r$top$n[i]), character(1)), collapse = "")
+      paste0(vapply(seq_len(nrow(r$top)), function(i) {
+        nom <- if (!is.null(r$top$nombre) && !is.na(r$top$nombre[i])) r$top$nombre[i] else "—"
+        bnd <- if (!is.null(r$top$bando)) r$top$bando[i] else NA
+        sprintf(
+        "<div style='padding:6px 0;border-bottom:1px solid #FFFFFF14'>
+           <div style='display:flex;justify-content:space-between'>
+             <span style='font-size:13px;color:#EEF0FA'>%d. %s</span>
+             <span style='font-family:Archivo Black;font-size:13px;color:%s'>%d</span></div>
+           <div style='font-size:11px;color:%s'>%s</div></div>",
+        i, r$top$cuenta[i], ORO, r$top$n[i], color_bando(bnd), nom) }, character(1)), collapse = "")
     else "<div style='font-size:12px;color:#AEB6E8'>Sin interacciones visibles.<br>(Aparece con tweets reales vía token.)</div>"
 
     HTML(sprintf("

@@ -11,14 +11,29 @@
 suppressPackageStartupMessages({ library(httr2); library(jsonlite); library(dplyr) })
 `%||%` <- function(a, b) if (is.null(a) || length(a) == 0) b else a
 
-#' Top de cuentas con las que un perfil interactúa (RT, citas, menciones, respuestas).
-#' Se extrae del texto de sus tweets. @return data.frame: cuenta, n (desc), ordenado.
-top_interacciones <- function(tweets, n = 5) {
+#' Top de cuentas con las que un perfil interactúa (RT, citas, menciones, RESPUESTAS).
+#' Combina menciones del texto + el campo reply_to (a quién le responde/ataca).
+#' @return data.frame: cuenta, n (desc).
+top_interacciones <- function(tweets, n = 6) {
   if (is.null(tweets) || nrow(tweets) == 0) return(data.frame())
   ms <- tolower(unlist(regmatches(tweets$text, gregexpr("@\\w{2,}", tweets$text))))
+  if ("reply_to" %in% names(tweets)) {
+    rt <- tolower(tweets$reply_to); ms <- c(ms, rt[!is.na(rt) & nzchar(rt) & rt != "@"])
+  }
+  ms <- ms[nchar(ms) > 2]
   if (length(ms) == 0) return(data.frame())
   tb <- sort(table(ms), decreasing = TRUE)
   utils::head(data.frame(cuenta = names(tb), n = as.integer(tb), stringsAsFactors = FALSE), n)
+}
+
+#' Caracteriza un vector de @cuentas con la lista curada (data/cuentas_conocidas.csv).
+#' @return data.frame con columnas nombre y bando (NA si desconocida).
+caracterizar <- function(cuentas, ruta = "data/cuentas_conocidas.csv") {
+  con <- tryCatch(read.csv(ruta, stringsAsFactors = FALSE, encoding = "UTF-8"), error = function(e) NULL)
+  if (is.null(con) || nrow(con) == 0) return(data.frame(nombre = NA, bando = NA)[rep(1, length(cuentas)), ])
+  con$key <- tolower(paste0("@", gsub("^@", "", trimws(con$handle))))
+  m <- match(tolower(cuentas), con$key)
+  data.frame(nombre = con$nombre[m], bando = con$bando[m], stringsAsFactors = FALSE)
 }
 
 # --- recupera tweets recientes de un user_id por la X API v2 --------------------
@@ -55,7 +70,10 @@ fetch_twitterapi_io <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY")) {
     d <- resp_body_json(r2); arr <- d$data$tweets %||% d$tweets %||% d$data
     if (is.null(arr)) NULL else do.call(rbind, lapply(arr, function(t) data.frame(
       handle = handle, created_at = t$createdAt %||% t$created_at %||% NA,
-      text = t$text %||% "", stringsAsFactors = FALSE)))
+      text = t$text %||% "",
+      es_respuesta = isTRUE(t$isReply),
+      reply_to = tolower(paste0("@", gsub("^@", "", t$inReplyToUsername %||% ""))),
+      stringsAsFactors = FALSE)))
   }, error = function(e) NULL)
   list(cuenta = cuenta, tweets = tweets)
 }
@@ -71,11 +89,18 @@ fetch_mock <- function(handle) {
       followers=round(runif(1,0,40)), following=round(runif(1,300,900)),
       n_tweets=round(runif(1,5000,20000)), bio="", verified=FALSE,
       default_avatar=TRUE, default_profile=TRUE, stringsAsFactors=FALSE)
-    objetivos <- c("@CandidatoOficial","@VoceroDeCampana","@PrensaAfin")
+    amplifica <- c("@CandidatoOficial","@VoceroDeCampana","@PrensaAfin")
+    ataca     <- c("@LiderOposicion","@SenadorOpositor","@PeriodistaCritico")
+    tipo <- sample(c("rt","reply"), 20, replace=TRUE, prob=c(.4,.6))     # torpedo: más respuestas
+    drt  <- sample(amplifica, 20, replace=TRUE); drep <- sample(ataca, 20, replace=TRUE)
     tw <- data.frame(handle=h,
       created_at=format(Sys.time()-runif(20,0,2)*86400,"%Y-%m-%dT%H:%M:%SZ"),
-      text=paste0("RT ", sample(objetivos, 20, replace=TRUE, prob=c(.55,.30,.15)),
-                  ": El cambio es imparable, todos unidos vamos!"), stringsAsFactors=FALSE)
+      text=ifelse(tipo=="rt",
+        paste0("RT ", drt, ": El cambio es imparable, todos unidos vamos!"),
+        paste0(drep, " puro show, este señor no representa a nadie")),
+      es_respuesta = tipo=="reply",
+      reply_to = ifelse(tipo=="reply", tolower(drep), NA_character_),
+      stringsAsFactors=FALSE)
   } else {
     cuenta <- data.frame(handle=h, display_name=h,
       created_at=format(Sys.time()-runif(1,500,3500)*86400,"%Y-%m-%dT%H:%M:%SZ"),
@@ -87,7 +112,7 @@ fetch_mock <- function(handle) {
       text=sample(c("Qué día tan bonito en la ciudad","Vamos Colombia @SeleccionCol",
                     "Buen partido anoche","Café y a trabajar","Feliz finde a la familia",
                     "El agua es vida, cuidémosla","Hoy llueve en Bogotá @ElTiempo"),8,TRUE),
-      stringsAsFactors=FALSE)
+      es_respuesta=FALSE, reply_to=NA_character_, stringsAsFactors=FALSE)
   }
   list(cuenta = cuenta, tweets = tw)
 }
@@ -149,8 +174,10 @@ auditar_handle <- function(handle, fuente = "mock", usar_llm = FALSE,
     n_flags = scored$n_flags[1],
     senales = senales,
     fuente  = fuente,
-    top     = top_interacciones(p$tweets),   # top de cuentas que amplifica
     detalle = scored)
+  top <- top_interacciones(p$tweets)                       # top de cuentas que amplifica/ataca
+  if (nrow(top) > 0) top <- cbind(top, caracterizar(top$cuenta))
+  res$top <- top
 
   # guardar en la "base de datos"
   fila <- data.frame(fecha=as.character(Sys.time()), handle=res$handle, pct=res$pct,

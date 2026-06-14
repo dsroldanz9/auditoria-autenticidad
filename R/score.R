@@ -17,6 +17,8 @@ suppressPackageStartupMessages({ library(dplyr) })
 # Cada regla lleva 'eje' por si más adelante se reportan por separado.
 REGLAS_DEFAULT <- list(
   cuenta_muy_nueva   = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$edad_dias < 90),
+  cuenta_recien_creada = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$edad_dias < 30),  # 17 días = alarma
+  casi_solo_respuestas = list(peso = 1.0, eje = "automatizacion", fn = function(d) if(!"reply_share" %in% names(d)) rep(FALSE,nrow(d)) else coalesce(d$reply_share, 0) > 0.70),  # cuenta torpedo
   hiperactividad     = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$tweets_por_dia > 50),
   actividad_extrema  = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$tweets_por_dia > 100),
   ff_desbalanceado   = list(peso = 1.0, eje = "automatizacion", fn = function(d) d$ff_ratio > 5 & d$followers < 100),
@@ -47,15 +49,16 @@ calcular_score <- function(feats, reglas = REGLAS_DEFAULT, umbral_fuerte = 3) {
   names(flags) <- paste0("flag_", names(reglas))
   flagdf <- as.data.frame(flags)
 
-  pesos <- vapply(reglas, function(r) r$peso, numeric(1))
-  peso_total <- sum(pesos)
-  score <- as.numeric(as.matrix(flagdf) %*% pesos) / peso_total
-
   res <- bind_cols(feats, flagdf)
   res$n_flags     <- rowSums(flagdf)
-  res$score_inaut <- round(score, 3)
-  res$banda <- cut(res$score_inaut,
-                   breaks = c(-Inf, 0.20, 0.40, Inf),
+  # Con pesos parejos, el índice = nº de señales / 5 (5+ señales = máximo). Punchy e intuitivo:
+  # ya no se diluye entre muchas reglas, así una cuenta nueva con 2-3 señales se ve fuerte.
+  res$score_inaut <- round(pmin(1, res$n_flags / 5), 3)
+  # Banda por NÚMERO de señales (con pesos parejos es más intuitivo que el ratio diluido):
+  # 0 = auténtica · 1-2 = sospechosa · ≥3 = alta señal. Así una cuenta de 17 días con
+  # 2 señales ya NO sale como "humana".
+  res$banda <- cut(res$n_flags,
+                   breaks = c(-Inf, 0, 2, Inf),
                    labels = c("Probablemente humana", "Sospechosa", "Alta señal de automatización"))
   res$senal_fuerte <- res$n_flags >= umbral_fuerte
   res

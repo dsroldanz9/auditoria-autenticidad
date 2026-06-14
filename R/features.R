@@ -85,13 +85,17 @@ extraer_features_tweets <- function(tweets) {
   tw$hora <- lubridate::hour(tw$ts)
   tw$text_norm <- tolower(trimws(gsub("\\s+", " ", gsub("https?://\\S+", "", tw$text))))
   es_rt <- if ("is_retweet" %in% names(tw)) as.logical(tw$is_retweet) else grepl("^rt @", tw$text_norm)
+  # respuesta: campo es_respuesta del conector, o heurística (empieza con @)
+  es_resp <- if ("es_respuesta" %in% names(tw)) as.logical(tw$es_respuesta) else grepl("^@\\w", tw$text_norm)
 
   tw %>%
-    mutate(es_rt = es_rt) %>%
+    mutate(es_rt = es_rt, es_resp = es_resp) %>%
     group_by(handle) %>%
     summarise(
       n_obs            = n(),
       share_retweets   = round(mean(es_rt, na.rm = TRUE), 3),
+      # proporción de publicaciones que son RESPUESTAS a otros (cuentas torpedo comentan/atacan)
+      reply_share      = round(mean(es_resp, na.rm = TRUE), 3),
       # proporción de tweets cuyo texto está duplicado dentro de la misma cuenta
       ratio_duplicados = round(1 - dplyr::n_distinct(text_norm) / n(), 3),
       # nº de horas distintas del día con actividad (un humano no postea 24/24 parejo)
