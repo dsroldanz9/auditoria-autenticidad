@@ -223,17 +223,19 @@ function exportar(handle){const p=DATA.perfiles.find(x=>x.handle===handle);if(!p
   setTimeout(()=>html2canvas(document.getElementById('ec'),{scale:2,useCORS:true,backgroundColor:null}).then(c=>{
     const a=document.createElement('a');a.download='autenticidad_'+p.handle+'.png';a.href=c.toDataURL('image/png');a.click();document.getElementById('exportcard').innerHTML='';}),150);}
 
+const uw=v=>Array.isArray(v)?v[0]:v;   // desenvuelve arrays de 1 (round-trips de JSON)
+const nombreCorto=x=>{const n=uw(x.nombre);return (typeof n==='string'&&n!=='NA')?n.split(' —')[0]:('@'+String(uw(x.cuenta)).replace(/^@/,''));};
 function conclusiones(c,narr){if(!c)return;const v=(c.top_victimas||[]);
-  const frase=v.slice(0,5).map(x=>`<b>${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta}</b> (${fmt(x.veces)} cuentas)`).join(", ");
-  const pal=(narr&&narr.palabras||[]).slice(0,6).map(w=>w.termino).join(", ");
-  const cx=(c.conexion&&c.conexion.n_puente>0)?`<div class="exp" style="margin-top:10px;border-top:1px solid #ffffff55;padding-top:8px">🔗 <b>${fmt(c.conexion.n_puente)} cuentas (${c.conexion.pct}%)</b> atacan al Pacto <b>y a la vez amplifican a la derecha</b> — el puente que conecta la operación.</div>`:'';
-  const vic3=v.slice(0,3).map(x=>(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta).join(", ")||"el Pacto";
+  const frase=v.slice(0,5).map(x=>`<b>${nombreCorto(x)}</b> (${fmt(uw(x.veces))} cuentas)`).join(", ");
+  const pal=(narr&&narr.palabras||[]).slice(0,6).map(w=>uw(w.termino)).join(", ");
+  const cx=(c.conexion&&uw(c.conexion.n_puente)>0)?`<div class="exp" style="margin-top:10px;border-top:1px solid #ffffff55;padding-top:8px">🔗 <b>${fmt(uw(c.conexion.n_puente))} cuentas</b> atacan al Pacto <b>y a la vez amplifican a la derecha</b> — el puente que conecta la operación.</div>`:'';
+  const vic3=v.slice(0,3).map(nombreCorto).join(", ")||"el Pacto";
   document.getElementById('concl').innerHTML=`<div class="titular">
     <div class="big">Encontramos ${fmt(c.n_total)} cuentas coordinadas atacando a ${vic3}</div>
-    <div class="exp">Postean el <b>MISMO texto idéntico</b> entre varias cuentas${c.n_clusters?` — ${fmt(c.n_clusters)} consignas distintas</b>`:''}. No las marcamos por metadata: es <b>coordinación verificable</b>. Abajo: qué dicen y quién las postea.${pal?` Narrativa: <b>${pal}</b>.`:''}</div>${cx}</div>`;
+    <div class="exp">Postean el <b>MISMO texto idéntico</b> entre varias cuentas${c.n_clusters?` — <b>${fmt(c.n_clusters)} consignas distintas</b>`:''}. No las marcamos por metadata: es <b>coordinación verificable</b>. Abajo: qué dicen y quién las postea.${pal?` Narrativa: <b>${pal}</b>.`:''}</div>${cx}</div>`;
   document.getElementById('s_vic').textContent=v.length;
   const vb=document.getElementById('vbtns');
-  vb.innerHTML=v.slice(0,5).map(x=>`<button class="vbtn" onclick="focusNode('${x.cuenta}')">🎯 ${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta} <b>· ${fmt(x.veces)}</b></button>`).join('');}
+  vb.innerHTML=v.slice(0,5).map(x=>`<button class="vbtn" onclick="focusNode('@${String(uw(x.cuenta)).replace(/^@/,'')}')">🎯 ${nombreCorto(x)} <b>· ${fmt(uw(x.veces))}</b></button>`).join('');}
 
 function renderConsignas(c){const cl=(c&&c.clusters)||[];const el=document.getElementById('consignas');
   if(!cl.length){el.innerHTML='<div class="panel nota">No se detectaron consignas coordinadas (mismo texto idéntico posteado por varias cuentas).</div>';return;}
