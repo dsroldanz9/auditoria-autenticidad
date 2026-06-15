@@ -187,7 +187,7 @@ function dibujarRed(d){const cont=document.getElementById('red');
   if(!d.red||!d.red.nodes||!d.red.nodes.length){cont.innerHTML='<div class="nota" style="padding:20px">Sin red aún.</div>';return;}
   const cN=n=>n.tipo==="analizada"?"#2839BE":(n.bando==="derecha"?"#FF4403":(n.bando==="pacto"?"#16A34A":"#9AA0BF"));
   d.red.nodes.forEach(n=>BASE[n.id]=cN(n));
-  NODES=new vis.DataSet(d.red.nodes.map(n=>({id:n.id,label:(n.grado||1)>15?n.id:"",color:cN(n),value:(n.grado||1),
+  NODES=new vis.DataSet(d.red.nodes.map(n=>({id:n.id,label:n.id,color:cN(n),value:(n.grado||1),
      title:n.id+(n.bando?(" · "+n.bando):"")})));
   const edges=new vis.DataSet(d.red.edges.map(e=>({from:e.from,to:e.to,arrows:{to:{scaleFactor:.4}},color:{color:"#CBD0EC",opacity:.5}})));
   d.red.edges.forEach(e=>{(ADJ[e.from]=ADJ[e.from]||[]).push(e.to);(ADJ[e.to]=ADJ[e.to]||[]).push(e.from);});

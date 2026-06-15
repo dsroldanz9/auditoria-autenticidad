@@ -86,6 +86,25 @@ postura_lexico <- function(r) {
   if (a > p) "ataca_pacto" else if (p > a) "apoya_pacto" else "indeterminado"
 }
 
+# BÚSQUEDA POR CONSIGNA (lo más eficiente): quien postea el texto EXACTO es bodega.
+# Línea en objetivos.txt que empieza con "  -> se busca esa frase y se traen sus autores.
+cuentas_por_frase <- function(frase, max_pages = 5) {
+  q <- paste0('"', substr(trimws(gsub('^"', '', frase)), 1, 70), '"')   # frase exacta, chunk distintivo
+  acc <- character(0); cursor <- ""
+  for (pg in seq_len(max_pages)) {
+    r <- tryCatch(request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
+      req_url_query(query = q, queryType = "Latest", cursor = cursor) |>
+      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_perform(), error = function(e) NULL)
+    if (is.null(r)) break
+    d <- resp_body_json(r); arr <- d$tweets %||% list()
+    if (length(arr) == 0) break
+    acc <- c(acc, vapply(arr, function(x) x$author$userName %||% NA_character_, character(1)))
+    if (!isTRUE(d$has_next_page) || identical(d$next_cursor, "")) break
+    cursor <- d$next_cursor
+  }
+  unique(paste0("@", acc[!is.na(acc) & nzchar(acc)]))
+}
+
 # ---- arma la lista de cuentas a investigar ----
 lineas <- if (file.exists("data/objetivos.txt")) trimws(readLines("data/objetivos.txt", warn = FALSE)) else character(0)
 lineas <- lineas[nchar(lineas) > 0]
@@ -94,7 +113,8 @@ if (length(lineas) == 0) {                                  # demo MASIVO: ~1500
 }
 objetivos <- character(0)
 for (l in lineas) {
-  if (startsWith(l, "!")) { if (REAL) { cat("Atacantes HOSTILES de", l, "...\n"); objetivos <- c(objetivos, atacantes_hostiles(l)) } }
+  if (startsWith(l, '"')) { if (REAL) { cat("Buscando consigna:", substr(l,1,50), "...\n"); objetivos <- c(objetivos, cuentas_por_frase(l)) } }
+  else if (startsWith(l, "!")) { if (REAL) { cat("Atacantes HOSTILES de", l, "...\n"); objetivos <- c(objetivos, atacantes_hostiles(l)) } }
   else if (startsWith(l, ">")) { if (REAL) { cat("Responden a", l, "(todos)...\n"); objetivos <- c(objetivos, atacantes_de(l)) } }
   else if (startsWith(l, "+")) { if (REAL) { cat("Amplificadores de", l, "...\n"); objetivos <- c(objetivos, amplificadores_de(l)) } }
   else objetivos <- c(objetivos, l)
