@@ -20,7 +20,7 @@ clasificar_postura_llm <- function(textos, api_key = Sys.getenv("OPENAI_API_KEY"
     messages = list(list(role = "system", content = sis),
                     list(role = "user", content = paste0("Tweets:\n", muestra))))
   resp <- tryCatch(request("https://api.openai.com/v1/chat/completions") |>
-    req_auth_bearer_token(api_key) |> req_body_json(cuerpo) |> req_perform(), error = function(e) NULL)
+    req_auth_bearer_token(api_key) |> req_body_json(cuerpo) |> req_timeout(25) |> req_perform(), error = function(e) NULL)
   if (is.null(resp)) return(NA_character_)
   txt <- resp_body_json(resp)$choices[[1]]$message$content
   val <- tryCatch(jsonlite::fromJSON(txt)$postura, error = function(e) NA_character_)
@@ -47,7 +47,7 @@ analizar_texto_llm <- function(textos, api_key = Sys.getenv("OPENAI_API_KEY"),
   resp <- tryCatch(
     request("https://api.openai.com/v1/chat/completions") |>
       req_auth_bearer_token(api_key) |>
-      req_body_json(cuerpo) |> req_perform(),
+      req_body_json(cuerpo) |> req_timeout(25) |> req_perform(),
     error = function(e) NULL)
   if (is.null(resp)) return(NA_real_)
   txt <- resp_body_json(resp)$choices[[1]]$message$content

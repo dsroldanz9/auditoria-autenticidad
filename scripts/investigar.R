@@ -23,7 +23,7 @@ atacantes_de <- function(target, max_pages = 5) {
   for (pg in seq_len(max_pages)) {
     r <- tryCatch(request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
       req_url_query(query = paste0("to:", t), queryType = "Latest", cursor = cursor) |>
-      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_perform(), error = function(e) NULL)
+      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_timeout(25) |> req_perform(), error = function(e) NULL)
     if (is.null(r)) break
     d <- resp_body_json(r); arr <- d$tweets %||% list()
     if (length(arr) == 0) break
@@ -40,7 +40,7 @@ amplificadores_de <- function(target, max_pages = 5) {
   for (pg in seq_len(max_pages)) {
     r <- tryCatch(request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
       req_url_query(query = paste0("@", t), queryType = "Latest", cursor = cursor) |>
-      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_perform(), error = function(e) NULL)
+      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_timeout(25) |> req_perform(), error = function(e) NULL)
     if (is.null(r)) break
     d <- resp_body_json(r); arr <- d$tweets %||% list()
     if (length(arr) == 0) break
@@ -58,7 +58,7 @@ atacantes_hostiles <- function(target, max_pages = 6) {
   for (pg in seq_len(max_pages)) {
     r <- tryCatch(request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
       req_url_query(query = paste0("to:", t, " ", HOSTIL), queryType = "Latest", cursor = cursor) |>
-      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_perform(), error = function(e) NULL)
+      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_timeout(25) |> req_perform(), error = function(e) NULL)
     if (is.null(r)) break
     d <- resp_body_json(r); arr <- d$tweets %||% list()
     if (length(arr) == 0) break
@@ -94,7 +94,7 @@ cuentas_por_frase <- function(frase, max_pages = 5) {
   for (pg in seq_len(max_pages)) {
     r <- tryCatch(request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
       req_url_query(query = q, queryType = "Latest", cursor = cursor) |>
-      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_perform(), error = function(e) NULL)
+      req_headers(`X-API-Key` = Sys.getenv("TWITTERAPI_IO_KEY")) |> req_timeout(25) |> req_perform(), error = function(e) NULL)
     if (is.null(r)) break
     d <- resp_body_json(r); arr <- d$tweets %||% list()
     if (length(arr) == 0) break
@@ -126,7 +126,13 @@ if (length(objetivos) == 0) {                               # fallback (mock con
 if (length(objetivos) > MAX) { cat("Limitando a", MAX, "cuentas (de", length(objetivos), ")\n"); objetivos <- objetivos[1:MAX] }
 cat("Investigando", length(objetivos), "cuentas | fuente:", fuente, "\n")
 
-res <- lapply(objetivos, function(h) tryCatch(auditar_handle(h, fuente = fuente), error = function(e) NULL))
+res <- vector("list", length(objetivos))
+t0 <- Sys.time()
+for (i in seq_along(objetivos)) {
+  res[[i]] <- tryCatch(auditar_handle(objetivos[i], fuente = fuente), error = function(e) NULL)
+  if (i %% 20 == 0) cat("  analizadas", i, "/", length(objetivos),
+                        "(", round(as.numeric(difftime(Sys.time(), t0, units="mins")), 1), "min )\n")
+}
 res <- res[!vapply(res, is.null, logical(1))]
 names(res) <- vapply(res, function(x) x$handle, character(1))
 

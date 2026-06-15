@@ -72,7 +72,7 @@ x_fetch_tweets <- function(user_id, bearer = Sys.getenv("X_BEARER_TOKEN"), max_n
   if (bearer == "") stop("Falta X_BEARER_TOKEN.")
   resp <- request(sprintf("https://api.twitter.com/2/users/%s/tweets", user_id)) |>
     req_url_query(max_results = min(max_n,100), `tweet.fields`="created_at,source") |>
-    req_auth_bearer_token(bearer) |> req_perform()
+    req_auth_bearer_token(bearer) |> req_timeout(25) |> req_perform()
   js <- resp_body_json(resp)
   if (is.null(js$data)) return(NULL)
   do.call(rbind, lapply(js$data, function(t) data.frame(
@@ -85,7 +85,7 @@ fetch_twitterapi_io <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY")) {
   handle <- gsub("@","",handle)
   resp <- request("https://api.twitterapi.io/twitter/user/info") |>
     req_url_query(userName = handle) |>
-    req_headers(`X-API-Key` = key) |> req_perform()
+    req_headers(`X-API-Key` = key) |> req_timeout(25) |> req_perform()
   u <- resp_body_json(resp)$data
   cuenta <- data.frame(
     handle = u$userName, display_name = u$name, created_at = u$createdAt,
@@ -109,7 +109,7 @@ ta_io_buscar_tweets <- function(handle, key = Sys.getenv("TWITTERAPI_IO_KEY"),
     for (pg in seq_len(max_pages)) {
       r <- request("https://api.twitterapi.io/twitter/tweet/advanced_search") |>
         req_url_query(query = paste0("from:", h), queryType = qt, cursor = cursor) |>
-        req_headers(`X-API-Key` = key) |> req_perform()
+        req_headers(`X-API-Key` = key) |> req_timeout(25) |> req_perform()
       d <- resp_body_json(r); arr <- d$tweets %||% list()
       if (length(arr) == 0) break
       acc <- c(acc, arr)
@@ -200,7 +200,7 @@ fetch_perfil <- function(handle, fuente = c("mock","x_api","twitterapi_io")) {
 x_lookup_id <- function(handle, bearer = Sys.getenv("X_BEARER_TOKEN")) {
   h <- gsub("@","",handle)
   resp <- request(sprintf("https://api.twitter.com/2/users/by/username/%s", h)) |>
-    req_auth_bearer_token(bearer) |> req_perform()
+    req_auth_bearer_token(bearer) |> req_timeout(25) |> req_perform()
   resp_body_json(resp)$data$id
 }
 

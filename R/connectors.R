@@ -17,7 +17,7 @@ x_lookup_usuarios <- function(handles, bearer = Sys.getenv("X_BEARER_TOKEN")) {
     resp <- request("https://api.twitter.com/2/users/by") |>
       req_url_query(usernames = paste(lote, collapse=","), `user.fields` = campos) |>
       req_auth_bearer_token(bearer) |>
-      req_perform()
+      req_timeout(25) |> req_perform()
     js <- resp_body_json(resp)
     for (u in js$data) {
       pm <- u$public_metrics
