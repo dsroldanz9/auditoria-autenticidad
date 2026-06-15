@@ -164,8 +164,8 @@ function card(p){const col=colBanda(p.banda);
         (p.en_cohorte?'<span>📅 creada en cohorte</span>':'')+
         ((p.comparten<=1&&!(p.share_auto>0)&&!p.en_cohorte)?'<span class="nota">sin señales de coordinación — parece cuenta real</span>':'')
       }</div>
-      <div style="display:flex;gap:24px;flex-wrap:wrap"><div><div class="sec-h">🎯 A QUIÉN ATACA</div>${lista(p.ataca)}</div>
-        <div><div class="sec-h">📢 A QUIÉN AMPLIFICA</div>${lista(p.amplifica)}</div></div>${reps}
+      <div style="display:flex;gap:24px;flex-wrap:wrap"><div><div class="sec-h">🎯 A QUIÉN LE RESPONDE / ATACA</div>${lista(p.ataca)}</div>
+        <div><div class="sec-h">🔁 A QUIÉN RETUITEA</div>${(p.amplifica&&p.amplifica.length)?lista(p.amplifica):'<span class="nota">no retuitea (solo responde/ataca)</span>'}</div></div>${reps}
       <div class="acc"><button class="btn s" onclick="focusNode('@${p.handle}')">📍 Ver en el mapa</button>
         <button class="btn" onclick="exportar('${p.handle}')">⬇ Descargar imagen</button></div></div></div>`;}
 function coincide(p,q){if(!q)return true;q=q.toLowerCase().replace(/^@/,'');

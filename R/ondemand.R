@@ -11,18 +11,16 @@
 suppressPackageStartupMessages({ library(httr2); library(jsonlite); library(dplyr) })
 `%||%` <- function(a, b) if (is.null(a) || length(a) == 0) b else a
 
-#' Top de cuentas con las que un perfil interactúa (RT, citas, menciones, RESPUESTAS).
-#' Combina menciones del texto + el campo reply_to (a quién le responde/ataca).
+#' AMPLIFICA = a quién RETUITEA (RT @x). Eso sí es amplificar — NO contamos las menciones
+#' en respuestas (ahí están atacando, no amplificando). El ataque va aparte en top_respuestas.
 #' @return data.frame: cuenta, n (desc).
 top_interacciones <- function(tweets, n = 6) {
   if (is.null(tweets) || nrow(tweets) == 0) return(data.frame())
-  ms <- tolower(unlist(regmatches(tweets$text, gregexpr("@\\w{2,}", tweets$text))))
-  if ("reply_to" %in% names(tweets)) {
-    rt <- tolower(tweets$reply_to); ms <- c(ms, rt[!is.na(rt) & nzchar(rt) & rt != "@"])
-  }
-  ms <- ms[nchar(ms) > 2]
-  if (length(ms) == 0) return(data.frame())
-  tb <- sort(table(ms), decreasing = TRUE)
+  m <- regmatches(tweets$text, gregexpr("(?i)RT @\\w{2,}", tweets$text, perl = TRUE))
+  rts <- tolower(gsub("(?i)^rt ", "", unlist(m), perl = TRUE))     # "RT @x" -> "@x"
+  rts <- rts[nchar(rts) > 2]
+  if (length(rts) == 0) return(data.frame())
+  tb <- sort(table(rts), decreasing = TRUE)
   utils::head(data.frame(cuenta = names(tb), n = as.integer(tb), stringsAsFactors = FALSE), n)
 }
 
