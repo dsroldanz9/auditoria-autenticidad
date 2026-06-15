@@ -42,15 +42,29 @@ if (length(clusters) == 0 && length(bodega) >= 2) {
 cat("Consignas:", length(clusters), "\n")
 
 pub <- lapply(bodega, function(p) p)   # perfiles bodega tal cual (ya traen los campos que usa el sitio)
-victimas <- d$conclusiones$top_victimas
 df2list <- function(x) x
+g1 <- function(x) { x <- unlist(x); if (length(x)) x[[1]] else NA }   # desenvuelve arrays de 1
+
+# RED solo de las cuentas BODEGA -> sus objetivos (el enjambre real, no las 161)
+invs <- lapply(bodega, function(p) {
+  a <- utils::head(p$ataca %||% list(), 2)        # solo los 2 objetivos principales (enjambre limpio)
+  td <- if (length(a)) do.call(rbind, lapply(a, function(o) data.frame(
+    cuenta = g1(o$cuenta), n = suppressWarnings(as.integer(g1(o$n))),
+    bando = g1(o$bando), nombre = g1(o$nombre), stringsAsFactors = FALSE))) else
+    data.frame(cuenta=character(), n=integer(), bando=character(), nombre=character())
+  list(handle = p$handle, top = td)
+})
+red <- construir_red(invs)
+cat("Red del enjambre:", nrow(red$nodes), "nodos (11 bodega + sus objetivos)\n")
+# víctimas: a quién atacan las coordinadas
+victimas <- consolidar_amplificadores(invs)
 out <- list(generado = as.character(Sys.time()), fuente = d$fuente,
   conclusiones = list(
     n_total = length(bodega), n_analizadas = length(perf), n_alta = length(bodega),
     n_clusters = length(clusters), clusters = clusters,
-    top_victimas = d$conclusiones$top_victimas, conexion = d$conclusiones$conexion),
+    top_victimas = df2list(utils::head(victimas, 6)), conexion = d$conclusiones$conexion),
   perfiles = pub,
-  narrativa = d$narrativa, red = d$red)
+  narrativa = d$narrativa, red = list(nodes = red$nodes, edges = red$edges))
 write_json(out, "docs/data/investigacion.json", auto_unbox = TRUE, pretty = TRUE, na = "null")
 cat("Publicado:", length(bodega), "cuentas de bodega |", length(clusters), "consignas\n")
 if (length(clusters)) for (i in seq_len(min(3, length(clusters))))
