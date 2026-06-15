@@ -191,9 +191,11 @@ function dibujarRed(d){const cont=document.getElementById('red');
      title:n.id+(n.bando?(" · "+n.bando):"")})));
   const edges=new vis.DataSet(d.red.edges.map(e=>({from:e.from,to:e.to,arrows:{to:{scaleFactor:.4}},color:{color:"#CBD0EC",opacity:.5}})));
   d.red.edges.forEach(e=>{(ADJ[e.from]=ADJ[e.from]||[]).push(e.to);(ADJ[e.to]=ADJ[e.to]||[]).push(e.from);});
-  NET=new vis.Network(cont,{nodes:NODES,edges},{nodes:{shape:"dot",scaling:{min:7,max:46,label:{enabled:true,min:11,max:20}},font:{face:"Inter",color:"#1B1F3B",strokeWidth:3,strokeColor:"#fff"}},
-    edges:{smooth:{type:"continuous"}},physics:{stabilization:{iterations:250},barnesHut:{springLength:150,gravitationalConstant:-4500,centralGravity:.2}},
+  NET=new vis.Network(cont,{nodes:NODES,edges},{layout:{improvedLayout:false},
+    nodes:{shape:"dot",scaling:{min:8,max:46,label:{enabled:true,min:12,max:22}},font:{face:"Inter",color:"#1B1F3B",strokeWidth:3,strokeColor:"#fff"}},
+    edges:{smooth:{type:"continuous"}},physics:{stabilization:{iterations:120},barnesHut:{springLength:160,gravitationalConstant:-5000,centralGravity:.15}},
     interaction:{hover:true,tooltipDelay:100,navigationButtons:true,keyboard:true}});
+  NET.once("stabilizationIterationsDone",()=>{try{NET.setOptions({physics:false});}catch(e){}});
   NET.on("click",p=>{if(p.nodes.length)resaltar(p.nodes[0]);else resetVista();});
   document.getElementById('redinfo').textContent="Mostrando las "+d.red.nodes.length+" cuentas más conectadas (de "+fmt(d.perfiles.length)+" analizadas).";}
 function resaltar(id){const vec=new Set([id,...(ADJ[id]||[])]);
