@@ -21,7 +21,10 @@ analizar_bodega <- function(tweets, creacion = NULL, min_comparten = 4, umbral_a
   if (is.null(tweets) || nrow(tweets) == 0) return(data.frame())
   tw <- tweets
   tw$tn <- normalizar_texto(tw$text)
-  val <- tw[nchar(tw$tn) >= 20, , drop = FALSE]
+  # umbral de longitud: solo texto LARGO específico cuenta como consigna (no frases genéricas
+  # como "firmes por la patria"). Configurable con MIN_LEN_CONSIGNA (default 45).
+  min_len <- suppressWarnings(as.integer(Sys.getenv("MIN_LEN_CONSIGNA"))); if (is.na(min_len)) min_len <- 45
+  val <- tw[nchar(tw$tn) >= min_len, , drop = FALSE]
 
   # (1) coordinación: cuántas cuentas DISTINTAS postean cada texto
   comparten <- if (nrow(val)) tapply(val$handle, val$tn, function(h) length(unique(h))) else integer(0)
