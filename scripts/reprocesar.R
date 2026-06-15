@@ -17,7 +17,13 @@ no_apoyo  <- function(p) !identical(p$stance %||% "", "apoya_pacto")
 bodega <- Filter(function(p) es_bodega(p) && no_apoyo(p), perf)
 cat("Cuentas de bodega:", length(bodega), "(de", length(perf), ")\n")
 
-# CONSIGNAS: agrupar cuentas-bodega por el texto normalizado que repiten
+# CONSIGNAS: si el origen YA trae las consignas correctas (de analizar_bodega), usarlas.
+clusters_src <- d$conclusiones$clusters %||% list()
+if (length(clusters_src) > 0) {
+  clusters <- clusters_src
+  cat("Consignas (del origen):", length(clusters), "\n")
+} else {
+# si no, reconstruir desde los repetidos (fallback, menos fiable)
 m <- list(); ej <- list()
 for (p in bodega) for (r in (p$repetidos %||% list())) {
   t <- normalizar_texto(r$texto %||% ""); if (nchar(t) < 18) next
@@ -38,6 +44,7 @@ if (length(clusters) == 0 && length(bodega) >= 2) {
          n_cuentas = length(g), cuentas = paste0("@", vapply(g, function(p) p$handle, character(1)), collapse = ", "))
   })
   clusters <- Filter(Negate(is.null), clusters)
+}
 }
 cat("Consignas:", length(clusters), "\n")
 

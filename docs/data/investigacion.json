@@ -1,65 +1,65 @@
 {
-  "generado": "2026-06-14 20:11:38.482098",
+  "generado": "2026-06-14 20:33:55.043295",
   "fuente": "twitterapi_io",
   "conclusiones": {
-    "n_total": 11,
-    "n_analizadas": 161,
-    "n_alta": 11,
+    "n_total": 26,
+    "n_analizadas": 26,
+    "n_alta": 26,
     "n_clusters": 1,
     "clusters": [
       {
-        "ejemplo": "@petrogustavo usted siempre con su campaña de desinformación tratando de sumar votos en los mas ignorantes. ¿porq no respeta la voluntad de los colombianos que hemos decidido en mayoría votar por @abdelaespriella? ¡usted con su discurso de odio y politica de beneficiar criminales no va mas!",
-        "n_cuentas": 11,
-        "cuentas": "@jocifuentesd, @soyjennymartiny, @Coachopatriaxd, @Bijou2468, @ANIBALJOSAMADOR, @germanvega66, @jortiztu, @devi91415, @Alantora_, @josedavilachar, @MATEOGO32162031"
+        "ejemplo": "@AlertaNews24 Firmes por la patria",
+        "n_cuentas": 26,
+        "cuentas": "@jocifuentesd, @soyjennymartiny, @Coachopatriaxd, @Bijou2468, @ANIBALJOSAMADOR, @germanvega66, @jortiztu, @devi91415, @Alantora_, @MATEOGO32162031, @pmdearko, @lozano_jua52272, @jaderoriginal, @chila746, @JorgeSe80756483, @natamile0329, @taryn55556021, @mario_mecv, @LuisCarlos0717, @Albert55M, @Alextri17TRIGOS, @aldarheza, @Juanacabinda, @lfcduran, @ManuelJosGonz10, @AndresG87573120"
       }
     ],
     "top_victimas": [
       {
         "cuenta": "@petrogustavo",
-        "n_total": 52,
-        "veces": 6,
+        "n_total": 23,
+        "veces": 5,
         "bando": "pacto",
         "nombre": "Gustavo Petro — Pacto Histórico"
       },
       {
-        "cuenta": "@nacionaloficial",
-        "n_total": 11,
-        "veces": 2,
-        "bando": null,
-        "nombre": null
-      },
-      {
         "cuenta": "@revistasemana",
-        "n_total": 11,
+        "n_total": 9,
         "veces": 2,
         "bando": "derecha",
         "nombre": "Revista Semana — medio"
       },
       {
-        "cuenta": "@ivancepedacast",
-        "n_total": 9,
-        "veces": 2,
-        "bando": "pacto",
-        "nombre": "Iván Cepeda — Pacto Histórico"
+        "cuenta": "@arielanaliza",
+        "n_total": 8,
+        "veces": 3,
+        "bando": null,
+        "nombre": null
       },
       {
-        "cuenta": "@matador000",
-        "n_total": 5,
+        "cuenta": "@mafecarrascal",
+        "n_total": 8,
+        "veces": 2,
+        "bando": "pacto",
+        "nombre": "María Fernanda Carrascal — Pacto"
+      },
+      {
+        "cuenta": "@caracolradio",
+        "n_total": 7,
         "veces": 1,
         "bando": null,
         "nombre": null
       },
       {
-        "cuenta": "@alertanews24",
-        "n_total": 4,
+        "cuenta": "@nacionaloficial",
+        "n_total": 7,
         "veces": 1,
         "bando": null,
         "nombre": null
       }
     ],
     "conexion": {
-      "n_puente": 43,
-      "pct": 27
+      "n_puente": 5,
+      "pct": 19
     }
   },
   "perfiles": [
@@ -68,43 +68,18 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 1691,
       "tweets_dia": 4.44,
       "reply_share": 1,
       "followers": 12,
-      "n_flags": 4,
-      "senales": [
-        "casi solo responde/comenta (torpedo)",
-        "sigue a muchos / pocos seguidores",
-        "handle aleatorio",
-        "sin biografía"
-      ],
       "ataca": [
-        {
-          "cuenta": "@alertanews24",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
-        },
         {
           "cuenta": "@estoescambio",
           "n": 4,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@lasillavacia",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@claudialopez",
-          "n": 3,
           "nombre": {},
           "bando": {}
         },
@@ -115,31 +90,31 @@
           "bando": {}
         },
         {
+          "cuenta": "@lasillavacia",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
           "cuenta": "@ivancepedacast",
           "n": 2,
           "nombre": "Iván Cepeda — Pacto Histórico",
           "bando": "pacto"
-        }
-      ],
-      "amplifica": [
-        {
-          "cuenta": "@ivancepedacast",
-          "n": 9,
-          "nombre": "Iván Cepeda — Pacto Histórico",
-          "bando": "pacto"
         },
         {
-          "cuenta": "@abdelaespriella",
-          "n": 8,
-          "nombre": "Abelardo de la Espriella — candidato",
-          "bando": "derecha"
-        },
-        {
-          "cuenta": "@alertanews24",
-          "n": 8,
+          "cuenta": "@_ksolerc",
+          "n": 1,
           "nombre": {},
           "bando": {}
         },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 1,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        }
+      ],
+      "amplifica": [
         {
           "cuenta": "@estoescambio",
           "n": 8,
@@ -147,14 +122,32 @@
           "bando": {}
         },
         {
+          "cuenta": "@abdelaespriella",
+          "n": 7,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 7,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
           "cuenta": "@lasillavacia",
-          "n": 8,
+          "n": 6,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@claudialopez",
-          "n": 6,
+          "cuenta": "@luisernestogl",
+          "n": 5,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jocifuentesd",
+          "n": 3,
           "nombre": {},
           "bando": {}
         }
@@ -166,37 +159,20 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 2528,
       "tweets_dia": 0.84,
       "reply_share": 1,
       "followers": 248,
-      "n_flags": 2,
-      "senales": [
-        "casi solo responde/comenta (torpedo)",
-        "handle aleatorio"
-      ],
       "ataca": [
         {
           "cuenta": "@revistasemana",
-          "n": 5,
+          "n": 4,
           "nombre": "Revista Semana — medio",
           "bando": "derecha"
-        },
-        {
-          "cuenta": "@eltiempo",
-          "n": 3,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@ojocolombia2026",
-          "n": 3,
-          "nombre": {},
-          "bando": {}
         },
         {
           "cuenta": "@vickydavilah",
@@ -211,7 +187,19 @@
           "bando": {}
         },
         {
-          "cuenta": "@delaespriellae",
+          "cuenta": "@derechadiarioco",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 2,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@ojocolombia2026",
           "n": 2,
           "nombre": {},
           "bando": {}
@@ -220,37 +208,37 @@
       "amplifica": [
         {
           "cuenta": "@petrogustavo",
-          "n": 14,
+          "n": 8,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
           "cuenta": "@revistasemana",
-          "n": 11,
+          "n": 8,
           "nombre": "Revista Semana — medio",
           "bando": "derecha"
         },
         {
           "cuenta": "@abdelaespriella",
-          "n": 9,
+          "n": 6,
           "nombre": "Abelardo de la Espriella — candidato",
           "bando": "derecha"
         },
         {
-          "cuenta": "@eltiempo",
+          "cuenta": "@vickydavilah",
           "n": 6,
           "nombre": {},
           "bando": {}
         },
         {
           "cuenta": "@ivancepedacast",
-          "n": 6,
+          "n": 5,
           "nombre": "Iván Cepeda — Pacto Histórico",
           "bando": "pacto"
         },
         {
-          "cuenta": "@ojocolombia2026",
-          "n": 6,
+          "cuenta": "@316_edgar",
+          "n": 4,
           "nombre": {},
           "bando": {}
         }
@@ -262,28 +250,18 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 1645,
-      "tweets_dia": 8.5,
-      "reply_share": 0.95,
+      "tweets_dia": 8.51,
+      "reply_share": 0.975,
       "followers": 55,
-      "n_flags": 1,
-      "senales": [
-        "casi solo responde/comenta (torpedo)"
-      ],
       "ataca": [
         {
-          "cuenta": "@federicoboterop",
-          "n": 3,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@kristel152",
-          "n": 3,
+          "cuenta": "@elultimochompy",
+          "n": 4,
           "nombre": {},
           "bando": {}
         },
@@ -295,6 +273,12 @@
         },
         {
           "cuenta": "@dipaoabadia",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@federicoboterop",
           "n": 2,
           "nombre": {},
           "bando": {}
@@ -314,14 +298,20 @@
       ],
       "amplifica": [
         {
-          "cuenta": "@federicoboterop",
+          "cuenta": "@elultimochompy",
+          "n": 8,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ojocolombia2026",
           "n": 6,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@kristel152",
-          "n": 6,
+          "cuenta": "@lauxhope",
+          "n": 5,
           "nombre": {},
           "bando": {}
         },
@@ -333,12 +323,6 @@
         },
         {
           "cuenta": "@alexasrv87",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@danielsampero",
           "n": 4,
           "nombre": {},
           "bando": {}
@@ -357,28 +341,24 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 5660,
       "tweets_dia": 6.76,
-      "reply_share": 0.606,
+      "reply_share": 0.579,
       "followers": 949,
-      "n_flags": 1,
-      "senales": [
-        "handle aleatorio"
-      ],
       "ataca": [
         {
           "cuenta": "@ivancepedacast",
-          "n": 7,
+          "n": 4,
           "nombre": "Iván Cepeda — Pacto Histórico",
           "bando": "pacto"
         },
         {
           "cuenta": "@petrogustavo",
-          "n": 3,
+          "n": 2,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
@@ -390,12 +370,6 @@
         },
         {
           "cuenta": "@carlosfgalan",
-          "n": 1,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@carlosvicentesa",
           "n": 1,
           "nombre": {},
           "bando": {}
@@ -405,32 +379,32 @@
           "n": 1,
           "nombre": {},
           "bando": {}
+        },
+        {
+          "cuenta": "@claudialopez",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
         }
       ],
       "amplifica": [
         {
           "cuenta": "@ivancepedacast",
-          "n": 19,
+          "n": 10,
           "nombre": "Iván Cepeda — Pacto Histórico",
           "bando": "pacto"
         },
         {
-          "cuenta": "@abdelaespriella",
-          "n": 8,
-          "nombre": "Abelardo de la Espriella — candidato",
-          "bando": "derecha"
-        },
-        {
           "cuenta": "@petrogustavo",
-          "n": 8,
+          "n": 6,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
-          "cuenta": "@pizarromariajo",
-          "n": 3,
-          "nombre": {},
-          "bando": {}
+          "cuenta": "@abdelaespriella",
+          "n": 5,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
         },
         {
           "cuenta": "@bandalossc",
@@ -440,6 +414,12 @@
         },
         {
           "cuenta": "@carlosfgalan",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@cesaragal",
           "n": 2,
           "nombre": {},
           "bando": {}
@@ -452,20 +432,18 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 4721,
       "tweets_dia": 8.56,
-      "reply_share": 0.169,
+      "reply_share": 0.325,
       "followers": 639,
-      "n_flags": 0,
-      "senales": [],
       "ataca": [
         {
           "cuenta": "@petrogustavo",
-          "n": 6,
+          "n": 3,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
@@ -476,13 +454,13 @@
           "bando": "pacto"
         },
         {
-          "cuenta": "@aabenedetti",
+          "cuenta": "@elcolombiano",
           "n": 1,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@aniabello_r",
+          "cuenta": "@elizbethcristi7",
           "n": 1,
           "nombre": {},
           "bando": {}
@@ -494,7 +472,7 @@
           "bando": {}
         },
         {
-          "cuenta": "@fisicoimpuro",
+          "cuenta": "@jarizabaletaf",
           "n": 1,
           "nombre": {},
           "bando": {}
@@ -503,36 +481,36 @@
       "amplifica": [
         {
           "cuenta": "@petrogustavo",
-          "n": 14,
+          "n": 8,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
           "cuenta": "@ivancepedacast",
-          "n": 7,
+          "n": 4,
           "nombre": "Iván Cepeda — Pacto Histórico",
           "bando": "pacto"
         },
         {
-          "cuenta": "@palomavalencial",
-          "n": 3,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@aabenedetti",
+          "cuenta": "@elcolombiano",
           "n": 2,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@aniabello_r",
+          "cuenta": "@elizbethcristi7",
           "n": 2,
           "nombre": {},
           "bando": {}
         },
         {
           "cuenta": "@elrorodry",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jarizabaletaf",
           "n": 2,
           "nombre": {},
           "bando": {}
@@ -545,28 +523,24 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 4140,
       "tweets_dia": 12.13,
-      "reply_share": 0.967,
+      "reply_share": 0.975,
       "followers": 2721,
-      "n_flags": 1,
-      "senales": [
-        "casi solo responde/comenta (torpedo)"
-      ],
       "ataca": [
         {
           "cuenta": "@petrogustavo",
-          "n": 7,
+          "n": 6,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
           "cuenta": "@matador000",
-          "n": 5,
+          "n": 4,
           "nombre": {},
           "bando": {}
         },
@@ -589,7 +563,7 @@
           "bando": {}
         },
         {
-          "cuenta": "@fisicoimpuro",
+          "cuenta": "@melquisedec70",
           "n": 2,
           "nombre": {},
           "bando": {}
@@ -598,21 +572,15 @@
       "amplifica": [
         {
           "cuenta": "@petrogustavo",
-          "n": 19,
+          "n": 15,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
           "cuenta": "@matador000",
-          "n": 10,
+          "n": 8,
           "nombre": {},
           "bando": {}
-        },
-        {
-          "cuenta": "@abdelaespriella",
-          "n": 8,
-          "nombre": "Abelardo de la Espriella — candidato",
-          "bando": "derecha"
         },
         {
           "cuenta": "@emiliolagos1",
@@ -621,13 +589,19 @@
           "bando": {}
         },
         {
-          "cuenta": "@millosfcoficial",
-          "n": 6,
+          "cuenta": "@abdelaespriella",
+          "n": 5,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@argirocasta888",
+          "n": 4,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@argirocasta888",
+          "cuenta": "@danielsampero",
           "n": 4,
           "nombre": {},
           "bando": {}
@@ -640,37 +614,26 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 4852,
       "tweets_dia": 0.4,
-      "reply_share": 0.65,
+      "reply_share": 0.55,
       "followers": 66,
-      "n_flags": 2,
-      "senales": [
-        "sigue a muchos / pocos seguidores",
-        "sin biografía"
-      ],
       "ataca": [
         {
           "cuenta": "@nacionaloficial",
-          "n": 8,
+          "n": 7,
           "nombre": {},
           "bando": {}
         },
         {
           "cuenta": "@petrogustavo",
-          "n": 5,
+          "n": 4,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
-        },
-        {
-          "cuenta": "@dimayor",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
         },
         {
           "cuenta": "@ivancepedacast",
@@ -679,13 +642,19 @@
           "bando": "pacto"
         },
         {
-          "cuenta": "@riosgonzalezp",
-          "n": 2,
+          "cuenta": "@adrianaveterin",
+          "n": 1,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@adrianaveterin",
+          "cuenta": "@alezis7",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@byviral24",
           "n": 1,
           "nombre": {},
           "bando": {}
@@ -694,39 +663,39 @@
       "amplifica": [
         {
           "cuenta": "@nacionaloficial",
-          "n": 20,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@dimayor",
-          "n": 12,
+          "n": 15,
           "nombre": {},
           "bando": {}
         },
         {
           "cuenta": "@petrogustavo",
-          "n": 12,
+          "n": 9,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
           "cuenta": "@ivancepedacast",
-          "n": 7,
+          "n": 6,
           "nombre": "Iván Cepeda — Pacto Histórico",
           "bando": "pacto"
-        },
-        {
-          "cuenta": "@riosgonzalezp",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
         },
         {
           "cuenta": "@cesaralo",
           "n": 3,
           "nombre": {},
           "bando": {}
+        },
+        {
+          "cuenta": "@jrestrp",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 2,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
         }
       ],
       "repetidos": []
@@ -736,54 +705,48 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 675,
       "tweets_dia": 1.68,
-      "reply_share": 0.95,
-      "followers": 8,
-      "n_flags": 3,
-      "senales": [
-        "casi solo responde/comenta (torpedo)",
-        "handle aleatorio",
-        "sin biografía"
-      ],
+      "reply_share": 0.925,
+      "followers": 9,
       "ataca": [
         {
           "cuenta": "@revistasemana",
-          "n": 6,
+          "n": 5,
           "nombre": "Revista Semana — medio",
           "bando": "derecha"
         },
         {
           "cuenta": "@adrianaveterin",
-          "n": 3,
+          "n": 2,
           "nombre": {},
           "bando": {}
         },
         {
           "cuenta": "@eduardomenoni",
-          "n": 3,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@_ursul4",
           "n": 2,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@jhonny_pv71",
+          "cuenta": "@mariafdacabal",
           "n": 2,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@johanitaefe",
+          "cuenta": "@palomavalencial",
           "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abelardopte",
+          "n": 1,
           "nombre": {},
           "bando": {}
         }
@@ -791,37 +754,37 @@
       "amplifica": [
         {
           "cuenta": "@revistasemana",
-          "n": 13,
+          "n": 11,
           "nombre": "Revista Semana — medio",
           "bando": "derecha"
         },
         {
           "cuenta": "@abdelaespriella",
-          "n": 10,
+          "n": 7,
           "nombre": "Abelardo de la Espriella — candidato",
           "bando": "derecha"
         },
         {
           "cuenta": "@adrianaveterin",
-          "n": 8,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@eduardomenoni",
-          "n": 6,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@soyjaimeandres",
-          "n": 6,
+          "n": 5,
           "nombre": {},
           "bando": {}
         },
         {
           "cuenta": "@byviral24",
-          "n": 5,
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@defensoresco",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@eduardomenoni",
+          "n": 4,
           "nombre": {},
           "bando": {}
         }
@@ -833,34 +796,24 @@
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 2223,
       "tweets_dia": 2.39,
       "reply_share": 1,
       "followers": 102,
-      "n_flags": 1,
-      "senales": [
-        "casi solo responde/comenta (torpedo)"
-      ],
       "ataca": [
         {
           "cuenta": "@petrogustavo",
-          "n": 10,
+          "n": 8,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
           "cuenta": "@arielanaliza",
           "n": 3,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@alfredod1a",
-          "n": 2,
           "nombre": {},
           "bando": {}
         },
@@ -877,8 +830,14 @@
           "bando": {}
         },
         {
-          "cuenta": "@luisgmurillo",
-          "n": 2,
+          "cuenta": "@adrianaveterin",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@alber39334",
+          "n": 1,
           "nombre": {},
           "bando": {}
         }
@@ -886,23 +845,23 @@
       "amplifica": [
         {
           "cuenta": "@petrogustavo",
-          "n": 21,
+          "n": 17,
           "nombre": "Gustavo Petro — Pacto Histórico",
           "bando": "pacto"
         },
         {
+          "cuenta": "@arielanaliza",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
           "cuenta": "@ivancepedacast",
-          "n": 14,
+          "n": 6,
           "nombre": "Iván Cepeda — Pacto Histórico",
           "bando": "pacto"
         },
         {
-          "cuenta": "@arielanaliza",
-          "n": 6,
-          "nombre": {},
-          "bando": {}
-        },
-        {
           "cuenta": "@caracolradio",
           "n": 5,
           "nombre": {},
@@ -915,148 +874,30 @@
           "bando": {}
         },
         {
-          "cuenta": "@mafecarrascal",
-          "n": 5,
-          "nombre": "María Fernanda Carrascal — Pacto",
-          "bando": "pacto"
-        }
-      ],
-      "repetidos": []
-    },
-    {
-      "handle": "josedavilachar",
-      "banda": "Bodega — texto coordinado",
-      "stance": "ataca_pacto",
-      "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
-      "pct": 100,
-      "edad_dias": 1185,
-      "tweets_dia": 16.3,
-      "reply_share": 0.883,
-      "followers": 1737,
-      "n_flags": 2,
-      "senales": [
-        "casi solo responde/comenta (torpedo)",
-        "handle aleatorio"
-      ],
-      "ataca": [
-        {
-          "cuenta": "@petrogustavo",
-          "n": 21,
-          "nombre": "Gustavo Petro — Pacto Histórico",
-          "bando": "pacto"
-        },
-        {
-          "cuenta": "@claudialopez",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@rtvcnoticias",
+          "cuenta": "@pizarromariajo",
           "n": 3,
           "nombre": {},
           "bando": {}
-        },
-        {
-          "cuenta": "@abdelaespriella",
-          "n": 2,
-          "nombre": "Abelardo de la Espriella — candidato",
-          "bando": "derecha"
-        },
-        {
-          "cuenta": "@andreycama47167",
-          "n": 2,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@diablazurda",
-          "n": 2,
-          "nombre": {},
-          "bando": {}
         }
       ],
-      "amplifica": [
-        {
-          "cuenta": "@petrogustavo",
-          "n": 60,
-          "nombre": "Gustavo Petro — Pacto Histórico",
-          "bando": "pacto"
-        },
-        {
-          "cuenta": "@abdelaespriella",
-          "n": 11,
-          "nombre": "Abelardo de la Espriella — candidato",
-          "bando": "derecha"
-        },
-        {
-          "cuenta": "@claudialopez",
-          "n": 8,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@rtvcnoticias",
-          "n": 6,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@andreycama47167",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@diablazurda",
-          "n": 4,
-          "nombre": {},
-          "bando": {}
-        }
-      ],
-      "repetidos": [
-        {
-          "texto": "@petrogustavo usted siempre con su campaña de desinformación tratando de sumar votos en los mas ignorantes. ¿porq no respeta la voluntad de los colombianos que hemos decidido en mayoría votar por @abdelaespriella? ¡usted con su discurso de odio y politica de beneficiar criminales no va mas!",
-          "veces": 2
-        }
-      ]
+      "repetidos": []
     },
     {
       "handle": "MATEOGO32162031",
       "banda": "Bodega — texto coordinado",
       "stance": "ataca_pacto",
       "bodega": true,
-      "share_auto": 0,
-      "comparten": 11,
-      "en_cohorte": false,
       "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
       "edad_dias": 1601,
       "tweets_dia": 7,
-      "reply_share": 0.867,
+      "reply_share": 0.85,
       "followers": 62,
-      "n_flags": 2,
-      "senales": [
-        "casi solo responde/comenta (torpedo)",
-        "handle aleatorio"
-      ],
       "ataca": [
         {
-          "cuenta": "@nacionaloficial",
-          "n": 3,
-          "nombre": {},
-          "bando": {}
-        },
-        {
           "cuenta": "@laucrdna",
-          "n": 2,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@maps_black",
           "n": 2,
           "nombre": {},
           "bando": {}
@@ -1068,13 +909,25 @@
           "bando": {}
         },
         {
-          "cuenta": "@__santiag0",
+          "cuenta": "@amoaldim",
           "n": 1,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@amoaldim",
+          "cuenta": "@belu_martinez6",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@eldelmedallo",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@elizbethcristi7",
           "n": 1,
           "nombre": {},
           "bando": {}
@@ -1082,38 +935,1525 @@
       ],
       "amplifica": [
         {
-          "cuenta": "@nacionaloficial",
-          "n": 8,
-          "nombre": {},
-          "bando": {}
-        },
-        {
-          "cuenta": "@maps_black",
-          "n": 5,
-          "nombre": {},
-          "bando": {}
-        },
-        {
           "cuenta": "@laucrdna",
           "n": 4,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@dim_oficial",
-          "n": 3,
+          "cuenta": "@nacionaloficial",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@___lav0",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@amoaldim",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@belu_martinez6",
+          "n": 2,
           "nombre": {},
           "bando": {}
         },
         {
           "cuenta": "@eldelmedallo",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "pmdearko",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 414,
+      "tweets_dia": 15.06,
+      "reply_share": 1,
+      "followers": 13,
+      "ataca": [
+        {
+          "cuenta": "@esthercastrol",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@rtvcnoticias",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@bandalossc",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@carjavi72",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@dejanirasilveir",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@inesbetancur1",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@esthercastrol",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@rtvcnoticias",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 3,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@matador000",
           "n": 3,
           "nombre": {},
           "bando": {}
         },
         {
-          "cuenta": "@sergio_fajardo",
+          "cuenta": "@bandalossc",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@carjavi72",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "lozano_jua52272",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 949,
+      "tweets_dia": 1.47,
+      "reply_share": 0.85,
+      "followers": 47,
+      "ataca": [
+        {
+          "cuenta": "@bandalossc",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jackietoloza",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@sargentochala",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@aapayes",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@andres20ad",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@cedemocratico",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@aapayes",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@bandalossc",
+          "n": 5,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@petrogustavo",
+          "n": 5,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@jackietoloza",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@rocioinfantesb",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@sargentochala",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "jaderoriginal",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 5214,
+      "tweets_dia": 8.99,
+      "reply_share": 0.925,
+      "followers": 467,
+      "ataca": [
+        {
+          "cuenta": "@hanwenzhang1982",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@betrand_russell",
           "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@danielmunozgo1",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@danielsampero",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@sandra_chindoy",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@casandromartell",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@hanwenzhang1982",
+          "n": 12,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@betrand_russell",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@danielmunozgo1",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@danielsampero",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@sandra_chindoy",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@casandromartell",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@hanwenzhang1982",
+          "veces": 6
+        },
+        {
+          "texto": "@betrand_russell",
+          "veces": 3
+        },
+        {
+          "texto": "@casandromartell @angelabenedet",
+          "veces": 2
+        },
+        {
+          "texto": "@danielmunozgo1",
+          "veces": 2
+        },
+        {
+          "texto": "@sandra_chindoy",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "chila746",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 4167,
+      "tweets_dia": 53.84,
+      "reply_share": 0.825,
+      "followers": 1165,
+      "ataca": [
+        {
+          "cuenta": "@melquisedec70",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@anabejaranorg",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ultimahoracr",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@aleomanao",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@caracolbga",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@colombiaenmacro",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@melquisedec70",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@anabejaranorg",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ultimahoracr",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@dcoronell",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@petrogustavo",
+          "n": 3,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 2,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "JorgeSe80756483",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 4420,
+      "tweets_dia": 14.75,
+      "reply_share": 1,
+      "followers": 2288,
+      "ataca": [
+        {
+          "cuenta": "@elonmusk",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@millersoto",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@deisydorelly",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jorgeandresbell",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@mariafdacabal",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@puertarestrepo4",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 10,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@elonmusk",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@millersoto",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@deisydorelly",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jorgeandresbell",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@mariafdacabal",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "natamile0329",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 4269,
+      "tweets_dia": 1.01,
+      "reply_share": 0.95,
+      "followers": 153,
+      "ataca": [
+        {
+          "cuenta": "@lafm",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@monyrodriguezof",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@noticiasrcn",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ojocolombia2026",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 1,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@abrahamendieta",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 9,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@lafm",
+          "n": 5,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@noticiasrcn",
+          "n": 5,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@carloswi728",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@monyrodriguezof",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ojocolombia2026",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "taryn55556021",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 2122,
+      "tweets_dia": 1.36,
+      "reply_share": 1,
+      "followers": 47,
+      "ataca": [
+        {
+          "cuenta": "@abelardopte",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@cardenasjorgee",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@carlosc45340775",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@isazuleta",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 1,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@jcuestanovoa",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 3,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@abelardopte",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@cardenasjorgee",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@carlosc45340775",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@isazuleta",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jcuestanovoa",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "mario_mecv",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 3006,
+      "tweets_dia": 13.92,
+      "reply_share": 1,
+      "followers": 210,
+      "ataca": [
+        {
+          "cuenta": "@fpacan",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@grok",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@adri_isabela",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@anabejaranorg",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@mariamatusv",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ramirobejaranog",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@fpacan",
+          "n": 17,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@grok",
+          "n": 16,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jrestrp",
+          "n": 12,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@lucas_marinll",
+          "n": 10,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@adri_isabela",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@anabejaranorg",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "LuisCarlos0717",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 5827,
+      "tweets_dia": 0.15,
+      "reply_share": 0.885,
+      "followers": 51,
+      "ataca": [
+        {
+          "cuenta": "@rafapal",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 1,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@actbrigitte",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@bandalossc",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@dianangel01",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@divulgacionfull",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@petrogustavo",
+          "n": 4,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@rafapal",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@divulgacionfull",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@prayingmedic",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 2,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@actbrigitte",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "Albert55M",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 1182,
+      "tweets_dia": 0.78,
+      "reply_share": 1,
+      "followers": 24,
+      "ataca": [
+        {
+          "cuenta": "@dianama46158538",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@arielanaliza",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@monicasaadex",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@valentinarauj18",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@alazamo123",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@arleyarles",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@dianama46158538",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@arielanaliza",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@monicasaadex",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@valentinarauj18",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 3,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@alazamo123",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "Alextri17TRIGOS",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 5160,
+      "tweets_dia": 6.56,
+      "reply_share": 0.825,
+      "followers": 459,
+      "ataca": [
+        {
+          "cuenta": "@mafecarrascal",
+          "n": 3,
+          "nombre": "María Fernanda Carrascal — Pacto",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@migueldelrioabg",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@petrogustavo",
+          "n": 2,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@sandra_chindoy",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@sargentochala",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@senalcolombia",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@mafecarrascal",
+          "n": 6,
+          "nombre": "María Fernanda Carrascal — Pacto",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@petrogustavo",
+          "n": 6,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 5,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@migueldelrioabg",
+          "n": 5,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@sandra_chindoy",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@sargentochala",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "aldarheza",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 3572,
+      "tweets_dia": 9.47,
+      "reply_share": 1,
+      "followers": 10065,
+      "ataca": [
+        {
+          "cuenta": "@mariaicampoc",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@oracion_milagro",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@andreash1",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@lilianacastanog",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@rtvcnoticias",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@alvarodiaznarra",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@mariaicampoc",
+          "n": 8,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@oracion_milagro",
+          "n": 8,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@andreash1",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@lilianacastanog",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@rtvcnoticias",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 2,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@oracion_milagro amén.",
+          "veces": 4
+        }
+      ]
+    },
+    {
+      "handle": "Juanacabinda",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 5615,
+      "tweets_dia": 5.81,
+      "reply_share": 1,
+      "followers": 1114,
+      "ataca": [
+        {
+          "cuenta": "@a_vashta_nerada",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@irjaimico",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 2,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@abelardopte",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@dcoronell",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@jenniferpedraz",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@a_vashta_nerada",
+          "n": 14,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@irjaimico",
+          "n": 12,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@zyberia",
+          "n": 12,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abdelaespriella",
+          "n": 9,
+          "nombre": "Abelardo de la Espriella — candidato",
+          "bando": "derecha"
+        },
+        {
+          "cuenta": "@_____kikin_____",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@abelardopte",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "lfcduran",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 4375,
+      "tweets_dia": 0.19,
+      "reply_share": 0.9,
+      "followers": 25,
+      "ataca": [
+        {
+          "cuenta": "@caracolradio",
+          "n": 7,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ojocolombia2026",
+          "n": 5,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@petrogustavo",
+          "n": 4,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@bluradioco",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@petrogustvago",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@analistaclara2",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@petrogustavo",
+          "n": 16,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@caracolradio",
+          "n": 14,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ojocolombia2026",
+          "n": 10,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 5,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@bluradioco",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@petrogustvago",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": [
+        {
+          "texto": "@petrogustavo",
+          "veces": 2
+        }
+      ]
+    },
+    {
+      "handle": "ManuelJosGonz10",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 1465,
+      "tweets_dia": 13.41,
+      "reply_share": 1,
+      "followers": 1167,
+      "ataca": [
+        {
+          "cuenta": "@athenea912",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@marbelle30",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@mnicagonzlezpr2",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@puntodequiebr15",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@renatasokolov",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@capgusmanx",
+          "n": 1,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@athenea912",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@puntodequiebr15",
+          "n": 5,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@marbelle30",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@mnicagonzlezpr2",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@renatasokolov",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@soyjerome__",
+          "n": 4,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "repetidos": []
+    },
+    {
+      "handle": "AndresG87573120",
+      "banda": "Bodega — texto coordinado",
+      "stance": "ataca_pacto",
+      "bodega": true,
+      "pct": 100,
+      "share_auto": 0,
+      "comparten": 26,
+      "en_cohorte": false,
+      "edad_dias": 1860,
+      "tweets_dia": 12.35,
+      "reply_share": 0.925,
+      "followers": 73,
+      "ataca": [
+        {
+          "cuenta": "@mafecarrascal",
+          "n": 5,
+          "nombre": "María Fernanda Carrascal — Pacto",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@arielanaliza",
+          "n": 3,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 3,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@petrogustavo",
+          "n": 3,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@bluradioco",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@oscar_rod10",
+          "n": 2,
+          "nombre": {},
+          "bando": {}
+        }
+      ],
+      "amplifica": [
+        {
+          "cuenta": "@mafecarrascal",
+          "n": 11,
+          "nombre": "María Fernanda Carrascal — Pacto",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@ivancepedacast",
+          "n": 10,
+          "nombre": "Iván Cepeda — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@arielanaliza",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@bluradioco",
+          "n": 6,
+          "nombre": {},
+          "bando": {}
+        },
+        {
+          "cuenta": "@petrogustavo",
+          "n": 6,
+          "nombre": "Gustavo Petro — Pacto Histórico",
+          "bando": "pacto"
+        },
+        {
+          "cuenta": "@aida_quilcue",
+          "n": 4,
           "nombre": {},
           "bando": {}
         }
@@ -1124,126 +2464,126 @@
   "narrativa": {
     "palabras": [
       {
-        "termino": "petro",
-        "n": 472
+        "termino": "patria",
+        "n": 176
+      },
+      {
+        "termino": "firmes",
+        "n": 157
       },
       {
         "termino": "cepeda",
-        "n": 408
-      },
-      {
-        "termino": "comunista",
-        "n": 337
-      },
-      {
-        "termino": "está",
-        "n": 305
-      },
-      {
-        "termino": "colombia",
-        "n": 296
-      },
-      {
-        "termino": "usted",
-        "n": 289
+        "n": 55
       },
       {
         "termino": "abelardo",
-        "n": 285
+        "n": 48
       },
       {
-        "termino": "mierda",
-        "n": 222
+        "termino": "colombia",
+        "n": 41
       },
       {
-        "termino": "guerrillero",
-        "n": 175
+        "termino": "izquierda",
+        "n": 32
       },
       {
-        "termino": "gente",
-        "n": 174
+        "termino": "presidente",
+        "n": 31
       },
       {
-        "termino": "votos",
-        "n": 157
+        "termino": "tigre",
+        "n": 27
       },
       {
-        "termino": "jajajaja",
-        "n": 157
+        "termino": "jajaja",
+        "n": 26
       },
       {
-        "termino": "solo",
-        "n": 150
-      },
-      {
-        "termino": "tiene",
-        "n": 140
+        "termino": "señor",
+        "n": 26
       },
       {
         "termino": "país",
-        "n": 137
+        "n": 22
+      },
+      {
+        "termino": "jajajaja",
+        "n": 22
+      },
+      {
+        "termino": "farc",
+        "n": 17
+      },
+      {
+        "termino": "está",
+        "n": 16
+      },
+      {
+        "termino": "espriella",
+        "n": 15
       }
     ],
     "hashtags": [
       {
-        "termino": "#firmesporlapatria",
-        "n": 28
-      },
-      {
-        "termino": "",
-        "n": 19
-      },
-      {
-        "termino": "tria\n\n#firmesporla",
-        "n": 18
-      },
-      {
-        "termino": "#abelardoserápresidente",
-        "n": 14
+        "termino": "#firmesconeltigre",
+        "n": 3
       },
       {
         "termino": "#firmesporlapatría",
-        "n": 12
-      },
-      {
-        "termino": "ria\n#firmesporlapa",
-        "n": 7
-      },
-      {
-        "termino": "#fuerapetro",
-        "n": 6
-      },
-      {
-        "termino": "#firmesconeltigre",
-        "n": 4
-      },
-      {
-        "termino": "irmesporlapatria @",
-        "n": 4
-      },
-      {
-        "termino": "tría\n\n#firmesporla",
-        "n": 4
-      },
-      {
-        "termino": "#abelardopresidente",
         "n": 3
+      },
+      {
+        "termino": "#ficopresidente2022",
+        "n": 2
+      },
+      {
+        "termino": "#capicciperalocas",
+        "n": 1
+      },
+      {
+        "termino": "#firmeporlapatria",
+        "n": 1
+      },
+      {
+        "termino": "#firmes",
+        "n": 1
+      },
+      {
+        "termino": "#firmesporlapatriamilagro",
+        "n": 1
       },
       {
         "termino": "#petronuncaserapresidente",
-        "n": 3
+        "n": 1
       },
       {
-        "termino": "abelardoserápresidente ",
-        "n": 3
+        "termino": "#quinterohampónsuspendido",
+        "n": 1
       },
       {
-        "termino": "rapetro #fu",
-        "n": 3
+        "termino": "atasdelasplayas https:",
+        "n": 1
       },
       {
-        "termino": "ápresidente https://t.c",
-        "n": 3
+        "termino": "cciperalocas\n#soy",
+        "n": 1
+      },
+      {
+        "termino": "lapatria @revistas",
+        "n": 1
+      },
+      {
+        "termino": "munistamillonario fe",
+        "n": 1
+      },
+      {
+        "termino": "posicion http",
+        "n": 1
+      },
+      {
+        "termino": "rxista de",
+        "n": 1
       }
     ]
   },
@@ -1253,7 +2593,7 @@
         "id": "@jocifuentesd",
         "bando": null,
         "tipo": "analizada",
-        "grado": 2
+        "grado": 3
       },
       {
         "id": "@soyjennymartiny",
@@ -1304,22 +2644,106 @@
         "grado": 2
       },
       {
-        "id": "@josedavilachar",
-        "bando": null,
-        "tipo": "analizada",
-        "grado": 2
-      },
-      {
         "id": "@MATEOGO32162031",
         "bando": null,
         "tipo": "analizada",
         "grado": 2
       },
       {
-        "id": "@alertanews24",
+        "id": "@pmdearko",
         "bando": null,
-        "tipo": "amplificada",
-        "grado": 1
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@lozano_jua52272",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@jaderoriginal",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@chila746",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@JorgeSe80756483",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@natamile0329",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@taryn55556021",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@mario_mecv",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@LuisCarlos0717",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@Albert55M",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@Alextri17TRIGOS",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@aldarheza",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@Juanacabinda",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@lfcduran",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@ManuelJosGonz10",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
+      },
+      {
+        "id": "@AndresG87573120",
+        "bando": null,
+        "tipo": "analizada",
+        "grado": 2
       },
       {
         "id": "@estoescambio",
@@ -1334,19 +2758,19 @@
         "grado": 2
       },
       {
-        "id": "@eltiempo",
+        "id": "@vickydavilah",
         "bando": null,
         "tipo": "amplificada",
         "grado": 1
       },
       {
-        "id": "@federicoboterop",
+        "id": "@elultimochompy",
         "bando": null,
         "tipo": "amplificada",
         "grado": 1
       },
       {
-        "id": "@kristel152",
+        "id": "@alexasrv87",
         "bando": null,
         "tipo": "amplificada",
         "grado": 1
@@ -1361,7 +2785,7 @@
         "id": "@petrogustavo",
         "bando": "pacto",
         "tipo": "amplificada",
-        "grado": 6
+        "grado": 5
       },
       {
         "id": "@matador000",
@@ -1373,7 +2797,7 @@
         "id": "@nacionaloficial",
         "bando": null,
         "tipo": "amplificada",
-        "grado": 2
+        "grado": 1
       },
       {
         "id": "@adrianaveterin",
@@ -1385,16 +2809,190 @@
         "id": "@arielanaliza",
         "bando": null,
         "tipo": "amplificada",
-        "grado": 1
+        "grado": 3
       },
       {
-        "id": "@claudialopez",
+        "id": "@laucrdna",
         "bando": null,
         "tipo": "amplificada",
         "grado": 1
       },
       {
-        "id": "@laucrdna",
+        "id": "@___lav0",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@esthercastrol",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@rtvcnoticias",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@bandalossc",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@jackietoloza",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@hanwenzhang1982",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@betrand_russell",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@melquisedec70",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@anabejaranorg",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@elonmusk",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@millersoto",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@lafm",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@monyrodriguezof",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@abelardopte",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@cardenasjorgee",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@fpacan",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@grok",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@rafapal",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@abdelaespriella",
+        "bando": "derecha",
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@dianama46158538",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@mafecarrascal",
+        "bando": "pacto",
+        "tipo": "amplificada",
+        "grado": 2
+      },
+      {
+        "id": "@migueldelrioabg",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@mariaicampoc",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@oracion_milagro",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@a_vashta_nerada",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@irjaimico",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@caracolradio",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@ojocolombia2026",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@athenea912",
+        "bando": null,
+        "tipo": "amplificada",
+        "grado": 1
+      },
+      {
+        "id": "@marbelle30",
         "bando": null,
         "tipo": "amplificada",
         "grado": 1
@@ -1403,56 +3001,56 @@
     "edges": [
       {
         "from": "@jocifuentesd",
-        "to": "@alertanews24",
-        "weight": 4,
-        "bando_to": null
-      },
-      {
-        "from": "@jocifuentesd",
         "to": "@estoescambio",
         "weight": 4,
         "bando_to": null
       },
       {
+        "from": "@jocifuentesd",
+        "to": "@jocifuentesd",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
         "from": "@soyjennymartiny",
         "to": "@revistasemana",
-        "weight": 5,
+        "weight": 4,
         "bando_to": "derecha"
       },
       {
         "from": "@soyjennymartiny",
-        "to": "@eltiempo",
+        "to": "@vickydavilah",
         "weight": 3,
         "bando_to": null
       },
       {
         "from": "@Coachopatriaxd",
-        "to": "@federicoboterop",
-        "weight": 3,
+        "to": "@elultimochompy",
+        "weight": 4,
         "bando_to": null
       },
       {
         "from": "@Coachopatriaxd",
-        "to": "@kristel152",
-        "weight": 3,
+        "to": "@alexasrv87",
+        "weight": 2,
         "bando_to": null
       },
       {
         "from": "@Bijou2468",
         "to": "@ivancepedacast",
-        "weight": 7,
+        "weight": 4,
         "bando_to": "pacto"
       },
       {
         "from": "@Bijou2468",
         "to": "@petrogustavo",
-        "weight": 3,
+        "weight": 2,
         "bando_to": "pacto"
       },
       {
         "from": "@ANIBALJOSAMADOR",
         "to": "@petrogustavo",
-        "weight": 6,
+        "weight": 3,
         "bando_to": "pacto"
       },
       {
@@ -1464,43 +3062,43 @@
       {
         "from": "@germanvega66",
         "to": "@petrogustavo",
-        "weight": 7,
+        "weight": 6,
         "bando_to": "pacto"
       },
       {
         "from": "@germanvega66",
         "to": "@matador000",
-        "weight": 5,
+        "weight": 4,
         "bando_to": null
       },
       {
         "from": "@jortiztu",
         "to": "@nacionaloficial",
-        "weight": 8,
+        "weight": 7,
         "bando_to": null
       },
       {
         "from": "@jortiztu",
         "to": "@petrogustavo",
-        "weight": 5,
+        "weight": 4,
         "bando_to": "pacto"
       },
       {
         "from": "@devi91415",
         "to": "@revistasemana",
-        "weight": 6,
+        "weight": 5,
         "bando_to": "derecha"
       },
       {
         "from": "@devi91415",
         "to": "@adrianaveterin",
-        "weight": 3,
+        "weight": 2,
         "bando_to": null
       },
       {
         "from": "@Alantora_",
         "to": "@petrogustavo",
-        "weight": 10,
+        "weight": 8,
         "bando_to": "pacto"
       },
       {
@@ -1510,27 +3108,207 @@
         "bando_to": null
       },
       {
-        "from": "@josedavilachar",
-        "to": "@petrogustavo",
-        "weight": 21,
-        "bando_to": "pacto"
-      },
-      {
-        "from": "@josedavilachar",
-        "to": "@claudialopez",
-        "weight": 4,
+        "from": "@MATEOGO32162031",
+        "to": "@laucrdna",
+        "weight": 2,
         "bando_to": null
       },
       {
         "from": "@MATEOGO32162031",
-        "to": "@nacionaloficial",
+        "to": "@___lav0",
+        "weight": 1,
+        "bando_to": null
+      },
+      {
+        "from": "@pmdearko",
+        "to": "@esthercastrol",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@pmdearko",
+        "to": "@rtvcnoticias",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@lozano_jua52272",
+        "to": "@bandalossc",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@lozano_jua52272",
+        "to": "@jackietoloza",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@jaderoriginal",
+        "to": "@hanwenzhang1982",
+        "weight": 6,
+        "bando_to": null
+      },
+      {
+        "from": "@jaderoriginal",
+        "to": "@betrand_russell",
         "weight": 3,
         "bando_to": null
       },
       {
-        "from": "@MATEOGO32162031",
-        "to": "@laucrdna",
+        "from": "@chila746",
+        "to": "@melquisedec70",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@chila746",
+        "to": "@anabejaranorg",
         "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@JorgeSe80756483",
+        "to": "@elonmusk",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@JorgeSe80756483",
+        "to": "@millersoto",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@natamile0329",
+        "to": "@lafm",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@natamile0329",
+        "to": "@monyrodriguezof",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@taryn55556021",
+        "to": "@abelardopte",
+        "weight": 1,
+        "bando_to": null
+      },
+      {
+        "from": "@taryn55556021",
+        "to": "@cardenasjorgee",
+        "weight": 1,
+        "bando_to": null
+      },
+      {
+        "from": "@mario_mecv",
+        "to": "@fpacan",
+        "weight": 6,
+        "bando_to": null
+      },
+      {
+        "from": "@mario_mecv",
+        "to": "@grok",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@LuisCarlos0717",
+        "to": "@rafapal",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@LuisCarlos0717",
+        "to": "@abdelaespriella",
+        "weight": 1,
+        "bando_to": "derecha"
+      },
+      {
+        "from": "@Albert55M",
+        "to": "@dianama46158538",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@Albert55M",
+        "to": "@arielanaliza",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@Alextri17TRIGOS",
+        "to": "@mafecarrascal",
+        "weight": 3,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@Alextri17TRIGOS",
+        "to": "@migueldelrioabg",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@aldarheza",
+        "to": "@mariaicampoc",
+        "weight": 4,
+        "bando_to": null
+      },
+      {
+        "from": "@aldarheza",
+        "to": "@oracion_milagro",
+        "weight": 4,
+        "bando_to": null
+      },
+      {
+        "from": "@Juanacabinda",
+        "to": "@a_vashta_nerada",
+        "weight": 6,
+        "bando_to": null
+      },
+      {
+        "from": "@Juanacabinda",
+        "to": "@irjaimico",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@lfcduran",
+        "to": "@caracolradio",
+        "weight": 7,
+        "bando_to": null
+      },
+      {
+        "from": "@lfcduran",
+        "to": "@ojocolombia2026",
+        "weight": 5,
+        "bando_to": null
+      },
+      {
+        "from": "@ManuelJosGonz10",
+        "to": "@athenea912",
+        "weight": 3,
+        "bando_to": null
+      },
+      {
+        "from": "@ManuelJosGonz10",
+        "to": "@marbelle30",
+        "weight": 2,
+        "bando_to": null
+      },
+      {
+        "from": "@AndresG87573120",
+        "to": "@mafecarrascal",
+        "weight": 5,
+        "bando_to": "pacto"
+      },
+      {
+        "from": "@AndresG87573120",
+        "to": "@arielanaliza",
+        "weight": 3,
         "bando_to": null
       }
     ]

@@ -183,7 +183,11 @@ conclusiones <- list(
   conexion = list(n_puente = sum(puente), pct = if (length(res_pub)) round(100*sum(puente)/length(res_pub)) else 0)
 )
 
-narr <- consolidar_narrativa(res_pub); red <- construir_red(res_pub)
+narr <- consolidar_narrativa(res_pub)
+# red del enjambre: cada bodega -> sus 2 objetivos principales (mapa limpio, no cientos de nodos)
+invs_red <- lapply(res_pub, function(r) list(handle = r$handle,
+  top = if (!is.null(r$respuestas) && nrow(r$respuestas)) utils::head(r$respuestas, 2) else r$top))
+red <- construir_red(invs_red)
 if (nrow(red$nodes) > 200) {
   keep <- head(red$nodes$id[order(-red$nodes$grado)], 200)
   red$edges <- red$edges[red$edges$from %in% keep & red$edges$to %in% keep, ]
