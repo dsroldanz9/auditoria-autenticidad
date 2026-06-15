@@ -69,11 +69,14 @@
   <div id="concl"></div>
 
   <div class="stats">
-    <div class="stat"><div class="n" id="s_total">…</div><div class="l">Cuentas analizadas</div></div>
-    <div class="stat"><div class="n" id="s_alta">…</div><div class="l">Bodega (texto coordinado / fuente)</div></div>
+    <div class="stat"><div class="n" id="s_total">…</div><div class="l">Cuentas coordinadas</div></div>
+    <div class="stat"><div class="n" id="s_alta">…</div><div class="l">Consignas distintas</div></div>
     <div class="stat"><div class="n" id="s_vic">…</div><div class="l">Líderes atacados</div></div>
     <div class="stat"><div class="n" id="s_fecha">…</div><div class="l">Actualizado</div></div>
   </div>
+
+  <div class="sec">🗣️ LAS CONSIGNAS — el mismo texto posteado por varias cuentas</div>
+  <div id="consignas"></div>
 
   <div class="panel" style="border:2px solid var(--oro)">
     <div class="sec" style="margin:0 0 4px">🚩 ¿VISTE UNA CUENTA SOSPECHOSA? DENÚNCIALA</div>
@@ -223,21 +226,28 @@ function conclusiones(c,narr){if(!c)return;const v=(c.top_victimas||[]);
   const frase=v.slice(0,5).map(x=>`<b>${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta}</b> (${fmt(x.veces)} cuentas)`).join(", ");
   const pal=(narr&&narr.palabras||[]).slice(0,6).map(w=>w.termino).join(", ");
   const cx=(c.conexion&&c.conexion.n_puente>0)?`<div class="exp" style="margin-top:10px;border-top:1px solid #ffffff55;padding-top:8px">🔗 <b>${fmt(c.conexion.n_puente)} cuentas (${c.conexion.pct}%)</b> atacan al Pacto <b>y a la vez amplifican a la derecha</b> — el puente que conecta la operación.</div>`:'';
-  const det=(c.n_coordinada!=null)?` (${fmt(c.n_coordinada)} comparten texto idéntico, ${fmt(c.n_automatizada)} vía fuente automatizada)`:'';
+  const vic3=v.slice(0,3).map(x=>(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta).join(", ")||"el Pacto";
   document.getElementById('concl').innerHTML=`<div class="titular">
-    <div class="big">${fmt(c.n_total)} cuentas analizadas · ${fmt(c.n_alta)} con coordinación de bodega</div>
-    <div class="exp"><b>${fmt(c.n_alta)} (${c.pct_alta}%)</b> postean el MISMO texto que muchas otras cuentas o publican vía herramienta automatizada${det}. El resto parecen cuentas reales (aunque sean hostiles).${pal?` Narrativa: <b>${pal}</b>.`:''}</div>${cx}</div>`;
+    <div class="big">Encontramos ${fmt(c.n_total)} cuentas coordinadas atacando a ${vic3}</div>
+    <div class="exp">Postean el <b>MISMO texto idéntico</b> entre varias cuentas${c.n_clusters?` — ${fmt(c.n_clusters)} consignas distintas</b>`:''}. No las marcamos por metadata: es <b>coordinación verificable</b>. Abajo: qué dicen y quién las postea.${pal?` Narrativa: <b>${pal}</b>.`:''}</div>${cx}</div>`;
   document.getElementById('s_vic').textContent=v.length;
   const vb=document.getElementById('vbtns');
   vb.innerHTML=v.slice(0,5).map(x=>`<button class="vbtn" onclick="focusNode('${x.cuenta}')">🎯 ${(x.nombre&&x.nombre!=="NA")?x.nombre.split(" —")[0]:x.cuenta} <b>· ${fmt(x.veces)}</b></button>`).join('');}
+
+function renderConsignas(c){const cl=(c&&c.clusters)||[];const el=document.getElementById('consignas');
+  if(!cl.length){el.innerHTML='<div class="panel nota">No se detectaron consignas coordinadas (mismo texto idéntico posteado por varias cuentas).</div>';return;}
+  el.innerHTML=cl.map(x=>`<div class="panel" style="border-left:5px solid var(--nar)">
+    <div style="font-size:15px;margin-bottom:8px">“${x.ejemplo}”</div>
+    <div class="nota"><b style="color:var(--nar);font-size:14px">${fmt(x.n_cuentas)} cuentas</b> postearon este mismo texto:</div>
+    <div style="font-size:13px;color:var(--az);margin-top:4px;word-break:break-word">${x.cuentas}</div></div>`).join('');}
 
 document.getElementById('resultados').innerHTML='<div class="panel nota">Cargando investigación…</div>';
 fetch('data/investigacion.json?v='+Date.now()).then(r=>r.json()).then(d=>{DATA=d;
   if(d.fuente==="mock")document.getElementById('demo').innerHTML='⚠️ <b>Datos de ejemplo (demostración).</b> Aún no es una investigación con cuentas reales — muestra cómo se verá el resultado.';
   document.getElementById('s_total').textContent=fmt(d.perfiles.length);
-  document.getElementById('s_alta').textContent=fmt((d.conclusiones&&d.conclusiones.n_alta)||0);
+  document.getElementById('s_alta').textContent=fmt((d.conclusiones&&d.conclusiones.n_clusters)||0);
   document.getElementById('s_fecha').textContent=(d.generado||"").slice(0,10);
-  conclusiones(d.conclusiones,d.narrativa); dibujarRed(d);
+  conclusiones(d.conclusiones,d.narrativa); renderConsignas(d.conclusiones); dibujarRed(d);
   const pal=(d.narrativa&&d.narrativa.palabras)||[];
   document.getElementById('narrativa').innerHTML=pal.length?pal.map(w=>`<span>${w.termino} <b>(${fmt(w.n)})</b></span>`).join(''):'<span class="nota">Requiere tweets reales</span>';
   render();}).catch(e=>{document.getElementById('resultados').innerHTML='<div class="panel">No se pudo cargar la investigación.</div>';});

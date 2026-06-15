@@ -53,5 +53,13 @@ analizar_bodega <- function(tweets, creacion = NULL, min_comparten = 4, umbral_a
   out$bodega       <- out$coordinada | out$automatizada      # cohorte sola NO basta (ruidosa); solo contexto
   out$banda <- ifelse(out$coordinada,   "Bodega — texto coordinado",
                 ifelse(out$automatizada, "Automatizada — fuente", "Sin señales de coordinación"))
-  out
+
+  # CLÚSTERES DE CONSIGNA: cada texto coordinado + un ejemplo original + las cuentas que lo postean
+  cl <- if (length(textos_coord)) do.call(rbind, lapply(textos_coord, function(t) {
+    idx <- which(val$tn == t); cuentas <- unique(val$handle[idx])
+    data.frame(ejemplo = val$text[idx[1]], n_cuentas = length(cuentas),
+               cuentas = paste0("@", cuentas, collapse = ", "), stringsAsFactors = FALSE)
+  })) else data.frame()
+  if (nrow(cl)) cl <- cl[order(-cl$n_cuentas), ]
+  list(cuentas = out, clusters = cl)
 }

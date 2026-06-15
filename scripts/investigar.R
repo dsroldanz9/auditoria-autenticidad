@@ -117,9 +117,11 @@ cat("Postura con IA:", USAR_IA, "\n")
 grp <- do.call(rbind, lapply(res, function(r) r$tweets_muestra))
 creacion <- setNames(vapply(res, function(r) r$cuenta_creada %||% NA_character_, character(1)),
                      vapply(res, function(r) r$handle, character(1)))
-bod <- if (!is.null(grp) && nrow(grp) > 0) analizar_bodega(grp, creacion) else data.frame()
+bodres <- if (!is.null(grp) && nrow(grp) > 0) analizar_bodega(grp, creacion) else list(cuentas=data.frame(), clusters=data.frame())
+bod <- bodres$cuentas; clusters <- bodres$clusters
 bmap <- if (nrow(bod)) split(bod, bod$handle) else list()
-cat("Bodega -> coordinadas:", sum(bod$coordinada %||% FALSE), "| automatizadas:", sum(bod$automatizada %||% FALSE), "\n")
+cat("Bodega -> coordinadas:", sum(bod$coordinada %||% FALSE), "| automatizadas:", sum(bod$automatizada %||% FALSE),
+    "| clústeres de consigna:", nrow(clusters), "\n")
 res <- lapply(res, function(r) {
   b <- bmap[[r$handle]]
   if (!is.null(b)) { r$banda <- b$banda[1]; r$bodega <- isTRUE(b$bodega[1])
@@ -131,51 +133,39 @@ res <- lapply(res, function(r) {
 })
 
 df2list <- function(d) if (is.null(d) || nrow(d) == 0) list() else lapply(seq_len(nrow(d)), function(i) as.list(d[i, , drop = FALSE]))
-perfiles <- lapply(res, function(r) list(
-  handle = r$handle, banda = r$banda, stance = r$stance, bodega = r$bodega,
+# SOLO publicamos las cuentas de BODEGA que atacan al Pacto (NO los reales, NO los de apoyo)
+res_pub <- Filter(function(r) isTRUE(r$bodega) && !identical(r$stance, "apoya_pacto"), res)
+perfiles <- lapply(res_pub, function(r) list(
+  handle = r$handle, banda = r$banda, stance = r$stance, bodega = r$bodega, pct = 100,
   share_auto = r$share_auto, comparten = r$comparten, en_cohorte = r$en_cohorte,
-  pct = if (isTRUE(r$bodega)) 100 else if (r$share_auto > 0 || r$comparten > 1) 50 else 5,
   edad_dias = round(r$detalle$edad_dias[1]), tweets_dia = r$detalle$tweets_por_dia[1],
   reply_share = if ("reply_share" %in% names(r$detalle)) r$detalle$reply_share[1] else NA,
-  followers = r$detalle$followers[1], n_flags = r$n_flags, senales = as.list(r$senales),
+  followers = r$detalle$followers[1],
   ataca = df2list(r$respuestas), amplifica = df2list(r$top), repetidos = df2list(r$repetidos)))
 
-# ---- CONCLUSIONES (titulares) ----
-alta <- Filter(function(r) isTRUE(r$bodega), res)            # bodega = coordinada o automatizada
-victimas <- consolidar_amplificadores(lapply(res, function(r) list(top = r$respuestas)))  # a quién atacan
-amplif   <- consolidar_amplificadores(res)                                                # a quién amplifican
-reps_all <- do.call(rbind, lapply(res, function(r) r$repetidos))
-msg_top  <- if (!is.null(reps_all) && nrow(reps_all)) reps_all$texto[which.max(reps_all$veces)] else NA
-# conexión: cuentas que ATACAN al Pacto Y AMPLIFICAN a la derecha (la huella de la operación)
+# ---- CONCLUSIONES: lo que ENCONTRAMOS (las consignas + quién las postea) ----
+victimas <- consolidar_amplificadores(lapply(res_pub, function(r) list(top = r$respuestas)))
 con <- tryCatch(read.csv("data/cuentas_conocidas.csv", stringsAsFactors=FALSE, encoding="UTF-8"), error=function(e) NULL)
 der <- if (!is.null(con)) tolower(paste0("@", gsub("^@","",con$handle[con$bando=="derecha"]))) else character(0)
 pac <- if (!is.null(con)) tolower(paste0("@", gsub("^@","",con$handle[con$bando=="pacto"]))) else character(0)
-puente <- vapply(res, function(r) {
+puente <- vapply(res_pub, function(r) {
   atk <- tolower(if (nrow(r$respuestas)) r$respuestas$cuenta else character(0))
   amp <- tolower(if (nrow(r$top)) r$top$cuenta else character(0))
-  any(atk %in% pac) && any(amp %in% der)
-}, logical(1))
-# blanco real = ATACA al Pacto (postura) Y es bodega (coordinada/automatizada)
-n_ataca <- sum(vapply(res, function(r) identical(r$stance, "ataca_pacto"), logical(1)))
-n_obj   <- sum(vapply(res, function(r) identical(r$stance, "ataca_pacto") && isTRUE(r$bodega), logical(1)))
-n_coord <- sum(vapply(res, function(r) isTRUE(grepl("coordinado", r$banda)), logical(1)))
-n_auto  <- sum(vapply(res, function(r) isTRUE(grepl("fuente", r$banda)), logical(1)))
+  any(atk %in% pac) && any(amp %in% der) }, logical(1))
+n_coord <- sum(vapply(res_pub, function(r) isTRUE(grepl("coordinado", r$banda)), logical(1)))
+n_auto  <- sum(vapply(res_pub, function(r) isTRUE(grepl("fuente", r$banda)), logical(1)))
 conclusiones <- list(
-  n_total = length(res), n_alta = length(alta),
-  pct_alta = if (length(res)) round(100*length(alta)/length(res)) else 0,
-  n_coordinada = n_coord, n_automatizada = n_auto,
-  n_ataca = n_ataca, n_objetivo = n_obj,
-  pct_objetivo = if (length(res)) round(100*n_obj/length(res)) else 0,
+  n_total = length(res_pub), n_analizadas = length(res), n_alta = length(res_pub),
+  pct_alta = if (length(res)) round(100*length(res_pub)/length(res)) else 0,
+  n_coordinada = n_coord, n_automatizada = n_auto, n_clusters = nrow(clusters),
+  clusters = df2list(head(clusters, 15)),                 # las CONSIGNAS + las cuentas que las postean
   top_victimas = df2list(head(victimas, 6)),
-  top_amplificados = df2list(head(amplif, 6)),
-  mensaje_top = msg_top,
-  conexion = list(n_puente = sum(puente), pct = if (length(res)) round(100*sum(puente)/length(res)) else 0)
+  conexion = list(n_puente = sum(puente), pct = if (length(res_pub)) round(100*sum(puente)/length(res_pub)) else 0)
 )
 
-narr <- consolidar_narrativa(res); red <- construir_red(res)
-# el mapa solo muestra los nodos más conectados (rendimiento): hubs + muestra de atacantes
-if (nrow(red$nodes) > 160) {
-  keep <- head(red$nodes$id[order(-red$nodes$grado)], 160)
+narr <- consolidar_narrativa(res_pub); red <- construir_red(res_pub)
+if (nrow(red$nodes) > 200) {
+  keep <- head(red$nodes$id[order(-red$nodes$grado)], 200)
   red$edges <- red$edges[red$edges$from %in% keep & red$edges$to %in% keep, ]
   red$nodes <- red$nodes[red$nodes$id %in% keep, ]
 }
@@ -185,10 +175,11 @@ out <- list(generado = as.character(Sys.time()), fuente = fuente, conclusiones =
   red = list(nodes = df2list(red$nodes), edges = df2list(red$edges)))
 dir.create("docs/data", showWarnings = FALSE, recursive = TRUE)
 write_json(out, "docs/data/investigacion.json", auto_unbox = TRUE, pretty = TRUE, na = "null")
-tab <- do.call(rbind, lapply(res, function(r) data.frame(handle = r$handle, pct = r$pct, clasificacion = r$banda,
-  senales = r$n_flags, edad_dias = round(r$detalle$edad_dias[1]), reply_share = if ("reply_share" %in% names(r$detalle)) r$detalle$reply_share[1] else NA,
-  followers = r$detalle$followers[1], ataca_a = paste(if (nrow(r$respuestas)) r$respuestas$cuenta else character(0), collapse = "; "),
-  stringsAsFactors = FALSE)))
+tab <- if (length(res_pub)) do.call(rbind, lapply(res_pub, function(r) data.frame(handle = r$handle,
+  clasificacion = r$banda, comparte_con = r$comparten, share_auto = r$share_auto,
+  edad_dias = round(r$detalle$edad_dias[1]), followers = r$detalle$followers[1],
+  ataca_a = paste(if (nrow(r$respuestas)) r$respuestas$cuenta else character(0), collapse = "; "),
+  stringsAsFactors = FALSE))) else data.frame(info = "Sin bodega detectada")
 write.csv(tab, "docs/data/investigacion.csv", row.names = FALSE, fileEncoding = "UTF-8")
-cat("Listo:", length(perfiles), "perfiles |", conclusiones$n_alta, "alta señal |",
-    nrow(red$nodes), "nodos en la red\n")
+cat("Listo:", length(res_pub), "cuentas de BODEGA publicadas |", nrow(clusters), "consignas |",
+    nrow(red$nodes), "nodos\n")
