@@ -1,48 +1,25 @@
 {
-  "generado": "2026-06-15 20:36:01.062507",
+  "generado": "2026-06-15 21:03:59.428063",
   "fuente": "twitterapi_io",
   "tipo": "spam_individual",
+  "metodo": "Cuentas que copia-pegan su PROPIO mensaje específico (no lemas comunes) muchas veces. Verificado con búsqueda exacta del fragmento distintivo; descartados eslóganes genéricos y falsos positivos.",
   "conclusiones": {
-    "n_total": 6,
-    "n_fuertes": 4,
-    "max_veces": 53
+    "n_total": 2,
+    "n_fuertes": 2,
+    "max_veces": 54
   },
   "perfiles": [
     {
-      "handle": "EDWINANDRESREN1",
-      "veces": 53,
-      "mensaje": "bogotá alguna vez se enorgulleció de ser la capital del pensamiento crítico. hoy preocupa ver cómo parte de la ciudad cambia argumentos por eslóganes y memoria por emociones pasajeras. abenarco no representa la inteligencia de una ciudad cosmopolita.¡pilas!",
-      "fuerte": true
-    },
-    {
       "handle": "jarealbb",
-      "veces": 29,
-      "mensaje": "+ de 18.000 niños abusados y asesinados por los camarillas de , y no le gusta que le digan guerrillero? vamos sacar a la izquierda y todo ese lumpen comunista para siempre, y que pase lo que tenga q pasar. por la razón o * la fuerza.",
+      "veces": 54,
+      "mensaje": "@PluralidadZ + de 18.000 niños abusados y asesinados por los camarillas de @IvanCepedaCast, y no le gusta que le digan guerrillero? Vamos sacar a la izquierda y todo ese lumpen comunista para SIEMPRE, y que pase lo que tenga q pasar. Por la razón o * la fuerza. https://t.co/3fd2bUxOke",
       "fuerte": true
     },
     {
-      "handle": "JavierV82485933",
-      "veces": 28,
-      "mensaje": "gas esta gente comunista falsedad, montajes, sangre y fuego malditos con maldicion, sus almas",
+      "handle": "javierv82485933",
+      "veces": 40,
+      "mensaje": "gas está gente comunista falsedad , montajes, sangre y fuego malditos con maldición, sus actos sean recompensados y paguen todos sus malos actos",
       "fuerte": true
-    },
-    {
-      "handle": "Alejo_puentesv",
-      "veces": 27,
-      "mensaje": "pacto hamponico",
-      "fuerte": true
-    },
-    {
-      "handle": "IkariDavhen",
-      "veces": 10,
-      "mensaje": "gas esta gente comunista falsedad, montajes, sangre y fuego malditos con maldicion, sus almas",
-      "fuerte": false
-    },
-    {
-      "handle": "CECM1991",
-      "veces": 9,
-      "mensaje": "cuatro nombres, una sola pregunta que incomoda: ¿cómo se cruzan un capo de los 90 (perafán), un presidente (santos), un senador (cepeda) y el periodista más blindado (coronell)? mientras santos y cepeda justificaban concesiones a santrich y recibían bienes de la dne, el radar de coronell miraba selectivamente para otro lado. ¿periodismo independiente o blindaje mutuo?",
-      "fuerte": false
     }
   ]
 }
