@@ -38,8 +38,11 @@ top_respuestas <- function(tweets, n = 6) {
 #' @return data.frame: texto, veces (>=2), ordenado desc.
 mensajes_repetidos <- function(tweets, n = 5) {
   if (is.null(tweets) || nrow(tweets) == 0) return(data.frame())
-  norm <- tolower(trimws(gsub("\\s+", " ", gsub("https?://\\S+", "", tweets$text))))
-  norm <- norm[nchar(norm) >= 12]
+  # CONTENIDO real = texto sin URLs, sin @menciones ni #hashtags (etiquetar/hashtag NO es spam)
+  cont <- gsub("https?://\\S+", " ", tweets$text)
+  cont <- gsub("[@#]\\w+", " ", cont)
+  norm <- tolower(trimws(gsub("\\s+", " ", cont)))
+  norm <- norm[nchar(norm) >= 12]   # exige >=12 chars de contenido (descarta tag/hashtag solos)
   if (length(norm) == 0) return(data.frame())
   tb <- sort(table(norm), decreasing = TRUE); tb <- tb[tb >= 2]
   if (length(tb) == 0) return(data.frame())

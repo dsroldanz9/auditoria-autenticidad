@@ -3,259 +3,104 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Detector de Autenticidad · Investigación de desinformación</title>
-<meta name="description" content="Investigación abierta: cuántas cuentas muestran señales de automatización y atacan coordinadamente a líderes del Pacto Histórico."/>
+<title>Spam-bots contra el Pacto · Detector de Autenticidad</title>
+<meta name="description" content="Cuentas que copian-pegan el mismo mensaje de ataque al Pacto Histórico decenas o cientos de veces. Verificable, con prueba."/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap"/>
-<script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   :root{--az:#2839BE;--nar:#FF4403;--oro:#F7A40D;--verde:#16A34A;--ink:#1B1F3B;--bg:#EEF0FA}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,sans-serif;line-height:1.5}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 16px}
   header{background:var(--az);color:#fff;padding:24px 0}
   header .row{display:flex;align-items:center;gap:12px}
-  header img{height:44px;border-radius:50%}
+  header img{height:42px;border-radius:50%}
   .kick{font-family:'Archivo Black';font-size:13px;color:var(--oro)}
-  h1{font-family:'Archivo Black';font-size:32px;margin:8px 0 4px}
-  .lead{color:#D7DBF5;font-size:15px;max-width:720px}
-  .demo{background:#FFF3CD;border:1px solid #F7A40D;color:#7a5b00;border-radius:10px;padding:10px 14px;margin:14px 0;font-size:13px}
-  .titular{background:var(--nar);color:#fff;border-radius:16px;padding:22px 24px;margin:16px 0}
-  .titular .big{font-family:'Archivo Black';font-size:28px;line-height:1.12;margin-bottom:8px}
-  .titular .exp{font-size:15px}.titular b{color:#fff}.titular i{color:#FFE0D4}
+  h1{font-family:'Archivo Black';font-size:30px;margin:8px 0 4px}
+  .lead{color:#D7DBF5;font-size:15px;max-width:700px}
+  .titular{background:var(--nar);color:#fff;border-radius:16px;padding:20px 24px;margin:16px 0}
+  .titular .big{font-family:'Archivo Black';font-size:26px;line-height:1.15}
+  .titular .exp{font-size:15px;margin-top:6px}
   .stats{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
-  .stat{background:#fff;border:1px solid #E0E4F2;border-radius:12px;padding:14px 16px;flex:1;min-width:120px}
+  .stat{background:#fff;border:1px solid #E0E4F2;border-radius:12px;padding:13px 16px;flex:1;min-width:120px}
   .stat .n{font-family:'Archivo Black';font-size:28px;color:var(--az)}
   .stat .l{font-size:12px;color:#6B6F7A}
-  .sec{font-family:'Archivo Black';color:var(--az);font-size:19px;margin:22px 0 10px}
-  .grid2{display:grid;grid-template-columns:1.7fr 1fr;gap:16px}
-  #red{height:540px;border:1px solid #E0E4F2;border-radius:14px;background:#fbfcff}
-  .side{background:#fff;border:1px solid #E0E4F2;border-radius:14px;padding:16px}
-  .side h3{font-family:'Archivo Black';color:var(--az);font-size:14px;margin:0 0 8px}
-  .step{font-size:13px;margin-bottom:10px}.step b{color:var(--ink)}
-  .step .num{display:inline-flex;width:20px;height:20px;background:var(--az);color:#fff;border-radius:50%;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-right:6px}
-  .leg{margin:10px 0}.leg span{display:block;font-size:12px;margin:3px 0}.dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:6px}
-  .vbtn{display:block;width:100%;text-align:left;background:#F4F6FC;border:1px solid #E0E4F2;border-radius:9px;padding:7px 10px;margin:4px 0;font-size:13px;cursor:pointer;font-family:inherit}
-  .vbtn:hover{border-color:var(--az)}
-  .panel{background:#fff;border:1px solid #E0E4F2;border-radius:14px;padding:16px 18px;margin:12px 0}
   #q{width:100%;padding:13px 16px;font-size:16px;border:2px solid #D6D9EC;border-radius:12px;font-family:inherit}
-  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0 4px}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
   .btn{background:var(--oro);color:#1B1F3B;font-weight:800;border:none;border-radius:9px;padding:9px 14px;text-decoration:none;font-size:13px;cursor:pointer}
-  .btn.s{background:#EDEFFB;color:var(--az)}
-  .card{background:#fff;border:1px solid #E0E4F2;border-radius:14px;padding:16px;margin:12px 0;display:grid;grid-template-columns:120px 1fr;gap:16px}
-  .donut-num{font-family:'Archivo Black';font-size:24px;text-anchor:middle;dominant-baseline:middle}
-  .h{font-family:'Archivo Black';font-size:20px}
-  .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;color:#fff}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-  .chip{background:#F4F6FC;border:1px solid #E0E4F2;border-radius:9px;padding:5px 9px;font-size:12px}.chip b{font-family:'Archivo Black'}
-  .tags span{display:inline-block;background:#EDEFFb;border-radius:8px;padding:3px 8px;margin:2px;font-size:12px}
-  .sec-h{font-family:'Archivo Black';color:var(--az);font-size:13px;margin:10px 0 4px}
-  .lst{font-size:13px}.lst .d{color:var(--nar);font-weight:700}.lst .p{color:var(--verde);font-weight:700}
-  .acc{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .card{background:#fff;border:1px solid #E0E4F2;border-radius:14px;padding:14px 16px;margin:10px 0;display:flex;gap:14px;align-items:flex-start}
+  .count{flex-shrink:0;text-align:center;background:#FFF0EA;border:1px solid #FFC9B3;border-radius:12px;padding:8px 12px;min-width:92px}
+  .count b{font-family:'Archivo Black';font-size:26px;color:var(--nar);display:block;line-height:1}
+  .count span{font-size:11px;color:#9a5a3e}
+  .h{font-family:'Archivo Black';font-size:19px;color:var(--az);text-decoration:none}
+  .h:hover{text-decoration:underline}
+  .badge{display:inline-block;background:var(--nar);color:#fff;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+  .msg{margin-top:6px;font-size:15px;background:#F7F8FE;border-left:3px solid var(--az);padding:8px 12px;border-radius:0 8px 8px 0}
+  .sec{font-family:'Archivo Black';color:var(--az);font-size:18px;margin:22px 0 8px}
+  .panel{background:#fff;border:1px solid #E0E4F2;border-radius:14px;padding:16px 18px;margin:12px 0}
+  .step{font-size:13px;margin-bottom:8px}.step b{color:var(--az)}
   .nota{font-size:12px;color:#6B6F7A}
   footer{padding:24px 0;color:#6B6F7A;font-size:12px}
-  @media(max-width:760px){.grid2{grid-template-columns:1fr}.card{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <div class="row"><img src="logo.png" alt="logo"/><span class="kick">ME LA JUEGO POR LA VIDA · @RoldnSantiago</span></div>
-  <h1>DETECTOR DE AUTENTICIDAD</h1>
-  <div class="lead">Investigación abierta sobre las cuentas que atacan de forma coordinada a líderes del Pacto Histórico. Cuántas son, a quién atacan y qué narrativa repiten. Estimación con criterios transparentes y auditables.</div>
+  <h1>SPAM-BOTS CONTRA EL PACTO</h1>
+  <div class="lead">Cuentas que copian-pegan el MISMO mensaje de ataque al Pacto Histórico decenas o cientos de veces. No es opinión: es spam automatizado, y aquí está la prueba — entra a cada cuenta y verifícalo.</div>
 </div></header>
 
 <div class="wrap">
-  <div id="demo"></div>
   <div id="concl"></div>
-
   <div class="stats">
-    <div class="stat"><div class="n" id="s_total">…</div><div class="l">Cuentas coordinadas</div></div>
-    <div class="stat"><div class="n" id="s_alta">…</div><div class="l">Consignas distintas</div></div>
-    <div class="stat"><div class="n" id="s_vic">…</div><div class="l">Líderes atacados</div></div>
-    <div class="stat"><div class="n" id="s_fecha">…</div><div class="l">Actualizado</div></div>
+    <div class="stat"><div class="n" id="s_total">…</div><div class="l">Spam-bots detectados</div></div>
+    <div class="stat"><div class="n" id="s_fuertes">…</div><div class="l">Casos fuertes (20+ repeticiones)</div></div>
+    <div class="stat"><div class="n" id="s_max">…</div><div class="l">Máximo repeticiones (1 cuenta)</div></div>
   </div>
 
-
-  <div class="panel" style="border:2px solid var(--oro)">
-    <div class="sec" style="margin:0 0 4px">🚩 ¿VISTE UNA CUENTA SOSPECHOSA? DENÚNCIALA</div>
-    <div class="nota" style="margin-bottom:8px">Ayúdanos a decidir qué cuentas investigar. Escribe el @ y por qué te parece bot o cuenta coordinada — se envía como tweet a @RoldnSantiago.</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <input id="den_h" placeholder="@cuenta_sospechosa" style="flex:1;min-width:180px;padding:11px 14px;border:2px solid #D6D9EC;border-radius:10px;font-family:inherit"/>
-      <input id="den_m" placeholder="¿por qué? (opcional)" style="flex:2;min-width:200px;padding:11px 14px;border:2px solid #D6D9EC;border-radius:10px;font-family:inherit"/>
-      <button class="btn" onclick="denunciar()">🚩 Denunciar</button>
-    </div>
+  <div class="toolbar">
+    <input id="q" placeholder="Busca un @perfil o una palabra del mensaje…" oninput="render()"/>
   </div>
+  <div class="toolbar"><span class="nota" id="cuenta_res"></span><span style="flex:1"></span>
+    <a class="btn" href="data/spam_bots.csv" download>⬇ Descargar lista (CSV)</a></div>
+  <div id="lista"></div>
 
-  <div class="sec">🕸️ MAPA DE LA RED DE ATAQUE</div>
-  <div class="grid2">
-    <div id="red"></div>
-    <div class="side">
-      <h3>CÓMO LEER ESTE MAPA</h3>
-      <div class="step"><span class="num">1</span><b>Cada punto es una cuenta.</b> Los grandes son las víctimas (líderes atacados); los pequeños, las cuentas que los atacan.</div>
-      <div class="step"><span class="num">2</span><b>Cada línea es un ataque o mención</b> de una cuenta hacia otra.</div>
-      <div class="step"><span class="num">3</span><b>Los enjambres</b> de puntos alrededor de un líder = decenas de cuentas atacándolo a la vez.</div>
-      <div class="step"><span class="num">4</span><b>Haz clic</b> en un punto (o en un botón de abajo) para volar hacia él y ver solo sus conexiones.</div>
-      <div class="leg">
-        <span><i class="dot" style="background:#2839BE"></i>cuenta investigada (atacante)</span>
-        <span><i class="dot" style="background:#16A34A"></i>víctima (líder del Pacto)</span>
-        <span><i class="dot" style="background:#FF4403"></i>cuenta que amplifican</span>
-        <span><i class="dot" style="background:#9AA0BF"></i>sin clasificar</span></div>
-      <h3 style="margin-top:12px">ENFOCAR UN LÍDER ATACADO</h3>
-      <div id="vbtns"></div>
-      <button class="vbtn" style="text-align:center;background:#EDEFFB;color:var(--az);font-weight:800" onclick="resetVista()">↺ Ver todo el mapa</button>
-      <div class="nota" id="redinfo" style="margin-top:8px"></div>
-    </div>
-  </div>
-
-  <div class="sec">🔎 BUSCA UN PERFIL, UNA VÍCTIMA O UNA PALABRA</div>
+  <div class="sec">🧭 CÓMO LO DETECTAMOS</div>
   <div class="panel">
-    <input id="q" placeholder="Ej: @cuenta, Cepeda, Mafe Carrascal, o una palabra de la narrativa…" oninput="render()"/>
-    <div class="toolbar"><span class="nota" id="cuenta_res"></span><span style="flex:1"></span>
-      <a class="btn" href="data/investigacion.csv" download>⬇ Datos (CSV)</a>
-      <a class="btn s" href="data/investigacion.json" download>⬇ JSON</a></div>
+    <div class="step"><span style="color:var(--nar);font-weight:800">1.</span> Bajamos los tweets de las cuentas que atacan a Cepeda, Petro y Mafe Carrascal.</div>
+    <div class="step"><span style="color:var(--nar);font-weight:800">2.</span> Medimos si <b>repiten el MISMO mensaje de contenido</b> (sin contar etiquetas ni hashtags) muchas veces.</div>
+    <div class="step"><span style="color:var(--nar);font-weight:800">3.</span> Una persona real no copia-pega el mismo texto 20, 50 o 116 veces. Eso es <b>spam automatizado</b>.</div>
+    <div class="nota" style="margin-top:8px">Estimación con criterios transparentes. Código abierto en
+      <a href="https://github.com/dsroldanz9/auditoria-autenticidad">GitHub</a>. Cada cuenta es verificable: entra y mira sus respuestas.</div>
   </div>
-  <div id="resultados"></div>
-
-  <div class="sec">🗣️ LAS CONSIGNAS — el mismo texto idéntico posteado por varias cuentas</div>
-  <div id="consignas"></div>
-
-  <div class="sec">📊 LA NARRATIVA QUE REPITEN</div>
-  <div class="panel"><div class="nota" style="margin-bottom:8px">Palabras que más se repiten en los ataques de estas cuentas:</div><div class="tags" id="narrativa"></div></div>
-
-  <div class="sec">🧭 CÓMO SE HIZO, PASO A PASO</div>
-  <div class="panel">
-    <div class="step"><span class="num">1</span><b>Semillas:</b> partimos de los líderes del Pacto que reciben más ataques (Cepeda, Mafe Carrascal, Petro, Bolívar, Muhamad).</div>
-    <div class="step"><span class="num">2</span><b>Rastreo:</b> traemos todas las cuentas que les responden/atacan en X (vía API oficial de datos).</div>
-    <div class="step"><span class="num">3</span><b>Coordinación de texto:</b> una bodega se delata cuando MUCHAS cuentas distintas postean el <b>mismo texto idéntico</b> (un humano repite lo suyo; una operación calca la consigna en decenas de cuentas).</div>
-    <div class="step"><span class="num">4</span><b>Fuente de publicación:</b> revisamos cómo publican (campo <code>source</code>). Publicar vía herramientas de automatización en vez de la app de Twitter es señal fuerte.</div>
-    <div class="step"><span class="num">5</span><b>No marcamos por metadata:</b> tener handle con números, no tener bio o ser muy activo NO te hace bot — eso describe a un humano apasionado. Solo marcamos coordinación o automatización reales. Es estimación, no veredicto.</div>
-    <div class="nota">Metodología y código abiertos en <a href="https://github.com/dsroldanz9/auditoria-autenticidad">GitHub</a>. Cualquiera puede auditarla.</div>
-  </div>
-
-  <footer class="wrap">Las clasificaciones son estimaciones basadas en señales públicas. No afirman intención ni identidad de personas. Datos descargables arriba.</footer>
+  <footer class="wrap">No afirmamos identidad ni intención de personas; mostramos un comportamiento público y verificable (texto idéntico repetido).</footer>
 </div>
 
-<div id="exportcard" style="position:absolute;left:-9999px;top:0"></div>
-
 <script>
-let DATA={perfiles:[]}, NET=null, NODES=null, ADJ={}, BASE={};
+let DATA={perfiles:[]};
 const fmt=n=>(n||0).toLocaleString('es-CO');
-const colBanda=b=> b&&(b.indexOf("Bodega")>=0)?"#FF4403":(b&&b.indexOf("Automatizada")>=0?"#F7A40D":"#16A34A");
-const colBando=b=> b==="derecha"?"d":(b==="pacto"?"p":"");
-function donut(pct,col,sz,tc){sz=sz||110;tc=tc||"#1B1F3B";const r=34,c=2*Math.PI*r,off=c*(1-pct/100);const fs=pct>=100?20:24;
-  return `<svg width="${sz}" height="${sz}" viewBox="0 0 90 90"><circle cx="45" cy="45" r="34" fill="none" stroke="#E6E9F5" stroke-width="9"/>
-   <circle cx="45" cy="45" r="34" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 45 45)"/>
-   <text x="45" y="46" class="donut-num" style="font-size:${fs}px" fill="${tc}">${pct}%</text></svg>`;}
-function lista(arr){if(!arr||!arr.length)return '<span class="nota">—</span>';
-  return '<div class="lst">'+arr.slice(0,6).map(o=>{const cl=colBando(o.bando);const nom=o.nombre&&o.nombre!=="NA"?(" · "+o.nombre):"";
-   return `<div class="${cl}">${o.cuenta} <b>(${o.n})</b><span class="nota">${nom}</span></div>`;}).join('')+'</div>';}
-function card(p){const col=colBanda(p.banda);
-  const rs=(p.reply_share!=null&&!isNaN(p.reply_share))?Math.round(p.reply_share*100)+"%":"—";
-  const senales=(p.senales&&p.senales.length)?p.senales.map(s=>`<span>${s}</span>`).join(''):'<span class="nota">sin señales</span>';
-  const reps=(p.repetidos&&p.repetidos.length)?'<div class="sec-h">MENSAJES QUE REPITE</div>'+p.repetidos.slice(0,3).map(r=>`<div class="lst">“${r.texto}” <b>(${r.veces})</b></div>`).join(''):'';
+function card(p,i){
+  const fuerte=p.fuerte?'<span class="badge">FUERTE</span>':'';
   return `<div class="card">
-    <div style="text-align:center">${donut(p.pct,col)}<div class="pill" style="background:${col};margin-top:6px">${p.banda}</div></div>
-    <div><span class="h">@${p.handle}</span> ${p.stance==='ataca_pacto'?'<span class="pill" style="background:#FF4403">⚔ ataca al Pacto</span>':(p.stance==='apoya_pacto'?'<span class="pill" style="background:#16A34A">apoya al Pacto</span>':'')}
-      <div class="chips"><div class="chip">Edad <b>${p.edad_dias}d</b></div><div class="chip">Tweets/día <b>${p.tweets_dia}</b></div>
-        <div class="chip">% respuestas <b>${rs}</b></div><div class="chip">Seguidores <b>${fmt(p.followers)}</b></div></div>
-      <div class="sec-h">EVIDENCIA DE COORDINACIÓN</div><div class="tags">${
-        (p.comparten>1?`<span>📋 mismo texto que ${p.comparten} cuentas</span>`:'')+
-        (p.share_auto>0?`<span>🤖 ${Math.round(p.share_auto*100)}% vía fuente automatizada</span>`:'')+
-        (p.en_cohorte?'<span>📅 creada en cohorte</span>':'')+
-        ((p.comparten<=1&&!(p.share_auto>0)&&!p.en_cohorte)?'<span class="nota">sin señales de coordinación — parece cuenta real</span>':'')
-      }</div>
-      <div style="display:flex;gap:24px;flex-wrap:wrap"><div><div class="sec-h">🎯 A QUIÉN LE RESPONDE / ATACA</div>${lista(p.ataca)}</div>
-        <div><div class="sec-h">🔁 A QUIÉN RETUITEA</div>${(p.amplifica&&p.amplifica.length)?lista(p.amplifica):'<span class="nota">no retuitea (solo responde/ataca)</span>'}</div></div>${reps}
-      <div class="acc"><button class="btn s" onclick="focusNode('@${p.handle}')">📍 Ver en el mapa</button>
-        <button class="btn" onclick="exportar('${p.handle}')">⬇ Descargar imagen</button></div></div></div>`;}
-function coincide(p,q){if(!q)return true;q=q.toLowerCase().replace(/^@/,'');
-  const hay=[p.handle,p.banda,...(p.senales||[]),...((p.ataca||[]).map(x=>x.cuenta+" "+(x.nombre||""))),
-    ...((p.amplifica||[]).map(x=>x.cuenta+" "+(x.nombre||""))),...((p.repetidos||[]).map(x=>x.texto))].join(" ").toLowerCase();
-  return hay.indexOf(q)>=0;}
-function render(){const q=document.getElementById('q').value.trim();
-  let ps=DATA.perfiles.filter(p=>coincide(p,q)).sort((a,b)=>b.pct-a.pct);const total=ps.length;ps=ps.slice(0,60);
-  document.getElementById('resultados').innerHTML=ps.length?ps.map(card).join(''):'<div class="panel nota">Sin resultados.</div>';
-  document.getElementById('cuenta_res').textContent=fmt(total)+" perfil(es)"+(total>60?" · mostrando 60":"");}
-function denunciar(){const h=(document.getElementById('den_h').value||'').trim();const m=(document.getElementById('den_m').value||'').trim();
-  if(!h){document.getElementById('den_h').focus();return;}
-  const hh=h.startsWith('@')?h:('@'+h);
-  const txt=encodeURIComponent('@RoldnSantiago 🚩 Denuncio posible cuenta bot/coordinada: '+hh+(m?(' — '+m):'')+'\n(vía el Detector de Autenticidad)');
-  window.open('https://twitter.com/intent/tweet?text='+txt,'_blank');
-  document.getElementById('den_h').value='';document.getElementById('den_m').value='';}
-
-function dibujarRed(d){const cont=document.getElementById('red');
-  if(!d.red||!d.red.nodes||!d.red.nodes.length){cont.innerHTML='<div class="nota" style="padding:20px">Sin red aún.</div>';return;}
-  const cN=n=>n.tipo==="analizada"?"#2839BE":(n.bando==="derecha"?"#FF4403":(n.bando==="pacto"?"#16A34A":"#9AA0BF"));
-  d.red.nodes.forEach(n=>BASE[n.id]=cN(n));
-  NODES=new vis.DataSet(d.red.nodes.map(n=>({id:n.id,label:n.id,color:cN(n),value:(n.grado||1),
-     title:n.id+(n.bando?(" · "+n.bando):"")})));
-  const edges=new vis.DataSet(d.red.edges.map(e=>({from:e.from,to:e.to,arrows:{to:{scaleFactor:.4}},color:{color:"#CBD0EC",opacity:.5}})));
-  d.red.edges.forEach(e=>{(ADJ[e.from]=ADJ[e.from]||[]).push(e.to);(ADJ[e.to]=ADJ[e.to]||[]).push(e.from);});
-  NET=new vis.Network(cont,{nodes:NODES,edges},{layout:{improvedLayout:false},
-    nodes:{shape:"dot",scaling:{min:8,max:46,label:{enabled:true,min:12,max:22}},font:{face:"Inter",color:"#1B1F3B",strokeWidth:3,strokeColor:"#fff"}},
-    edges:{smooth:{type:"continuous"}},physics:{stabilization:{iterations:120},barnesHut:{springLength:160,gravitationalConstant:-5000,centralGravity:.15}},
-    interaction:{hover:true,tooltipDelay:100,zoomView:true,dragView:true}});
-  NET.once("stabilizationIterationsDone",()=>{try{NET.setOptions({physics:false});}catch(e){}});
-  NET.on("click",p=>{if(p.nodes.length)resaltar(p.nodes[0]);else resetVista();});
-  document.getElementById('redinfo').textContent="Mostrando las "+d.red.nodes.length+" cuentas más conectadas (de "+fmt(d.perfiles.length)+" analizadas).";}
-function resaltar(id){const vec=new Set([id,...(ADJ[id]||[])]);
-  NODES.update(NODES.getIds().map(n=>({id:n,color:vec.has(n)?BASE[n]:"#E6E9F2",font:{color:vec.has(n)?"#1B1F3B":"#D6D9EC"}})));
-  NET.focus(id,{scale:1.5,animation:{duration:700}});NET.selectNodes([id]);}
-function resetVista(){if(!NODES)return;NODES.update(NODES.getIds().map(n=>({id:n,color:BASE[n],font:{color:"#1B1F3B"}})));NET.fit({animation:true});}
-function focusNode(id){if(NET&&NODES.get(id)){resaltar(id);document.getElementById('red').scrollIntoView({behavior:'smooth',block:'center'});}
-  else{document.getElementById('q').value=id;render();document.getElementById('resultados').scrollIntoView({behavior:'smooth'});}}
-
-function exportar(handle){const p=DATA.perfiles.find(x=>x.handle===handle);if(!p)return;
-  const col=colBanda(p.banda);const rs=(p.reply_share!=null&&!isNaN(p.reply_share))?Math.round(p.reply_share*100)+"%":"—";
-  const verd=p.banda.indexOf("Alta")>=0?"ALTA SEÑAL DE AUTOMATIZACIÓN":(p.banda.indexOf("Sospechosa")>=0?"CUENTA SOSPECHOSA":"PARECE CUENTA REAL");
-  const ataca=(p.ataca||[]).slice(0,4).map(o=>`<div style="font-size:13px;color:#EEF0FA">${o.cuenta} <b style="color:#F7A40D">(${o.n})</b></div>`).join('')||'<span style="color:#AEB6E8">—</span>';
-  const sen=(p.senales||[]).slice(0,6).map(s=>`<li>${s}</li>`).join('');
-  document.getElementById('exportcard').innerHTML=`<div id="ec" style="width:680px;background:#2839BE;border-radius:18px;padding:24px;color:#fff;font-family:Inter,sans-serif">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><img src="logo.png" style="height:36px;border-radius:50%"/>
-      <div style="font-family:'Archivo Black';font-size:13px;color:#F7A40D">ME LA JUEGO POR LA VIDA</div><div style="margin-left:auto;font-size:12px;color:#D7DBF5">@RoldnSantiago</div></div>
-    <div style="font-family:'Archivo Black';font-size:30px">@${p.handle}</div><div style="font-size:13px;color:#D7DBF5;margin-bottom:14px">Detector de autenticidad · X</div>
-    <div style="display:flex;gap:18px"><div>${donut(p.pct,col,150,"#fff")}</div>
-      <div style="flex:1"><span style="background:${col};color:#1B1F3B;font-family:'Archivo Black';font-size:13px;padding:6px 12px;border-radius:9px">${verd}</span>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
-          <div style="background:#FFFFFF14;border-radius:10px;padding:8px 11px"><div style="font-size:11px;color:#C7CCEF">Edad</div><div style="font-family:'Archivo Black';font-size:16px">${p.edad_dias} días</div></div>
-          <div style="background:#FFFFFF14;border-radius:10px;padding:8px 11px"><div style="font-size:11px;color:#C7CCEF">% respuestas</div><div style="font-family:'Archivo Black';font-size:16px">${rs}</div></div></div></div>
-      <div style="width:230px;background:#FFFFFF12;border-radius:12px;padding:12px"><div style="font-family:'Archivo Black';font-size:12px;color:#F7A40D;margin-bottom:6px">A QUIÉN ATACA</div>${ataca}</div></div>
-    <div style="margin-top:14px"><b style="color:#F7A40D">Señales (${p.n_flags}):</b><ul style="margin:6px 0 0;columns:2;font-size:13px;color:#EEF0FA">${sen}</ul></div>
-    <div style="margin-top:12px;border-top:1px solid #FFFFFF22;padding-top:10px;font-size:11px;color:#AEB6E8">Estimación con criterios transparentes — no es un veredicto de "bot". dsroldanz9.github.io/auditoria-autenticidad</div></div>`;
-  setTimeout(()=>html2canvas(document.getElementById('ec'),{scale:2,useCORS:true,backgroundColor:null}).then(c=>{
-    const a=document.createElement('a');a.download='autenticidad_'+p.handle+'.png';a.href=c.toDataURL('image/png');a.click();document.getElementById('exportcard').innerHTML='';}),150);}
-
-const uw=v=>Array.isArray(v)?v[0]:v;   // desenvuelve arrays de 1 (round-trips de JSON)
-const nombreCorto=x=>{const n=uw(x.nombre);return (typeof n==='string'&&n!=='NA')?n.split(' —')[0]:('@'+String(uw(x.cuenta)).replace(/^@/,''));};
-function conclusiones(c,narr){if(!c)return;const v=(c.top_victimas||[]);
-  const frase=v.slice(0,5).map(x=>`<b>${nombreCorto(x)}</b> (${fmt(uw(x.veces))} cuentas)`).join(", ");
-  const pal=(narr&&narr.palabras||[]).slice(0,6).map(w=>uw(w.termino)).join(", ");
-  const cx=(c.conexion&&uw(c.conexion.n_puente)>0)?`<div class="exp" style="margin-top:10px;border-top:1px solid #ffffff55;padding-top:8px">🔗 <b>${fmt(uw(c.conexion.n_puente))} cuentas</b> atacan al Pacto <b>y a la vez amplifican a la derecha</b> — el puente que conecta la operación.</div>`:'';
-  const vic3=v.slice(0,3).map(nombreCorto).join(", ")||"el Pacto";
-  document.getElementById('concl').innerHTML=`<div class="titular">
-    <div class="big">Encontramos ${fmt(c.n_total)} cuentas coordinadas atacando a ${vic3}</div>
-    <div class="exp">Postean el <b>MISMO texto idéntico</b> entre varias cuentas${c.n_clusters?` — <b>${fmt(c.n_clusters)} consignas distintas</b>`:''}. No las marcamos por metadata: es <b>coordinación verificable</b>. Abajo: qué dicen y quién las postea.${pal?` Narrativa: <b>${pal}</b>.`:''}</div>${cx}</div>`;
-  document.getElementById('s_vic').textContent=v.length;
-  const vb=document.getElementById('vbtns');
-  vb.innerHTML=v.slice(0,5).map(x=>`<button class="vbtn" onclick="focusNode('@${String(uw(x.cuenta)).replace(/^@/,'')}')">🎯 ${nombreCorto(x)} <b>· ${fmt(uw(x.veces))}</b></button>`).join('');}
-
-function renderConsignas(c){const cl=(c&&c.clusters)||[];const el=document.getElementById('consignas');
-  if(!cl.length){el.innerHTML='<div class="panel nota">No se detectaron consignas coordinadas (mismo texto idéntico posteado por varias cuentas).</div>';return;}
-  el.innerHTML=cl.map(x=>`<div class="panel" style="border-left:5px solid var(--nar)">
-    <div style="font-size:15px;margin-bottom:8px">“${x.ejemplo}”</div>
-    <div class="nota"><b style="color:var(--nar);font-size:14px">${fmt(x.n_cuentas)} cuentas</b> postearon este mismo texto:</div>
-    <div style="font-size:13px;color:var(--az);margin-top:4px;word-break:break-word">${x.cuentas}</div></div>`).join('');}
-
-document.getElementById('resultados').innerHTML='<div class="panel nota">Cargando investigación…</div>';
+    <div class="count"><b>${p.veces}×</b><span>repite</span></div>
+    <div style="flex:1">
+      <a class="h" href="https://x.com/${p.handle}" target="_blank" rel="noopener">@${p.handle}</a>${fuerte}
+      <div class="msg">“${p.mensaje}”</div>
+    </div></div>`;}
+function render(){
+  const q=(document.getElementById('q').value||'').trim().toLowerCase().replace(/^@/,'');
+  const ps=DATA.perfiles.filter(p=>!q||(p.handle+' '+p.mensaje).toLowerCase().includes(q));
+  document.getElementById('lista').innerHTML=ps.length?ps.map(card).join(''):'<div class="panel nota">Sin resultados.</div>';
+  document.getElementById('cuenta_res').textContent=fmt(ps.length)+' cuenta(s)';}
 fetch('data/investigacion.json?v='+Date.now()).then(r=>r.json()).then(d=>{DATA=d;
-  if(d.fuente==="mock")document.getElementById('demo').innerHTML='⚠️ <b>Datos de ejemplo (demostración).</b> Aún no es una investigación con cuentas reales — muestra cómo se verá el resultado.';
-  document.getElementById('s_total').textContent=fmt(d.perfiles.length);
-  document.getElementById('s_alta').textContent=fmt((d.conclusiones&&d.conclusiones.n_clusters)||0);
-  document.getElementById('s_fecha').textContent=(d.generado||"").slice(0,10);
-  conclusiones(d.conclusiones,d.narrativa); renderConsignas(d.conclusiones); dibujarRed(d);
-  const pal=(d.narrativa&&d.narrativa.palabras)||[];
-  document.getElementById('narrativa').innerHTML=pal.length?pal.map(w=>`<span>${w.termino} <b>(${fmt(w.n)})</b></span>`).join(''):'<span class="nota">Requiere tweets reales</span>';
-  render();}).catch(e=>{document.getElementById('resultados').innerHTML='<div class="panel">No se pudo cargar la investigación.</div>';});
+  const c=d.conclusiones||{};
+  document.getElementById('s_total').textContent=fmt(c.n_total);
+  document.getElementById('s_fuertes').textContent=fmt(c.n_fuertes);
+  document.getElementById('s_max').textContent=fmt(c.max_veces);
+  document.getElementById('concl').innerHTML=`<div class="titular">
+    <div class="big">${fmt(c.n_total)} cuentas spamean el mismo ataque al Pacto — una lo repite ${fmt(c.max_veces)} veces</div>
+    <div class="exp">No es una opinión repetida: es <b>copia-pega automatizado</b>. ${fmt(c.n_fuertes)} casos extremos (20+ repeticiones). Abajo, cada cuenta con su mensaje — entra y verifícalo.</div></div>`;
+  render();
+}).catch(e=>{document.getElementById('lista').innerHTML='<div class="panel">No se pudo cargar la lista.</div>';});
 </script>
 </body>
 </html>
